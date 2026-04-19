@@ -12,7 +12,7 @@ body{font-family:var(--sans);color:var(--black);background:var(--white);overflow
 #nav-wrap{position:fixed;top:1.2rem;left:50%;transform:translateX(-50%);z-index:999;width:calc(100% - 3rem);max-width:1100px;transition:top .3s ease}
 nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.6rem;background:#ffffffed;backdrop-filter:blur(16px);border-radius:20px;border:1px solid #ff618b2e;box-shadow:0 4px 30px #ff618b1a;transition:all .3s ease}
 nav.scrolled{box-shadow:0 8px 40px #ff618b33;background:#fffffffa}
-.nav-logo{display:flex;align-items:center;gap:.4rem;font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--pink);text-decoration:none;letter-spacing:-.08em}
+.nav-logo{display:flex;align-items:center;gap:.4rem;font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--pink);text-decoration:none;letter-spacing:-.08em}
 .nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
 .nav-links a{font-size:.85rem;font-weight:400;color:var(--gray-dark);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--pink)}
