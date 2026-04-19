@@ -48,7 +48,8 @@ to{opacity:1;transform:translateY(0)}
 #nav.nav-visible{transform:translateY(0);opacity:1;pointer-events:all}
 @media (max-width: 768px) {
 .hero-content{text-align:left;max-width:100%}
-.store-buttons{justify-content:flex-start}
+.hero-content p{margin: 30px 0;}
+.store-buttons{justify-content:start}
 .hero-inner{justify-content:flex-start}
 }
 .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-bottom:2.5rem}
@@ -88,11 +89,14 @@ to{opacity:1;transform:translateY(0)}
 .hero-inner{grid-template-columns:1fr;gap:2rem;text-align:center}
 .hero-content p{max-width:100%}
 .hero-actions{justify-content:center}
-.store-buttons{justify-content:center}
+.store-buttons{justify-content:start}
 .hero-visual{order:-1}
 .phone-mockup-hero{width:200px;height:400px}
-.hero-float-card-1{right:-10px;top:20px}
-.hero-float-card-2{left:-10px}
+.hero-float-card-1{right:-10px;top:-35px}
+.hero-float-card-2{left:-10px;bottom: -23px;}
+.hero-float-card {padding: 10px;}
+.hero-float-card p {font-size: 0.58rem;line-height:0.1rem,;padding-top:6px}
+.hero-float-card small{font-size: 0.45rem;}
 }
 section{padding:6rem 2rem}
 .section-inner{max-width:1200px;margin:0 auto}
@@ -123,7 +127,9 @@ section{padding:6rem 2rem}
 .step-card h3{font-family:var(--serif);font-size:1.25rem;font-weight:500;margin-bottom:.75rem;color:var(--black)}
 .step-card p{font-size:.9rem;line-height:1.7;color:var(--gray-dark);font-weight:300}
 @media (max-width: 768px) {
-.steps-grid{grid-template-columns:1fr}
+    .steps-container{flex-direction: column-reverse;gap: 2rem;}
+.steps-grid{grid-template-columns:1fr;width: 100%}
+.steps-image-container{width: 100%;}
 }
 #features{padding:0;background:#fff}
 .features-sticky-wrap{position:relative}
@@ -241,6 +247,7 @@ section{padding:6rem 2rem}
 .ip-line-bottom{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff8c8d4d,transparent);z-index:2}
 .ip-counter{font-family:var(--serif);font-size:.75rem;color:#ffffff40;letter-spacing:.1em;margin-bottom:3rem;font-style:italic}
 @media (max-width: 768px) {
+.ip-section{height: auto;}
 .ip-content{grid-template-columns:1fr;min-height:100vh;padding:5rem 1.5rem;gap:3rem}
 .ip-left{border-right:none;border-bottom:1px solid #ffffff1a;padding-right:0;padding-bottom:3rem}
 .ip-right{padding-left:0}
