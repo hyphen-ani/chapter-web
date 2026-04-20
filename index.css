@@ -86,7 +86,11 @@ to{opacity:1;transform:translateY(0)}
 50%{transform:translateY(-8px)}
 }
 @media (max-width: 768px) {
-.hero-inner{grid-template-columns:1fr;gap:2rem;text-align:center}
+#hero{min-height: auto;}
+section{
+    padding: 4rem 1rem;
+}
+.hero-inner{grid-template-columns:1fr;gap:2rem;text-align:center;padding:2rem 0;}
 .hero-content p{max-width:100%}
 .hero-actions{justify-content:center}
 .store-buttons{justify-content:start}
@@ -139,12 +143,14 @@ section{padding:6rem 2rem}
 .feat-img-slide{position:absolute;inset:0;opacity:0;transition:opacity .55s cubic-bezier(0.4,0,0.2,1)}
 .feat-img-slide.active{opacity:1}
 .feat-img-slide img{width:100%;height:100%;object-fit:cover;display:block;border-radius:24px}
-@media (max-width: 768px) {
-.features-images-wrap{height:260px}
-}
+
 @media (max-width: 1520px) {
 .features-stage{margin:10px auto}
 .features-header-inner{padding:5rem 2rem 0rem 5rem !important}
+}
+@media (max-width: 768px) {
+.features-images-wrap{height:260px}
+.features-header-inner{padding:0rem 3rem !important} 
 }
 
 .feat-slide-screen{position:absolute;inset:0;opacity:0;transition:opacity .55s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;padding:.5rem}
@@ -172,6 +178,9 @@ section{padding:6rem 2rem}
 .feat-phone-short{width:108px;height:200px;margin-bottom:18px}
 .feat-text-slide{position:relative;opacity:1;transform:none;pointer-events:auto}
 .features-text-wrap{min-height:auto;height:auto;position:relative;display:block}
+.feat-dots{ display: none}
+.feat-text-slide p{margin-top: 1.5rem;}
+
 }
 .quote-section{background:var(--pink);padding:8rem 2rem;text-align:center;position:relative;overflow:hidden;margin-top:50px}
 .quote-section::before,.quote-section::after{content:'"';position:absolute;font-family:var(--serif);font-size:20rem;color:#ffffff0f;font-weight:700;line-height:1}
@@ -180,6 +189,11 @@ section{padding:6rem 2rem}
 .quote-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .quote-section blockquote{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-style:italic;color:#fff;line-height:1.4;max-width:800px;margin:0 auto 1.5rem;font-weight:400;position:relative;z-index:1}
 .quote-section cite{font-size:.875rem;color:#ffffffbf;font-style:normal;letter-spacing:.1em;text-transform:uppercase;font-weight:300}
+
+@media (max-width: 768px) {
+.quote-section{ padding:40px 20px;margin: 0px;}
+}
+
 #screens{padding:0;background:var(--gray-ultra)}
 .screens-sticky-wrap{position:relative}
 .screens-sticky{position:sticky;top:30px;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:2rem}
