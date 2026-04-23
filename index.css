@@ -269,7 +269,7 @@ section{padding:6rem 2rem}
 }
 
 
-#testimonials{background:#fff}
+/* #testimonials{background:#fff}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .testimonial-card{background:var(--gray-ultra);border-radius:20px;padding:1.8rem;border:1px solid #ff618b14;transition:all .35s ease}
 .testimonial-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px #ff618b1f;background:#fff;border-color:#ff618b33}
@@ -285,7 +285,53 @@ section{padding:6rem 2rem}
 }
 @media (max-width: 768px) {
 .testimonials-grid{grid-template-columns:1fr}
+} */
+
+.ts-header{margin-bottom:2.5rem}
+.ts-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);font-weight:500;margin-bottom:.5rem}
+.ts-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:400;color:#1a1a1a;line-height:1.2;margin-bottom:.6rem}
+.ts-title em{color:var(--pink);font-style:italic}
+.ts-sub{font-size:.92rem;color:var(--gray-mid);font-weight:300}
+.ts-track-wrap{position:relative;padding: 30px 0;overflow: hidden;;cursor:grab;user-select:none}
+.ts-track-wrap:active{cursor:grabbing}
+.ts-track{display:flex;gap:1.25rem;align-items:flex-start;will-change:transform}
+.ts-card{flex:0 0 300px;height:470px;border-radius:10px;overflow:hidden;position:relative;cursor:pointer;border:1px solid #ff618b1a;box-shadow:0 2px 12px #ff5c670f;will-change:flex-basis,box-shadow}
+.ts-card.expanded{flex-basis:620px;height:470px;box-shadow:0 16px 48px #ff5c6724}
+.ts-card-inner{width:100%;height:100%;display:flex;position:relative}
+.ts-img{flex-shrink:0;width:300px;height:100%;position:relative;overflow:hidden;transition:none}
+.ts-card.expanded .ts-img{width:300px}
+.ts-img-bg{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.ts-card:hover .ts-img-bg{transform:scale(1.03)}
+.ts-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,#0009 0%,transparent 55%)}
+.ts-img-footer{position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1.1rem 1.1rem;z-index:2}
+.ts-couple-name{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:1.15rem;color:#fff;margin-bottom:.2rem;text-shadow:0 1px 6px #00000059;letter-spacing:.01em}
+.ts-couple-meta{font-size:.75rem;color:#ffffffc7;font-weight:300;letter-spacing:.02em}
+.ts-content{flex:1;padding:2rem 1.75rem;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;transform:translateX(10px);pointer-events:none;min-width:0;width:0;overflow:hidden}
+.ts-card.expanded .ts-content{pointer-events:auto;width:auto}
+.ts-quote{font-family:var(--serif);font-size:.98rem;font-style:italic;line-height:1.8;color:#2a1a1e;text-align:center;margin-bottom:1.5rem}
+.ts-content-name{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;font-weight:500;color:#1a1a1a;text-align:center;margin-bottom:.2rem;letter-spacing:.01em}
+.ts-content-meta{font-size:.72rem;color:var(--gray-mid);font-weight:300;text-align:center;letter-spacing:.02em}
+.ts-divider{width:32px;height:1px;background:#ff618b59;margin:0 auto 1.25rem}
+.ts-footer-row{display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem}
+.ts-dots{display:flex;gap:6px;align-items:center}
+.ts-dot{width:6px;height:6px;border-radius:50%;background:#e0d0d5;cursor:pointer;transition:background .3s ease,width .3s ease;border:none;padding:0;flex-shrink:0}
+.ts-dot.active{background:var(--pink);width:22px;border-radius:3px}
+.ts-nav{display:flex;gap:.6rem}
+.ts-nav-btn{width:36px;height:36px;border-radius:50%;border:1px solid #ff5c6740;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s ease,border-color .25s ease;color:var(--pink);font-size:.85rem}
+.ts-nav-btn:hover{background:var(--pink-pale);border-color:var(--pink)}
+@media (max-width: 600px) {
+.ts-root{padding:2rem 1rem 2.5rem}
+.ts-card{flex:0 0 220px!important;height:360px!important}
+.ts-card.expanded{flex-basis:220px!important}
+.ts-content{display:none!important}
+.ts-img{width:100%!important}
 }
+
+
+
+
+
+
 #faq{background:#fff}
 #faq .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .faq-list{margin-top:3rem;max-width:780px}

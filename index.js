@@ -349,3 +349,249 @@ animateCounters();
 document.querySelectorAll('.store-btn[data-store]').forEach(btn => {
   btn.addEventListener('click', e => e.preventDefault());
 });
+
+
+
+// TESTIMONIALS
+const couples = [
+  {
+    initials: "A&K",
+    image:"/assets/images/couple1.jpeg",
+    name: "Amit & Kashish",
+    meta: "Mumbai · 3 years together",
+    quote: "Chapter made us realise how many things we were doing together but never documenting. Now our profile is like a love diary — and we're obsessed.",
+    avatarGrad: "linear-gradient(135deg,#ff5c67,#ff8b8d)",
+    imgColor: "#f9c6cb",
+    imgPattern: "hearts"
+  },
+  {
+    initials: "P&R",
+    image:"/assets/images/couple2.jpeg",
+    name: "Priya & Rohan",
+    meta: "Bangalore · 1 year together",
+    quote: "We used to struggle with 'what should we do this weekend?' Chapter solved that. The explore places feature is genuinely so good for date ideas.",
+    avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
+    imgColor: "#fde0d0",
+    imgPattern: "dots"
+  },
+  {
+    initials: "S&V",
+    image:"/assets/images/couple5.jpeg",
+    name: "Sneha & Vikram",
+    meta: "Delhi · 5 years together",
+    quote: "It feels like Instagram but built for couples. We love how it focuses on experiences rather than just photos. Highly recommend for any couple.",
+    avatarGrad: "linear-gradient(135deg,#b5a4f7,#9b87f0)",
+    imgColor: "#ddd4fc",
+    imgPattern: "waves"
+  },
+  {
+    initials: "A&M",
+    image:"/assets/images/couple4.jpeg",
+    name: "Aisha & Mihail",
+    meta: "Chennai + London · 2 years",
+    quote: "My long-distance boyfriend and I use Chapter to stay connected. Watching the same movies, planning places to visit — it makes distance feel smaller.",
+    avatarGrad: "linear-gradient(135deg,#f7c4a4,#f0a87b)",
+    imgColor: "#fce4cc",
+    imgPattern: "circles"
+  },
+  {
+    initials: "N&D",
+    image:"/assets/images/couple1.jpeg",
+    name: "Nikhil & Divya",
+    meta: "Pune · 4 years together",
+    quote: "We joined as a fun experiment and ended up falling more in love. Seeing our chapters grow together is honestly one of the best feelings.",
+    avatarGrad: "linear-gradient(135deg,#a4f7c4,#7bf0a8)",
+    imgColor: "#ccf5e0",
+    imgPattern: "stars"
+  },
+  {
+    initials: "K&S",
+    image:"/assets/images/couple2.jpeg",
+    name: "Kavya & Siddharth",
+    meta: "Hyderabad · 2 years together",
+    quote: "The onboarding was such a sweet experience. Answering questions about your relationship felt like writing our story for the very first time.",
+    avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
+    imgColor: "#fcd4ec",
+    imgPattern: "hearts"
+  }
+];
+
+
+const track = document.getElementById('tsTrack');
+const dotsEl = document.getElementById('tsDots');
+const wrap = document.getElementById('tsWrap');
+
+const CARD_W = 300;
+const GAP = 20;
+const EXPANDED_W = 620;
+const UNIT = CARD_W + GAP;
+
+const allCouples = [...couples, ...couples, ...couples];
+const N = couples.length;
+let currentOffset = N;
+let expandedCard = null;
+let isAnimating = false;
+let dragStartX = 0, dragStartOffset = 0, isDragging = false;
+
+allCouples.forEach((c, i) => {
+  const card = document.createElement('div');
+  card.className = 'ts-card';
+  card.dataset.realIdx = i % N;
+  card.innerHTML = `
+    <div class="ts-card-inner">
+      <div class="ts-img">
+        <img class="ts-img-bg" src="${c.image}" alt="${c.name}">
+        <div class="ts-img-overlay"></div>
+        <div class="ts-img-footer">
+          <div class="ts-couple-name">${c.name}</div>
+          <div class="ts-couple-meta">${c.meta}</div>
+        </div>
+      </div>
+      <div class="ts-content">
+        <p class="ts-quote">"${c.quote}"</p>
+        <div class="ts-divider"></div>
+        <div class="ts-content-name">${c.name}</div>
+        <div class="ts-content-meta">${c.meta}</div>
+      </div>
+    </div>`;
+
+  card.addEventListener('mouseenter', () => {
+    if (isDragging) return;
+    if (expandedCard && expandedCard !== card) collapseCard(expandedCard, true);
+    expandCard(card);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    collapseCard(card, false);
+  });
+
+  track.appendChild(card);
+});
+function expandCard(card) {
+  if (expandedCard === card) return;
+  expandedCard = card;
+  const content = card.querySelector('.ts-content');
+  card.classList.add('expanded');
+  gsap.fromTo(card,
+    { flexBasis: '300px' },
+    { flexBasis: '620px', duration: 0.6, ease: 'power3.inOut' }
+  );
+  gsap.set(content, { opacity: 0, x: 14, display: 'flex' });
+  gsap.to(content, {
+    opacity: 1, x: 0,
+    duration: 0.35, ease: 'power2.out',
+    delay: 0.42          // waits until card is nearly fully wide
+  });
+  gsap.to(card, { boxShadow: '0 16px 48px rgba(255,92,103,0.18)', duration: 0.5, ease: 'power2.out' });
+}
+function collapseCard(card, instant) {
+  if (!card.classList.contains('expanded')) return;
+  const content = card.querySelector('.ts-content');
+  const dur = instant ? 0.18 : 0.5;
+  gsap.to(content, { opacity: 0, x: 10, duration: 0.15, ease: 'power2.in', onComplete: () => {
+    gsap.set(content, { display: 'none' });
+  }});
+  gsap.to(card, {
+    flexBasis: '300px',
+    duration: dur,
+    delay: 0.1,           // tiny pause so text vanishes first
+    ease: 'power3.inOut',
+    onComplete: () => {
+      card.classList.remove('expanded');
+      gsap.set(content, { clearProps: 'all' });
+    }
+  });
+  gsap.to(card, { boxShadow: '0 2px 12px rgba(255,92,103,0.06)', duration: dur, ease: 'power2.in' });
+  if (expandedCard === card) expandedCard = null;
+}
+function getX(idx) {
+  return -(idx * UNIT);
+}
+
+function jumpTo(idx, animate) {
+  currentOffset = idx;
+  const x = getX(idx);
+  if (animate) {
+    gsap.to(track, { x, duration: 0.15, ease: 'power2.inOut' });
+  } else {
+    gsap.set(track, { x });
+  }
+  updateDots();
+}
+
+function updateDots() {
+  const realIdx = ((currentOffset % N) + N) % N;
+  document.querySelectorAll('.ts-dot').forEach((d, i) => d.classList.toggle('active', i === realIdx));
+}
+
+jumpTo(N, false);
+
+for (let i = 0; i < N; i++) {
+  const dot = document.createElement('button');
+  dot.className = 'ts-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => {
+    const diff = i - (((currentOffset % N) + N) % N);
+    jumpTo(currentOffset + diff, true);
+    checkLoop();
+  });
+  dotsEl.appendChild(dot);
+}
+
+function checkLoop() {
+  if (currentOffset <= 1) {
+    setTimeout(() => jumpTo(currentOffset + N, false), 10);
+  } else if (currentOffset >= allCouples.length - 2) {
+    setTimeout(() => jumpTo(currentOffset - N, false), 10);
+  }
+}
+
+function navigate(dir) {
+  if (expandedCard) { collapseCard(expandedCard, true); }
+  jumpTo(currentOffset + dir, true);
+  setTimeout(checkLoop, 580);
+}
+
+document.getElementById('tsPrev').addEventListener('click', () => navigate(-1));
+document.getElementById('tsNext').addEventListener('click', () => navigate(1));
+
+wrap.addEventListener('mousedown', e => {
+  isDragging = true;
+  dragStartX = e.clientX;
+  dragStartOffset = gsap.getProperty(track, 'x');
+  wrap.style.cursor = 'grabbing';
+  e.preventDefault();
+});
+
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const dx = e.clientX - dragStartX;
+  gsap.set(track, { x: dragStartOffset + dx });
+});
+
+window.addEventListener('mouseup', e => {
+  if (!isDragging) return;
+  isDragging = false;
+  wrap.style.cursor = 'grab';
+  const dx = e.clientX - dragStartX;
+  const moved = Math.round(-dx / UNIT);
+  jumpTo(currentOffset + moved, true);
+  setTimeout(checkLoop, 580);
+});
+
+let touchStartX = 0;
+wrap.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  dragStartOffset = gsap.getProperty(track, 'x');
+}, { passive: true });
+
+wrap.addEventListener('touchmove', e => {
+  const dx = e.touches[0].clientX - touchStartX;
+  gsap.set(track, { x: dragStartOffset + dx });
+}, { passive: true });
+
+wrap.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const moved = Math.round(-dx / UNIT);
+  jumpTo(currentOffset + (moved || (dx < -30 ? 1 : dx > 30 ? -1 : 0)), true);
+  setTimeout(checkLoop, 580);
+});
