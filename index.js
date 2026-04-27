@@ -358,7 +358,7 @@ const couples = [
     initials: "P&R",
     image:"/assets/realcouples/PrianshuAndAnanna.png",
     name: "Prianshu & Ananna",
-    meta: "Bangalore · 1 year together",
+    meta: "Kolkata",
     quote: "We fight, we heal, we grow and somehow, we always find our way back.",
     avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
     imgColor: "#fde0d0",
@@ -369,8 +369,8 @@ const couples = [
     initials: "A&K",
     image:"/assets/realcouples/TamannaAndIshan.jpeg",
     name: "Tamanna & Ishan",
-    meta: "Mumbai · 3 years together",
-    quote: "Chapter made us realise how many things we were doing together but never documenting. Now our profile is like a love diary — and we're obsessed.",
+    meta: "Pune",
+    quote: "In a world that keeps changing, we found something steady in each other, a quiet kind of love that doesn’t need to be loud to be real",
     avatarGrad: "linear-gradient(135deg,#ff5c67,#ff8b8d)",
     imgColor: "#f9c6cb",
     imgPattern: "hearts"
@@ -380,7 +380,7 @@ const couples = [
     initials: "A&M",
     image:"/assets/realcouples/JahnviAndTushar.png",
     name: "Jahnvi & Tushar",
-    meta: "Chennai + London · 2 years",
+    meta: "Delhi",
     quote: "My long-distance boyfriend and I use Chapter to stay connected. Watching the same movies, planning places to visit — it makes distance feel smaller.",
     avatarGrad: "linear-gradient(135deg,#f7c4a4,#f0a87b)",
     imgColor: "#fce4cc",
@@ -390,7 +390,7 @@ const couples = [
     initials: "S&V",
     image:"/assets/realcouples/AbhishekAndAditi.png",
     name: "Abhishek & Aditi",
-    meta: "Delhi · 5 years together",
+    meta: "Kolkata",
     quote: "Some love stories don’t stay strong, they fall apart, and then quietly rebuild themselves",
     avatarGrad: "linear-gradient(135deg,#b5a4f7,#9b87f0)",
     imgColor: "#ddd4fc",
@@ -401,8 +401,8 @@ const couples = [
     initials: "N&D",
     image:"/assets/realcouples/SeemaAndSachin.png",
     name: "Seema & Sachin",
-    meta: "Pune · 4 years together",
-    quote: "We joined as a fun experiment and ended up falling more in love. Seeing our chapters grow together is honestly one of the best feelings.",
+    meta: "Pune",
+    quote: "    We started as strangers in a game, just two players in the same lobby, but somewhere between revives and late night matches, we became something neither of us expected.",
     avatarGrad: "linear-gradient(135deg,#a4f7c4,#7bf0a8)",
     imgColor: "#ccf5e0",
     imgPattern: "stars"
@@ -410,9 +410,9 @@ const couples = [
   {
     initials: "K&S",
     image:"/assets/realcouples/MokshaAndNull.png",
-    name: "Moksha & Null",
-    meta: "Hyderabad · 2 years together",
-    quote: "The onboarding was such a sweet experience. Answering questions about your relationship felt like writing our story for the very first time.",
+    name: "Moksha & Risheet",
+    meta: "Ahmedabad",
+    quote: "We found comfort in each other’s presence, and without even realizing it, we became each other’s favorite place to return to.",
     avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
     imgColor: "#fcd4ec",
     imgPattern: "hearts"
@@ -422,8 +422,8 @@ const couples = [
     initials: "P&R",
     image:"/assets/realcouples/SudiptoAndSreyashi.png",
     name: "Sudipto & Sreyashi",
-    meta: "Bangalore · 1 year together",
-    quote: "We used to struggle with 'what should we do this weekend?' Chapter solved that. The explore places feature is genuinely so good for date ideas.",
+    meta: "Delhi + Mumbai (Long Distance)",
+    quote: "In all the chaos and noise around us, we built something quiet and meaningful, something that reminds us that love doesn’t have to be complicated to be beautiful.",
     avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
     imgColor: "#fde0d0",
     imgPattern: "dots"
@@ -465,8 +465,6 @@ allCouples.forEach((c, i) => {
       <div class="ts-content">
         <p class="ts-quote">"${c.quote}"</p>
         <div class="ts-divider"></div>
-        <div class="ts-content-name">${c.name}</div>
-        <div class="ts-content-meta">${c.meta}</div>
       </div>
     </div>`;
 
