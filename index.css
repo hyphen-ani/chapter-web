@@ -326,6 +326,12 @@ section{padding:6rem 2rem}
 .ts-content{display:none!important}
 .ts-img{width:100%!important}
 }
+@media (max-width: 600px) {
+    #testimonials{padding: 0;}
+.ts-track-wrap{overflow-x: visible;padding:0;padding-bottom: 40px;}
+.ts-footer-row{display: none;}
+/* .ts-card{flex:0 0 300px !important;;height:580px !important;} */
+}
 
 
 

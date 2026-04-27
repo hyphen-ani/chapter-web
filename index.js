@@ -354,50 +354,53 @@ document.querySelectorAll('.store-btn[data-store]').forEach(btn => {
 
 // TESTIMONIALS
 const couples = [
-  {
+    {
+    initials: "P&R",
+    image:"/assets/realcouples/PrianshuAndAnanna.png",
+    name: "Prianshu & Ananna",
+    meta: "Bangalore · 1 year together",
+    quote: "We fight, we heal, we grow and somehow, we always find our way back.",
+    avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
+    imgColor: "#fde0d0",
+    imgPattern: "dots"
+  },
+
+    {
     initials: "A&K",
-    image:"/assets/images/couple1.jpeg",
-    name: "Amit & Kashish",
+    image:"/assets/realcouples/TamannaAndIshan.jpeg",
+    name: "Tamanna & Ishan",
     meta: "Mumbai · 3 years together",
     quote: "Chapter made us realise how many things we were doing together but never documenting. Now our profile is like a love diary — and we're obsessed.",
     avatarGrad: "linear-gradient(135deg,#ff5c67,#ff8b8d)",
     imgColor: "#f9c6cb",
     imgPattern: "hearts"
   },
-  {
-    initials: "P&R",
-    image:"/assets/images/couple2.jpeg",
-    name: "Priya & Rohan",
-    meta: "Bangalore · 1 year together",
-    quote: "We used to struggle with 'what should we do this weekend?' Chapter solved that. The explore places feature is genuinely so good for date ideas.",
-    avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
-    imgColor: "#fde0d0",
-    imgPattern: "dots"
-  },
-  {
-    initials: "S&V",
-    image:"/assets/images/couple5.jpeg",
-    name: "Sneha & Vikram",
-    meta: "Delhi · 5 years together",
-    quote: "It feels like Instagram but built for couples. We love how it focuses on experiences rather than just photos. Highly recommend for any couple.",
-    avatarGrad: "linear-gradient(135deg,#b5a4f7,#9b87f0)",
-    imgColor: "#ddd4fc",
-    imgPattern: "waves"
-  },
+
   {
     initials: "A&M",
-    image:"/assets/images/couple4.jpeg",
-    name: "Aisha & Mihail",
+    image:"/assets/realcouples/JahnviAndTushar.png",
+    name: "Jahnvi & Tushar",
     meta: "Chennai + London · 2 years",
     quote: "My long-distance boyfriend and I use Chapter to stay connected. Watching the same movies, planning places to visit — it makes distance feel smaller.",
     avatarGrad: "linear-gradient(135deg,#f7c4a4,#f0a87b)",
     imgColor: "#fce4cc",
     imgPattern: "circles"
   },
+    {
+    initials: "S&V",
+    image:"/assets/realcouples/AbhishekAndAditi.png",
+    name: "Abhishek & Aditi",
+    meta: "Delhi · 5 years together",
+    quote: "Some love stories don’t stay strong, they fall apart, and then quietly rebuild themselves",
+    avatarGrad: "linear-gradient(135deg,#b5a4f7,#9b87f0)",
+    imgColor: "#ddd4fc",
+    imgPattern: "waves"
+  },
+ 
   {
     initials: "N&D",
-    image:"/assets/images/couple1.jpeg",
-    name: "Nikhil & Divya",
+    image:"/assets/realcouples/SeemaAndSachin.png",
+    name: "Seema & Sachin",
     meta: "Pune · 4 years together",
     quote: "We joined as a fun experiment and ended up falling more in love. Seeing our chapters grow together is honestly one of the best feelings.",
     avatarGrad: "linear-gradient(135deg,#a4f7c4,#7bf0a8)",
@@ -406,14 +409,26 @@ const couples = [
   },
   {
     initials: "K&S",
-    image:"/assets/images/couple2.jpeg",
-    name: "Kavya & Siddharth",
+    image:"/assets/realcouples/MokshaAndNull.png",
+    name: "Moksha & Null",
     meta: "Hyderabad · 2 years together",
     quote: "The onboarding was such a sweet experience. Answering questions about your relationship felt like writing our story for the very first time.",
     avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
     imgColor: "#fcd4ec",
     imgPattern: "hearts"
-  }
+  },
+
+     {
+    initials: "P&R",
+    image:"/assets/realcouples/SudiptoAndSreyashi.png",
+    name: "Sudipto & Sreyashi",
+    meta: "Bangalore · 1 year together",
+    quote: "We used to struggle with 'what should we do this weekend?' Chapter solved that. The explore places feature is genuinely so good for date ideas.",
+    avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
+    imgColor: "#fde0d0",
+    imgPattern: "dots"
+  },
+ 
 ];
 
 
