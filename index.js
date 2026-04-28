@@ -495,7 +495,7 @@ function expandCard(card) {
     duration: 0.35, ease: 'power2.out',
     delay: 0.42          // waits until card is nearly fully wide
   });
-  gsap.to(card, { boxShadow: '0 16px 48px rgba(255,92,103,0.18)', duration: 0.5, ease: 'power2.out' });
+  gsap.to(card, { boxShadow: '0 16px 16px rgba(255,92,103,0.18)', duration: 0.5, ease: 'power2.out' });
 }
 function collapseCard(card, instant) {
   if (!card.classList.contains('expanded')) return;
