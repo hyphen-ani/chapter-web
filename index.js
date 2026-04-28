@@ -224,13 +224,13 @@ function activateSlide(idx) {
   });
 })();
 // ── INTRO ──
-window.addEventListener("load", () => {
+(() => {
   const t = document.getElementById("intro-text"),
     i = document.getElementById("intro");
   setTimeout(() => t.classList.add("show"), 300);
   setTimeout(() => i.classList.add("lift"), 1800);
   setTimeout(() => (i.style.display = "none"), 3200);
-});
+})();
 
 // ── NAV ──
 // ── NAV: show only when scrolled past hero ──
@@ -412,7 +412,7 @@ const couples = [
     image:"/assets/realcouples/MokshaAndNull.png",
     name: "Moksha & Risheet",
     meta: "Ahmedabad",
-    quote: "We found comfort in each other’s presence, and without even realizing it, we became each other’s favorite place to return to.",
+    quote: "To live with someone I really love and respect, who really loves and respects me - what a difference it has made to our life.",
     avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
     imgColor: "#fcd4ec",
     imgPattern: "hearts"
