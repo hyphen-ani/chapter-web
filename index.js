@@ -11,12 +11,12 @@
 
   // Let GSAP control the pinning — no manual height needed
   const textSlides = gsap.utils.toArray(".feat-text-slide");
- const imgSlides = gsap.utils.toArray(".feat-img-slide");
+  const imgSlides = gsap.utils.toArray(".feat-img-slide");
 
-function activateSlide(idx) {
-  textSlides.forEach((el, i) => el.classList.toggle("active", i === idx));
-  imgSlides.forEach((el, i) => el.classList.toggle("active", i === idx));
-}
+  function activateSlide(idx) {
+    textSlides.forEach((el, i) => el.classList.toggle("active", i === idx));
+    imgSlides.forEach((el, i) => el.classList.toggle("active", i === idx));
+  }
 
   ScrollTrigger.create({
     trigger: wrap,
@@ -143,29 +143,30 @@ function activateSlide(idx) {
   });
 })();
 
-
 // ── INTIMACY PROJECT ──
 (function () {
-  const bgSlides  = document.querySelectorAll('.ip-bg-slide');
-  const qSlides   = document.querySelectorAll('.ip-quote-slide');
-  const dotsEl    = document.getElementById('ipDots');
-  const prevBtn   = document.getElementById('ipPrev');
-  const nextBtn   = document.getElementById('ipNext');
-  const section   = document.getElementById('intimacySection');
-  const total     = bgSlides.length;
-  let current     = 0;
-  let animating   = false;
+  const bgSlides = document.querySelectorAll(".ip-bg-slide");
+  const qSlides = document.querySelectorAll(".ip-quote-slide");
+  const dotsEl = document.getElementById("ipDots");
+  const prevBtn = document.getElementById("ipPrev");
+  const nextBtn = document.getElementById("ipNext");
+  const section = document.getElementById("intimacySection");
+  const total = bgSlides.length;
+  let current = 0;
+  let animating = false;
 
   // Build dots
   for (let i = 0; i < total; i++) {
-    const d = document.createElement('button');
-    d.className = 'ip-dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    d.addEventListener('click', () => goTo(i));
+    const d = document.createElement("button");
+    d.className = "ip-dot" + (i === 0 ? " active" : "");
+    d.setAttribute("aria-label", "Go to slide " + (i + 1));
+    d.addEventListener("click", () => goTo(i));
     dotsEl.appendChild(d);
   }
 
-  function getDots() { return dotsEl.querySelectorAll('.ip-dot'); }
+  function getDots() {
+    return dotsEl.querySelectorAll(".ip-dot");
+  }
 
   function goTo(idx) {
     if (animating || idx === current) return;
@@ -173,53 +174,86 @@ function activateSlide(idx) {
     const dir = idx > current ? 1 : -1;
     const dots = getDots();
 
-    dots[current].classList.remove('active');
-    dots[idx].classList.add('active');
+    dots[current].classList.remove("active");
+    dots[idx].classList.add("active");
 
     // Background: crossfade with subtle scale
     gsap.to(bgSlides[current], {
-      opacity: 0, scale: 1.06, duration: 1.2, ease: 'power2.inOut',
-      onComplete: () => bgSlides[current].classList.remove('active')
+      opacity: 0,
+      scale: 1.06,
+      duration: 1.2,
+      ease: "power2.inOut",
+      onComplete: () => bgSlides[current].classList.remove("active"),
     });
-    gsap.fromTo(bgSlides[idx],
+    gsap.fromTo(
+      bgSlides[idx],
       { opacity: 0, scale: 1.08 },
-      { opacity: 1, scale: 1, duration: 1.4, ease: 'power2.out',
-        onStart: () => bgSlides[idx].classList.add('active') }
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1.4,
+        ease: "power2.out",
+        onStart: () => bgSlides[idx].classList.add("active"),
+      },
     );
 
     // Quote: slide out / in
     gsap.to(qSlides[current], {
-      opacity: 0, y: dir * -18, duration: .45, ease: 'power2.in',
-      onComplete: () => qSlides[current].classList.remove('active')
+      opacity: 0,
+      y: dir * -18,
+      duration: 0.45,
+      ease: "power2.in",
+      onComplete: () => qSlides[current].classList.remove("active"),
     });
-    gsap.fromTo(qSlides[idx],
+    gsap.fromTo(
+      qSlides[idx],
       { opacity: 0, y: dir * 18 },
-      { opacity: 1, y: 0, duration: .6, ease: 'power2.out', delay: .3,
-        onStart: () => qSlides[idx].classList.add('active'),
-        onComplete: () => { animating = false; }
-      }
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: 0.3,
+        onStart: () => qSlides[idx].classList.add("active"),
+        onComplete: () => {
+          animating = false;
+        },
+      },
     );
 
     current = idx;
   }
 
-  prevBtn.addEventListener('click', () => goTo((current - 1 + total) % total));
-  nextBtn.addEventListener('click', () => goTo((current + 1) % total));
+  prevBtn.addEventListener("click", () => goTo((current - 1 + total) % total));
+  nextBtn.addEventListener("click", () => goTo((current + 1) % total));
 
   // Entrance animation (scroll-triggered if ScrollTrigger available, else on load)
   const entranceTl = gsap.timeline({
-    scrollTrigger: window.ScrollTrigger ? {
-      trigger: section, start: 'top 75%', once: true
-    } : undefined
+    scrollTrigger: window.ScrollTrigger
+      ? {
+          trigger: section,
+          start: "top 75%",
+          once: true,
+        }
+      : undefined,
   });
   entranceTl
-    .fromTo('.ip-left',  { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' })
-    .fromTo('.ip-right', { opacity: 0, x:  40 }, { opacity: 1, x: 0, duration: 1.1, ease: 'power3.out' }, '-=0.8');
+    .fromTo(
+      ".ip-left",
+      { opacity: 0, x: -40 },
+      { opacity: 1, x: 0, duration: 1.1, ease: "power3.out" },
+    )
+    .fromTo(
+      ".ip-right",
+      { opacity: 0, x: 40 },
+      { opacity: 1, x: 0, duration: 1.1, ease: "power3.out" },
+      "-=0.8",
+    );
 
   // Autoplay — pause on hover
   let timer = setInterval(() => goTo((current + 1) % total), 5500);
-  section.addEventListener('mouseenter', () => clearInterval(timer));
-  section.addEventListener('mouseleave', () => {
+  section.addEventListener("mouseenter", () => clearInterval(timer));
+  section.addEventListener("mouseleave", () => {
     timer = setInterval(() => goTo((current + 1) % total), 5500);
   });
 })();
@@ -232,16 +266,19 @@ function activateSlide(idx) {
   setTimeout(() => (i.style.display = "none"), 3200);
 })();
 
-// ── NAV ──
 // ── NAV: show only when scrolled past hero ──
 const navEl = document.getElementById("nav");
 const heroEl = document.getElementById("hero");
+const screenWidth = window.innerWidth;
+console.log("SCREEN WIDTH:", screenWidth);
 
 function updateNav() {
   const heroBottom = heroEl.getBoundingClientRect().bottom;
   // show nav when hero bottom is at or above viewport
 
-  if (heroBottom <= 800) {
+  if (screenWidth >= 1520 && heroBottom <= 800) {
+    navEl.classList.add("nav-visible");
+  } else if (screenWidth < 1500 && heroBottom <= 600) {
     navEl.classList.add("nav-visible");
   } else {
     navEl.classList.remove("nav-visible");
@@ -343,180 +380,139 @@ function animateCounters() {
 window.addEventListener("scroll", animateCounters);
 animateCounters();
 
-
-
 // GET APP -----
-document.querySelectorAll('.store-btn[data-store]').forEach(btn => {
-  btn.addEventListener('click', e => e.preventDefault());
+document.querySelectorAll(".store-btn[data-store]").forEach((btn) => {
+  btn.addEventListener("click", (e) => e.preventDefault());
 });
-
-
 
 // TESTIMONIALS
 const couples = [
-    {
+  {
     initials: "P&R",
-    image:"/assets/realcouples/PrianshuAndAnanna.png",
+    image: "/assets/realcouples/PrianshuAndAnanna.png",
     name: "Prianshu & Ananna",
     meta: "Kolkata",
-    quote: "We fight, we heal, we grow and somehow, we always find our way back.",
+    quote:
+      "We fight, we heal, we grow and somehow, we always find our way back.",
     avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
     imgColor: "#fde0d0",
-    imgPattern: "dots"
+    imgPattern: "dots",
   },
 
-    {
+  {
     initials: "A&K",
-    image:"/assets/realcouples/TamannaAndIshan.jpeg",
+    image: "/assets/realcouples/TamannaAndIshan.jpeg",
     name: "Tamanna & Ishan",
     meta: "Pune",
-    quote: "In a world that keeps changing, we found something steady in each other, a quiet kind of love that doesn’t need to be loud to be real",
+    quote:
+      "In a world that keeps changing, we found something steady in each other, a quiet kind of love that doesn’t need to be loud to be real",
     avatarGrad: "linear-gradient(135deg,#ff5c67,#ff8b8d)",
     imgColor: "#f9c6cb",
-    imgPattern: "hearts"
+    imgPattern: "hearts",
   },
 
   {
     initials: "A&M",
-    image:"/assets/realcouples/JahnviAndTushar.png",
+    image: "/assets/realcouples/JahnviAndTushar.png",
     name: "Jahnvi & Tushar",
     meta: "Delhi",
-    quote: "My long-distance boyfriend and I use Chapter to stay connected. Watching the same movies, planning places to visit — it makes distance feel smaller.",
+    quote:
+      "6 years with you felt like 6 minutes, I hope growing old with you gives us all the time to cherish it",
     avatarGrad: "linear-gradient(135deg,#f7c4a4,#f0a87b)",
     imgColor: "#fce4cc",
-    imgPattern: "circles"
+    imgPattern: "circles",
   },
-    {
+  {
     initials: "S&V",
-    image:"/assets/realcouples/AbhishekAndAditi.png",
+    image: "/assets/realcouples/AbhishekAndAditi.png",
     name: "Abhishek & Aditi",
     meta: "Kolkata",
-    quote: "Some love stories don’t stay strong, they fall apart, and then quietly rebuild themselves",
+    quote:
+      "Some love stories don’t stay strong, they fall apart, and then quietly rebuild themselves",
     avatarGrad: "linear-gradient(135deg,#b5a4f7,#9b87f0)",
     imgColor: "#ddd4fc",
-    imgPattern: "waves"
+    imgPattern: "waves",
   },
- 
+
   {
-    initials: "N&D",
-    image:"/assets/realcouples/SeemaAndSachin.png",
-    name: "Seema & Sachin",
+    initials: "A&P",
+    image: "/assets/realcouples/AnkuAndPrashant.png",
+    name: "Anku & Prashant",
     meta: "Pune",
-    quote: "    We started as strangers in a game, just two players in the same lobby, but somewhere between revives and late night matches, we became something neither of us expected.",
+    quote:
+      "We started as strangers in a game, just two players in the same lobby, but somewhere between revives and late night matches, we became something neither of us expected.",
     avatarGrad: "linear-gradient(135deg,#a4f7c4,#7bf0a8)",
     imgColor: "#ccf5e0",
-    imgPattern: "stars"
+    imgPattern: "stars",
   },
-  {
+    {
     initials: "K&S",
-    image:"/assets/realcouples/MokshaAndNull.png",
-    name: "Moksha & Risheet",
-    meta: "Ahmedabad",
-    quote: "To live with someone I really love and respect, who really loves and respects me - what a difference it has made to our life.",
+    image: "/assets/realcouples/RajenAndPunam.png",
+    name: "Rajen & Punam",
+    meta: "Kolkata",
+    quote:'The key to stable relationships isn’t finding the perfect person, but learning to see an imperfect person perfectly.',
     avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
     imgColor: "#fcd4ec",
-    imgPattern: "hearts"
+    imgPattern: "hearts",
+  },
+  {
+    initials: "M&R",
+    image: "/assets/realcouples/MokshaAndNull.png",
+    name: "Moksha & Risheet",
+    meta: "Ahmedabad",
+    quote:
+      "To live with someone I really love and respect, who really loves and respects me - what a difference it has made to our life.",
+    avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
+    imgColor: "#fcd4ec",
+    imgPattern: "hearts",
   },
 
-     {
+  {
     initials: "P&R",
-    image:"/assets/realcouples/SudiptoAndSreyashi.png",
+    image: "/assets/realcouples/SudiptoAndSreyashi.png",
     name: "Sudipto & Sreyashi",
     meta: "Delhi + Mumbai (Long Distance)",
-    quote: "In all the chaos and noise around us, we built something quiet and meaningful, something that reminds us that love doesn’t have to be complicated to be beautiful.",
+    quote:
+      "In all the chaos and noise around us, we built something quiet and meaningful, something that reminds us that love doesn’t have to be complicated to be beautiful.",
     avatarGrad: "linear-gradient(135deg,#ff8b8d,#ff618b)",
     imgColor: "#fde0d0",
-    imgPattern: "dots"
+    imgPattern: "dots",
   },
- 
 ];
-
-
-const track = document.getElementById('tsTrack');
-const dotsEl = document.getElementById('tsDots');
-const wrap = document.getElementById('tsWrap');
+const track = document.getElementById("tsTrack");
+const dotsEl = document.getElementById("tsDots");
+const wrap = document.getElementById("tsWrap");
 
 const CARD_W = 300;
 const GAP = 20;
-const EXPANDED_W = 620;
 const UNIT = CARD_W + GAP;
-
 const allCouples = [...couples, ...couples, ...couples];
 const N = couples.length;
 let currentOffset = N;
-let expandedCard = null;
-let isAnimating = false;
-let dragStartX = 0, dragStartOffset = 0, isDragging = false;
+let isDragging = false;
+let dragStartX = 0,
+  dragStartOffset = 0;
 
 allCouples.forEach((c, i) => {
-  const card = document.createElement('div');
-  card.className = 'ts-card';
+  const card = document.createElement("div");
+  card.className = "ts-card";
   card.dataset.realIdx = i % N;
   card.innerHTML = `
-    <div class="ts-card-inner">
-      <div class="ts-img">
-        <img class="ts-img-bg" src="${c.image}" alt="${c.name}">
-        <div class="ts-img-overlay"></div>
-        <div class="ts-img-footer">
-          <div class="ts-couple-name">${c.name}</div>
-          <div class="ts-couple-meta">${c.meta}</div>
-        </div>
-      </div>
-      <div class="ts-content">
+  <div class="ts-card-inner">
+    <div class="ts-img">
+      <img class="ts-img-bg" src="${c.image}" alt="${c.name}">
+    </div>
+    <div class="ts-img-footer">
+      <div class="ts-couple-name">${c.name}</div>
+      <div class="ts-couple-meta">${c.meta}</div>
+      <div class="ts-quote-overlay">
         <p class="ts-quote">"${c.quote}"</p>
-        <div class="ts-divider"></div>
       </div>
-    </div>`;
-
-  card.addEventListener('mouseenter', () => {
-    if (isDragging) return;
-    if (expandedCard && expandedCard !== card) collapseCard(expandedCard, true);
-    expandCard(card);
-  });
-
-  card.addEventListener('mouseleave', () => {
-    collapseCard(card, false);
-  });
-
+    </div>
+  </div>`;
   track.appendChild(card);
 });
-function expandCard(card) {
-  if (expandedCard === card) return;
-  expandedCard = card;
-  const content = card.querySelector('.ts-content');
-  card.classList.add('expanded');
-  gsap.fromTo(card,
-    { flexBasis: '300px' },
-    { flexBasis: '620px', duration: 0.6, ease: 'power3.inOut' }
-  );
-  gsap.set(content, { opacity: 0, x: 14, display: 'flex' });
-  gsap.to(content, {
-    opacity: 1, x: 0,
-    duration: 0.35, ease: 'power2.out',
-    delay: 0.42          // waits until card is nearly fully wide
-  });
-  gsap.to(card, { boxShadow: '0 16px 16px rgba(255,92,103,0.18)', duration: 0.5, ease: 'power2.out' });
-}
-function collapseCard(card, instant) {
-  if (!card.classList.contains('expanded')) return;
-  const content = card.querySelector('.ts-content');
-  const dur = instant ? 0.18 : 0.5;
-  gsap.to(content, { opacity: 0, x: 10, duration: 0.15, ease: 'power2.in', onComplete: () => {
-    gsap.set(content, { display: 'none' });
-  }});
-  gsap.to(card, {
-    flexBasis: '300px',
-    duration: dur,
-    delay: 0.1,           // tiny pause so text vanishes first
-    ease: 'power3.inOut',
-    onComplete: () => {
-      card.classList.remove('expanded');
-      gsap.set(content, { clearProps: 'all' });
-    }
-  });
-  gsap.to(card, { boxShadow: '0 2px 12px rgba(255,92,103,0.06)', duration: dur, ease: 'power2.in' });
-  if (expandedCard === card) expandedCard = null;
-}
+
 function getX(idx) {
   return -(idx * UNIT);
 }
@@ -525,7 +521,7 @@ function jumpTo(idx, animate) {
   currentOffset = idx;
   const x = getX(idx);
   if (animate) {
-    gsap.to(track, { x, duration: 0.15, ease: 'power2.inOut' });
+    gsap.to(track, { x, duration: 0.45, ease: "power2.inOut" });
   } else {
     gsap.set(track, { x });
   }
@@ -534,15 +530,17 @@ function jumpTo(idx, animate) {
 
 function updateDots() {
   const realIdx = ((currentOffset % N) + N) % N;
-  document.querySelectorAll('.ts-dot').forEach((d, i) => d.classList.toggle('active', i === realIdx));
+  document
+    .querySelectorAll(".ts-dot")
+    .forEach((d, i) => d.classList.toggle("active", i === realIdx));
 }
 
 jumpTo(N, false);
 
 for (let i = 0; i < N; i++) {
-  const dot = document.createElement('button');
-  dot.className = 'ts-dot' + (i === 0 ? ' active' : '');
-  dot.addEventListener('click', () => {
+  const dot = document.createElement("button");
+  dot.className = "ts-dot" + (i === 0 ? " active" : "");
+  dot.addEventListener("click", () => {
     const diff = i - (((currentOffset % N) + N) % N);
     jumpTo(currentOffset + diff, true);
     checkLoop();
@@ -559,52 +557,147 @@ function checkLoop() {
 }
 
 function navigate(dir) {
-  if (expandedCard) { collapseCard(expandedCard, true); }
   jumpTo(currentOffset + dir, true);
-  setTimeout(checkLoop, 580);
+  setTimeout(checkLoop, 500);
 }
 
-document.getElementById('tsPrev').addEventListener('click', () => navigate(-1));
-document.getElementById('tsNext').addEventListener('click', () => navigate(1));
+document.getElementById("tsPrev").addEventListener("click", () => navigate(-1));
+document.getElementById("tsNext").addEventListener("click", () => navigate(1));
 
-wrap.addEventListener('mousedown', e => {
-  isDragging = true;
-  dragStartX = e.clientX;
-  dragStartOffset = gsap.getProperty(track, 'x');
-  wrap.style.cursor = 'grabbing';
-  e.preventDefault();
-});
-
-window.addEventListener('mousemove', e => {
+if (wrap) {
+  wrap.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragStartOffset = gsap.getProperty(track, "x");
+    wrap.style.cursor = "grabbing";
+    e.preventDefault();
+  });
+}
+window.addEventListener("mousemove", (e) => {
   if (!isDragging) return;
-  const dx = e.clientX - dragStartX;
-  gsap.set(track, { x: dragStartOffset + dx });
+  gsap.set(track, { x: dragStartOffset + (e.clientX - dragStartX) });
 });
-
-window.addEventListener('mouseup', e => {
+window.addEventListener("mouseup", (e) => {
   if (!isDragging) return;
   isDragging = false;
-  wrap.style.cursor = 'grab';
-  const dx = e.clientX - dragStartX;
-  const moved = Math.round(-dx / UNIT);
+  wrap.style.cursor = "grab";
+  const moved = Math.round(-(e.clientX - dragStartX) / UNIT);
   jumpTo(currentOffset + moved, true);
-  setTimeout(checkLoop, 580);
+  setTimeout(checkLoop, 500);
 });
 
 let touchStartX = 0;
-wrap.addEventListener('touchstart', e => {
-  touchStartX = e.touches[0].clientX;
-  dragStartOffset = gsap.getProperty(track, 'x');
-}, { passive: true });
+if (wrap) {
+  wrap.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.touches[0].clientX;
+      dragStartOffset = gsap.getProperty(track, "x");
+    },
+    { passive: true },
+  );
+  wrap.addEventListener(
+    "touchmove",
+    (e) => {
+      gsap.set(track, {
+        x: dragStartOffset + (e.touches[0].clientX - touchStartX),
+      });
+    },
+    { passive: true },
+  );
+  wrap.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const moved = Math.round(-dx / UNIT);
+    jumpTo(currentOffset + (moved || (dx < -30 ? 1 : dx > 30 ? -1 : 0)), true);
+    setTimeout(checkLoop, 500);
+  });
+}
 
-wrap.addEventListener('touchmove', e => {
-  const dx = e.touches[0].clientX - touchStartX;
-  gsap.set(track, { x: dragStartOffset + dx });
-}, { passive: true });
 
-wrap.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const moved = Math.round(-dx / UNIT);
-  jumpTo(currentOffset + (moved || (dx < -30 ? 1 : dx > 30 ? -1 : 0)), true);
-  setTimeout(checkLoop, 580);
+
+// GET APP
+
+const LAUNCH = new Date('2026-05-29T00:00:00');
+function pad(n){return String(n).padStart(2,'0')}
+function tick(){
+  const now=new Date();
+  const diff=LAUNCH-now;
+  if(diff<=0){
+    ['cd-d','cd-h','cd-m','cd-s'].forEach(id=>{document.getElementById(id).textContent='00'});
+    return;
+  }
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=pad(d);
+  document.getElementById('cd-h').textContent=pad(h);
+  document.getElementById('cd-m').textContent=pad(m);
+  document.getElementById('cd-s').textContent=pad(s);
+}
+tick();setInterval(tick,1000);
+
+const overlay=document.getElementById('modalOverlay');
+const form=document.getElementById('modalForm');
+const success=document.getElementById('modalSuccess');
+const emailInput=document.getElementById('emailInput');
+const emailError=document.getElementById('emailError');
+const btnSubmit=document.getElementById('btnSubmit');
+
+document.getElementById('btnJoin').addEventListener('click',()=>{
+  form.classList.remove('hide');
+  success.classList.remove('show');
+  emailInput.value='';
+  emailError.style.display='none';
+  btnSubmit.disabled=false;
+  btnSubmit.textContent='Claim my spot →';
+  overlay.classList.add('open');
+  setTimeout(()=>emailInput.focus(),350);
+});
+document.getElementById('modalClose').addEventListener('click',()=>overlay.classList.remove('open'));
+overlay.addEventListener('click',(e)=>{if(e.target===overlay)overlay.classList.remove('open')});
+
+document.getElementById('emailInput').addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('btnSubmit').click()});
+
+function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+
+btnSubmit.addEventListener('click',async()=>{
+  const email=emailInput.value.trim();
+  if(!isValidEmail(email)){
+    emailError.textContent='Please enter a valid email address.';
+    emailError.style.display='block';
+    emailInput.style.borderColor='var(--pink)';
+    return;
+  }
+  emailError.style.display='none';
+  emailInput.style.borderColor='#e5e5e5';
+  btnSubmit.disabled=true;
+  btnSubmit.textContent='Adding you...';
+  try{
+    // Replace this fetch with your actual API endpoint
+    // await fetch('https://your-api.com/waitlist', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+    await new Promise(r=>setTimeout(r,1200));
+    form.classList.add('hide');
+    success.classList.add('show');
+  }catch(err){
+    btnSubmit.disabled=false;
+    btnSubmit.textContent='Claim my spot →';
+    emailError.textContent='Something went wrong. Please try again.';
+    emailError.style.display='block';
+  }
+});
+
+const hearts=['♥'];
+document.getElementById('btnLove').addEventListener('click',(e)=>{
+  const cx=e.clientX,cy=e.clientY;
+  for(let i=0;i<22;i++){
+    const h=document.createElement('div');
+    h.className='heart-particle';
+    h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+    const xOff=(Math.random()-0.5)*260;
+    const rot=(Math.random()-0.5)*60+'deg';
+    h.style.cssText=`left:${cx+xOff}px;top:${cy}px;--rot:${rot};font-size:${0.9+Math.random()*1.1}rem;animation-delay:${Math.random()*.3}s;animation-duration:${1.8+Math.random()*.8}s`;
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),3000);
+  }
 });
