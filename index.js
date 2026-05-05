@@ -668,7 +668,7 @@ document.getElementById('nameInput').addEventListener('keydown',(e)=>{if(e.key==
 function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
 function isValidName(e){return e.trim().length>=2}
 
-const BEURL = 'https://chapter-mock-server.vercel.app/'
+const BEURL = 'https://chapter-mock-server.vercel.app'
 // const BEURL = 'http://localhost:4500'
 
 btnSubmit.addEventListener('click',async()=>{
