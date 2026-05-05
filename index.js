@@ -698,8 +698,8 @@ btnSubmit.addEventListener('click',async()=>{
   try{
 
     // Replace this fetch with your actual API endpoint
-    await fetch(BEURL + '/api/email', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email, name})});
-    await new Promise(r=>setTimeout(r,1200));
+    const response = await fetch(BEURL + '/api/email', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email, name})});
+    console.log('Response status:', response.status);
     form.classList.add('hide');
     success.classList.add('show');
   }catch(err){
