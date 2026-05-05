@@ -642,6 +642,8 @@ const form=document.getElementById('modalForm');
 const success=document.getElementById('modalSuccess');
 const emailInput=document.getElementById('emailInput');
 const emailError=document.getElementById('emailError');
+const nameInput=document.getElementById('nameInput');
+const nameError=document.getElementById('nameError');
 const btnSubmit=document.getElementById('btnSubmit');
 
 document.getElementById('btnJoin').addEventListener('click',()=>{
@@ -649,6 +651,8 @@ document.getElementById('btnJoin').addEventListener('click',()=>{
   success.classList.remove('show');
   emailInput.value='';
   emailError.style.display='none';
+  nameError.style.display='none';
+  nameInput.value='';
   btnSubmit.disabled=false;
   btnSubmit.textContent='Claim my spot →';
   overlay.classList.add('open');
@@ -658,24 +662,43 @@ document.getElementById('modalClose').addEventListener('click',()=>overlay.class
 overlay.addEventListener('click',(e)=>{if(e.target===overlay)overlay.classList.remove('open')});
 
 document.getElementById('emailInput').addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('btnSubmit').click()});
+document.getElementById('nameInput').addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('btnSubmit').click()});
+
 
 function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
+function isValidName(e){return e.trim().length>=2}
+
+const BEURL = 'https://chapter-mock-server.vercel.app/'
+// const BEURL = 'http://localhost:4500'
 
 btnSubmit.addEventListener('click',async()=>{
   const email=emailInput.value.trim();
+  const name=nameInput.value.trim();
+
+  if(!isValidName(name)){
+    nameError.textContent='Please enter your name.';
+    nameError.style.display='block';
+    nameInput.style.borderColor='var(--pink)';
+    return;
+  }
+  nameInput.style.borderColor='#e5e5e5';
+  nameError.style.display='none';
   if(!isValidEmail(email)){
     emailError.textContent='Please enter a valid email address.';
     emailError.style.display='block';
     emailInput.style.borderColor='var(--pink)';
     return;
   }
+
   emailError.style.display='none';
   emailInput.style.borderColor='#e5e5e5';
+
   btnSubmit.disabled=true;
   btnSubmit.textContent='Adding you...';
   try{
+
     // Replace this fetch with your actual API endpoint
-    // await fetch('https://your-api.com/waitlist', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+    await fetch(BEURL + '/api/email', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email, name})});
     await new Promise(r=>setTimeout(r,1200));
     form.classList.add('hide');
     success.classList.add('show');
