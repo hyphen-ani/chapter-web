@@ -259,30 +259,55 @@
 })();
 // ── INTRO ──
 (() => {
-  const t = document.getElementById("intro-text"),
-    i = document.getElementById("intro");
-  setTimeout(() => t.classList.add("show"), 300);
-  setTimeout(() => i.classList.add("lift"), 1800);
-  setTimeout(() => (i.style.display = "none"), 3200);
+  const textEl = document.getElementById("intro-text");
+  const intro  = document.getElementById("intro");
+  const word   = "chapter";
+
+  // Build letter spans
+  textEl.innerHTML = [...word]
+    .map(ch => `<span class="letter">${ch}</span>`)
+    .join("");
+
+  const letters = textEl.querySelectorAll(".letter");
+
+  // Stagger each letter: 80ms apart, starting at 300ms
+  letters.forEach((el, i) => {
+    setTimeout(() => el.classList.add("show"), 300 + i * 80);
+  });
+
+  // Last letter lands at 300 + 6×80 = 780ms
+  // Hold for ~900ms then lift
+  const lastLetterTime = 300 + (letters.length - 1) * 80;
+  const holdDuration   = 900;
+
+  setTimeout(() => intro.classList.add("lift"), lastLetterTime + holdDuration);
+  setTimeout(() => (intro.style.display = "none"), lastLetterTime + holdDuration + 1600);
 })();
 
 // ── NAV: show only when scrolled past hero ──
 const navEl = document.getElementById("nav");
 const heroEl = document.getElementById("hero");
 const screenWidth = window.innerWidth;
+
+const video = document.getElementById("hero-video");
+// Wait 3000 milliseconds (3 seconds) then play
+setTimeout(function () {
+  video.play();
+}, 2500);
 console.log("SCREEN WIDTH:", screenWidth);
 
 function updateNav() {
   const heroBottom = heroEl.getBoundingClientRect().bottom;
   // show nav when hero bottom is at or above viewport
+  navEl.classList.add("nav-visible");
 
-  if (screenWidth >= 1520 && heroBottom <= 800) {
-    navEl.classList.add("nav-visible");
-  } else if (screenWidth < 1500 && heroBottom <= 600) {
-    navEl.classList.add("nav-visible");
-  } else {
-    navEl.classList.remove("nav-visible");
-  }
+  // if (screenWidth >= 1520 && heroBottom <= 800) {
+  //   navEl.classList.add("nav-visible");
+  // } else if (screenWidth < 1500 && heroBottom <= 600) {
+  //   navEl.classList.add("nav-visible");
+  // } else {
+  //   navEl.classList.remove("nav-visible");
+  // }
 }
 
 window.addEventListener("scroll", updateNav, { passive: true });
@@ -445,12 +470,13 @@ const couples = [
     imgColor: "#ccf5e0",
     imgPattern: "stars",
   },
-    {
+  {
     initials: "K&S",
     image: "/assets/realcouples/RajenAndPunam.png",
     name: "Rajen & Punam",
     meta: "Kolkata",
-    quote:'The key to stable relationships isn’t finding the perfect person, but learning to see an imperfect person perfectly.',
+    quote:
+      "The key to stable relationships isn’t finding the perfect person, but learning to see an imperfect person perfectly.",
     avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
     imgColor: "#fcd4ec",
     imgPattern: "hearts",
@@ -613,114 +639,132 @@ if (wrap) {
   });
 }
 
-
-
 // GET APP
 
-const LAUNCH = new Date('2026-05-29T00:00:00');
-function pad(n){return String(n).padStart(2,'0')}
-function tick(){
-  const now=new Date();
-  const diff=LAUNCH-now;
-  if(diff<=0){
-    ['cd-d','cd-h','cd-m','cd-s'].forEach(id=>{document.getElementById(id).textContent='00'});
+const LAUNCH = new Date("2026-05-29T00:00:00");
+function pad(n) {
+  return String(n).padStart(2, "0");
+}
+function tick() {
+  const now = new Date();
+  const diff = LAUNCH - now;
+  if (diff <= 0) {
+    ["cd-d", "cd-h", "cd-m", "cd-s"].forEach((id) => {
+      document.getElementById(id).textContent = "00";
+    });
     return;
   }
-  const d=Math.floor(diff/86400000);
-  const h=Math.floor((diff%86400000)/3600000);
-  const m=Math.floor((diff%3600000)/60000);
-  const s=Math.floor((diff%60000)/1000);
-  document.getElementById('cd-d').textContent=pad(d);
-  document.getElementById('cd-h').textContent=pad(h);
-  document.getElementById('cd-m').textContent=pad(m);
-  document.getElementById('cd-s').textContent=pad(s);
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById("cd-d").textContent = pad(d);
+  document.getElementById("cd-h").textContent = pad(h);
+  document.getElementById("cd-m").textContent = pad(m);
+  document.getElementById("cd-s").textContent = pad(s);
 }
-tick();setInterval(tick,1000);
+tick();
+setInterval(tick, 1000);
 
-const overlay=document.getElementById('modalOverlay');
-const form=document.getElementById('modalForm');
-const success=document.getElementById('modalSuccess');
-const emailInput=document.getElementById('emailInput');
-const emailError=document.getElementById('emailError');
-const nameInput=document.getElementById('nameInput');
-const nameError=document.getElementById('nameError');
-const btnSubmit=document.getElementById('btnSubmit');
+const overlay = document.getElementById("modalOverlay");
+const form = document.getElementById("modalForm");
+const success = document.getElementById("modalSuccess");
+const emailInput = document.getElementById("emailInput");
+const emailError = document.getElementById("emailError");
+const nameInput = document.getElementById("nameInput");
+const nameError = document.getElementById("nameError");
+const btnSubmit = document.getElementById("btnSubmit");
 
-document.getElementById('btnJoin').addEventListener('click',()=>{
-  form.classList.remove('hide');
-  success.classList.remove('show');
-  emailInput.value='';
-  emailError.style.display='none';
-  nameError.style.display='none';
-  nameInput.value='';
-  btnSubmit.disabled=false;
-  btnSubmit.textContent='Claim my spot →';
-  overlay.classList.add('open');
-  setTimeout(()=>emailInput.focus(),350);
+document.getElementById("btnJoin").addEventListener("click", () => {
+  form.classList.remove("hide");
+  success.classList.remove("show");
+  emailInput.value = "";
+  emailError.style.display = "none";
+  nameError.style.display = "none";
+  nameInput.value = "";
+  btnSubmit.disabled = false;
+  btnSubmit.textContent = "Claim my spot →";
+  overlay.classList.add("open");
+  setTimeout(() => emailInput.focus(), 350);
 });
-document.getElementById('modalClose').addEventListener('click',()=>overlay.classList.remove('open'));
-overlay.addEventListener('click',(e)=>{if(e.target===overlay)overlay.classList.remove('open')});
+document
+  .getElementById("modalClose")
+  .addEventListener("click", () => overlay.classList.remove("open"));
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) overlay.classList.remove("open");
+});
 
-document.getElementById('emailInput').addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('btnSubmit').click()});
-document.getElementById('nameInput').addEventListener('keydown',(e)=>{if(e.key==='Enter')document.getElementById('btnSubmit').click()});
+document.getElementById("emailInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") document.getElementById("btnSubmit").click();
+});
+document.getElementById("nameInput").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") document.getElementById("btnSubmit").click();
+});
 
+function isValidEmail(e) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+}
+function isValidName(e) {
+  return e.trim().length >= 2;
+}
 
-function isValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)}
-function isValidName(e){return e.trim().length>=2}
-
-const BEURL = 'https://chapter-mock-server.onrender.com'
+const BEURL = "https://chapter-mock-server.onrender.com";
 // const BEURL = 'http://localhost:4500'
 
-btnSubmit.addEventListener('click',async()=>{
-  const email=emailInput.value.trim();
-  const name=nameInput.value.trim();
+btnSubmit.addEventListener("click", async () => {
+  const email = emailInput.value.trim();
+  const name = nameInput.value.trim();
 
-  if(!isValidName(name)){
-    nameError.textContent='Please enter your name.';
-    nameError.style.display='block';
-    nameInput.style.borderColor='var(--pink)';
+  if (!isValidName(name)) {
+    nameError.textContent = "Please enter your name.";
+    nameError.style.display = "block";
+    nameInput.style.borderColor = "var(--pink)";
     return;
   }
-  nameInput.style.borderColor='#e5e5e5';
-  nameError.style.display='none';
-  if(!isValidEmail(email)){
-    emailError.textContent='Please enter a valid email address.';
-    emailError.style.display='block';
-    emailInput.style.borderColor='var(--pink)';
+  nameInput.style.borderColor = "#e5e5e5";
+  nameError.style.display = "none";
+  if (!isValidEmail(email)) {
+    emailError.textContent = "Please enter a valid email address.";
+    emailError.style.display = "block";
+    emailInput.style.borderColor = "var(--pink)";
     return;
   }
 
-  emailError.style.display='none';
-  emailInput.style.borderColor='#e5e5e5';
+  emailError.style.display = "none";
+  emailInput.style.borderColor = "#e5e5e5";
 
-  btnSubmit.disabled=true;
-  btnSubmit.textContent='Adding you...';
-  try{
-
+  btnSubmit.disabled = true;
+  btnSubmit.textContent = "Adding you...";
+  try {
     // Replace this fetch with your actual API endpoint
-    const response = await fetch(BEURL + '/api/email', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email, name})});
-    console.log('Response status:', response.status);
-    form.classList.add('hide');
-    success.classList.add('show');
-  }catch(err){
-    btnSubmit.disabled=false;
-    btnSubmit.textContent='Claim my spot →';
-    emailError.textContent='Something went wrong. Please try again.';
-    emailError.style.display='block';
+    const response = await fetch(BEURL + "/api/email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, name }),
+    });
+    console.log("Response status:", response.status);
+    form.classList.add("hide");
+    success.classList.add("show");
+  } catch (err) {
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = "Claim my spot →";
+    emailError.textContent = "Something went wrong. Please try again.";
+    emailError.style.display = "block";
   }
 });
 
-const hearts=['♥'];
-document.getElementById('btnLove').addEventListener('click',(e)=>{
-  const cx=e.clientX,cy=e.clientY;
-  for(let i=0;i<22;i++){
-    const h=document.createElement('div');
-    h.className='heart-particle';
-    h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
-    const xOff=(Math.random()-0.5)*260;
-    const rot=(Math.random()-0.5)*60+'deg';
-    h.style.cssText=`left:${cx+xOff}px;top:${cy}px;--rot:${rot};font-size:${0.9+Math.random()*1.1}rem;animation-delay:${Math.random()*.3}s;animation-duration:${1.8+Math.random()*.8}s`;
+const hearts = ["♥"];
+document.getElementById("btnLove").addEventListener("click", (e) => {
+  const cx = e.clientX,
+    cy = e.clientY;
+  for (let i = 0; i < 22; i++) {
+    const h = document.createElement("div");
+    h.className = "heart-particle";
+    h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    const xOff = (Math.random() - 0.5) * 260;
+    const rot = (Math.random() - 0.5) * 60 + "deg";
+    h.style.cssText = `left:${cx + xOff}px;top:${cy}px;--rot:${rot};font-size:${0.9 + Math.random() * 1.1}rem;animation-delay:${Math.random() * 0.3}s;animation-duration:${1.8 + Math.random() * 0.8}s`;
     document.body.appendChild(h);
-    setTimeout(()=>h.remove(),3000);
+    setTimeout(() => h.remove(), 3000);
   }
 });
