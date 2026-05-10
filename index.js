@@ -641,7 +641,7 @@ if (wrap) {
 
 // GET APP
 
-const LAUNCH = new Date("2026-05-29T00:00:00");
+const LAUNCH = new Date("2026-06-29T00:00:00");
 function pad(n) {
   return String(n).padStart(2, "0");
 }
