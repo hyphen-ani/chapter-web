@@ -481,17 +481,17 @@ const couples = [
     imgColor: "#fcd4ec",
     imgPattern: "hearts",
   },
-  {
-    initials: "M&R",
-    image: "/assets/realcouples/MokshaAndNull.png",
-    name: "Moksha & Risheet",
-    meta: "Ahmedabad",
-    quote:
-      "To live with someone I really love and respect, who really loves and respects me - what a difference it has made to our life.",
-    avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
-    imgColor: "#fcd4ec",
-    imgPattern: "hearts",
-  },
+  // {
+  //   initials: "M&R",
+  //   image: "/assets/realcouples/MokshaAndNull.png",
+  //   name: "Moksha & Risheet",
+  //   meta: "Ahmedabad",
+  //   quote:
+  //     "To live with someone I really love and respect, who really loves and respects me - what a difference it has made to our life.",
+  //   avatarGrad: "linear-gradient(135deg,#f7a4d4,#f07bb8)",
+  //   imgColor: "#fcd4ec",
+  //   imgPattern: "hearts",
+  // },
 
   {
     initials: "P&R",
