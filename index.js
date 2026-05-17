@@ -737,7 +737,7 @@ btnSubmit.addEventListener("click", async () => {
   btnSubmit.textContent = "Adding you...";
   try {
     // Replace this fetch with your actual API endpoint
-    const response = await fetch(BEURL + "/api/email", {
+    const response = await fetch(BEURL + "/api/waitlist", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, name }),
