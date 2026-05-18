@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found — Chapter</title>
+    <script>
+      (function () {
+        var l = window.location;
+        var basePath = "/message-in-a-bottle/";
+        if (l.pathname.indexOf(basePath) === 0) {
+          var path = l.pathname.slice(basePath.length);
+          l.replace(
+            l.protocol + "//" + l.host + basePath +
+              "?p=/" + path +
+              (l.search ? "&q=" + l.search.slice(1) : "") +
+              l.hash
+          );
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/assets/logo/favicon.ico" />
+    <style>
+      :root {
+        --bg: #f7f3ee;
+        --ink: #2a2622;
+        --muted: #6b625a;
+        --accent: #b56a4a;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      main {
+        max-width: 32rem;
+        text-align: center;
+      }
+      h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 500;
+        font-size: clamp(5rem, 18vw, 9rem);
+        margin: 0 0 0.5rem;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        font-family: "Playfair Display", Georgia, serif;
+        font-style: italic;
+        font-size: clamp(1.125rem, 3vw, 1.5rem);
+        color: var(--muted);
+        margin: 0 0 2rem;
+      }
+      p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0 0 2rem;
+      }
+      a.home {
+        display: inline-block;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 400;
+        font-size: 0.95rem;
+        color: var(--bg);
+        background: var(--ink);
+        padding: 0.75rem 1.75rem;
+        border-radius: 999px;
+        text-decoration: none;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      a.home:hover {
+        background: var(--accent);
+        transform: translateY(-1px);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>404</h1>
+      <p class="tagline">This page drifted out to sea.</p>
+      <p>The link you followed may be broken, or the page may have moved.</p>
+      <a class="home" href="/">Back to chapter</a>
+    </main>
+  </body>
+</html>
