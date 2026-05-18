@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/message-in-a-bottle/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message in a Bottle</title>
+    <meta
+      name="description"
+      content="Write letters, seal them in bottles, and set them adrift across the sea."
+    />
+    <script>
+      // Pair with public/404.html — decode the ?p=/... redirect back into history
+      // so the SPA router sees the originally requested path.
+      (function () {
+        var l = window.location;
+        if (l.search.indexOf("?p=/") === 0) {
+          var parts = l.search.slice(4).split("&q=");
+          var newPath = parts[0];
+          var newSearch = parts[1] ? "?" + parts[1] : "";
+          history.replaceState(null, "", "/message-in-a-bottle/" + newPath + newSearch + l.hash);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/message-in-a-bottle/assets/index-Ju7CueJB.js"></script>
+    <link rel="stylesheet" crossorigin href="/message-in-a-bottle/assets/index-BL_Xp2PL.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Message in a Bottle</title>
+    <script>
+      // GitHub Pages SPA fallback for /message-in-a-bottle/
+      // Encodes the original path as a query string and redirects to the app entry.
+      // The matching snippet in index.html decodes it back into history.
+      (function () {
+        var basePath = "/message-in-a-bottle/";
+        var l = window.location;
+        var path = l.pathname.indexOf(basePath) === 0
+          ? l.pathname.slice(basePath.length)
+          : "";
+        l.replace(
+          l.protocol + "//" + l.host + basePath +
+          "?p=/" + path +
+          (l.search ? "&q=" + l.search.slice(1) : "") +
+          l.hash
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
