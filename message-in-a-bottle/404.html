@@ -2,25 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/message-in-a-bottle/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Message in a Bottle</title>
+    <meta
+      name="description"
+      content="Write letters, seal them in bottles, and set them adrift across the sea."
+    />
     <script>
-      // GitHub Pages SPA fallback for /message-in-a-bottle/
-      // Encodes the original path as a query string and redirects to the app entry.
-      // The matching snippet in index.html decodes it back into history.
+      // Pair with public/404.html — decode the ?p=/... redirect back into history
+      // so the SPA router sees the originally requested path.
       (function () {
-        var basePath = "/message-in-a-bottle/";
         var l = window.location;
-        var path = l.pathname.indexOf(basePath) === 0
-          ? l.pathname.slice(basePath.length)
-          : "";
-        l.replace(
-          l.protocol + "//" + l.host + basePath +
-          "?p=/" + path +
-          (l.search ? "&q=" + l.search.slice(1) : "") +
-          l.hash
-        );
+        if (l.search.indexOf("?p=/") === 0) {
+          var parts = l.search.slice(4).split("&q=");
+          var newPath = parts[0];
+          var newSearch = parts[1] ? "?" + parts[1] : "";
+          history.replaceState(null, "", "/message-in-a-bottle/" + newPath + newSearch + l.hash);
+        }
       })();
     </script>
+    <script type="module" crossorigin src="/message-in-a-bottle/assets/index-BKC8bK8P.js"></script>
+    <link rel="stylesheet" crossorigin href="/message-in-a-bottle/assets/index-BjFpps-7.css">
   </head>
-  <body></body>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
