@@ -768,3 +768,120 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
     setTimeout(() => h.remove(), 3000);
   }
 });
+
+// ── HOW IT WORKS — scroll-driven phone & cards ──
+(function () {
+  if (window.innerWidth <= 768) return;
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const wrap = document.getElementById("howWrap");
+  if (!wrap) return;
+
+  const phoneStack = wrap.querySelector(".how-phone-stack");
+  const sideLeft = wrap.querySelector(".how-side-left");
+  const sideRight = wrap.querySelector(".how-side-right");
+  const steps = gsap.utils.toArray(wrap.querySelectorAll(".how-step"));
+  const floats = gsap.utils.toArray(wrap.querySelectorAll(".how-float"));
+
+  if (!phoneStack || steps.length < 3) return;
+
+  // Resting positions (relative to the phone center). Clamp on wide screens
+  // so cards don't drift to the edges on 2K+ displays.
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+  const dx = Math.min(W * 0.30, 480);
+  const dyTop = Math.min(H * 0.26, 240);
+  const dyBot = Math.min(H * 0.22, 210);
+  const stepTargets = [
+    { x: -dx, y: -dyTop }, // step 1 — top-left
+    { x: -dx, y: dyBot },  // step 2 — bottom-left
+    { x: dx, y: -dyTop },  // step 3 — top-right
+  ];
+
+  // Initial states — phone peeks up from the bottom edge
+  gsap.set(phoneStack, { yPercent: 80, scale: 1.45, opacity: 0 });
+  gsap.set([sideLeft, sideRight], { opacity: 0, scale: 0.7, x: 0, y: 0, rotate: 0 });
+  gsap.set(steps, { opacity: 0, scale: 0.35, x: 0, y: 0 });
+  gsap.set(floats, { opacity: 0, y: -30 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: wrap,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0.6,
+      invalidateOnRefresh: true,
+      onLeave: () => {
+        floats.forEach((f) => f.classList.add("is-floating"));
+      },
+      onEnterBack: () => {
+        floats.forEach((f) => f.classList.remove("is-floating"));
+      },
+    },
+  });
+
+  // Phase 1a — phone fades in at the bottom of the viewport
+  tl.to(
+    phoneStack,
+    { opacity: 1, ease: "power1.out", duration: 0.35 },
+    0,
+  );
+  // Phase 1b — phone rises and scales to rest at center
+  tl.to(
+    phoneStack,
+    { yPercent: 0, scale: 1, ease: "power2.out", duration: 0.65 },
+    0.35,
+  );
+
+  // Phase 2 — side cards fan out from behind the phone
+  tl.to(
+    sideLeft,
+    { opacity: 1, scale: 0.92, x: "-38%", y: "6%", rotate: -14, ease: "power2.out", duration: 1 },
+    1,
+  );
+  tl.to(
+    sideRight,
+    { opacity: 1, scale: 0.92, x: "38%", y: "6%", rotate: 14, ease: "power2.out", duration: 1 },
+    1,
+  );
+
+  // Phase 3 — step cards emerge from behind the phone and fly to their resting spots
+  steps.forEach((step, i) => {
+    tl.to(
+      step,
+      {
+        opacity: 1,
+        scale: 1,
+        x: stepTargets[i].x,
+        y: stepTargets[i].y,
+        ease: "power3.out",
+        duration: 1.1,
+      },
+      2 + i * 0.08,
+    );
+  });
+
+  // Phase 4 — float cards fade in (top first, then bottom)
+  tl.to(
+    floats[0],
+    { opacity: 1, y: 0, ease: "power2.out", duration: 0.6 },
+    3.1,
+  );
+  tl.to(
+    floats[1],
+    { opacity: 1, y: 0, ease: "power2.out", duration: 0.6 },
+    3.4,
+  );
+
+  // Disable hijack on resize-down to mobile
+  ScrollTrigger.addEventListener("refreshInit", () => {
+    if (window.innerWidth <= 768) {
+      ScrollTrigger.getAll()
+        .filter((st) => st.vars.trigger === wrap)
+        .forEach((st) => st.kill());
+      gsap.set([phoneStack, sideLeft, sideRight, ...steps, ...floats], { clearProps: "all" });
+    }
+  });
+})();

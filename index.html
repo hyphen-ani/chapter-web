@@ -175,21 +175,23 @@
       </div>
     </div>
 
-    <!-- HOW IT WORKS -->
+    <!-- HOW IT WORKS — scroll hijack -->
     <section id="how">
-      <div class="section-inner">
-        <div data-aos="fade-up">
-          <p class="section-label">simple by design</p>
-          <h2 class="section-title">
-            three steps to your <em>shared story</em>
-          </h2>
-          <p class="section-sub">
-            Getting started is as easy as falling in love. Well, almost.
-          </p>
-        </div>
-        <div class="steps-container">
-          <div class="steps-grid">
-            <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="how-sticky-wrap" id="howWrap">
+        <div class="how-sticky">
+          <div class="how-header">
+            <p class="section-label">simple by design</p>
+            <h2 class="section-title">
+              three steps to your <em>shared story</em>
+            </h2>
+            <p class="section-sub">
+              Getting started is as easy as falling in love. Well, almost.
+            </p>
+          </div>
+
+          <div class="how-stage">
+            <!-- Step cards (emerge from behind phone) -->
+            <div class="how-step how-step-1">
               <div class="step-number">1</div>
               <h3>Create your chapter</h3>
               <p>
@@ -198,36 +200,52 @@
                 far more beautiful.
               </p>
             </div>
-            <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="how-step how-step-2">
               <div class="step-number">2</div>
               <h3>Explore & do things</h3>
               <p>
                 Visit restaurants, watch movies, try pottery — anything you do
-                together becomes part of your chapter's story. Track activities,
-                rate experiences, collect moments.
+                together becomes part of your chapter's story.
               </p>
             </div>
-            <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="how-step how-step-3">
               <div class="step-number">3</div>
               <h3>Share with the world</h3>
               <p>
                 Your chapter becomes a beautiful profile others can discover.
-                Inspire, be inspired, and celebrate the beauty of real
-                relationships in the wild.
+                Inspire and be inspired.
               </p>
             </div>
-          </div>
-          <div class="steps-image-container" data-aos="fade-up">
-            <img class="steps-image" src="assets/images/mock14.png" alt="" />
-            <div class="hero-float-card hero-float-card-1">
-              <div class="dot"></div>
+
+            <!-- Phone stack: side cards behind, phone on top -->
+            <div class="how-phone-stack">
+              <img
+                class="how-side how-side-left"
+                src="assets/phones/chk-post2.png"
+                alt=""
+              />
+              <img
+                class="how-side how-side-right"
+                src="assets/phones/chk-explore-places.png"
+                alt=""
+              />
+              <img
+                class="how-phone"
+                src="assets/phones/chk-swipe.png"
+                alt=""
+              />
+            </div>
+
+            <!-- Floating cards -->
+            <div class="how-float how-float-1">
+              <div class="how-float-dot"></div>
               <div>
                 <p>12 memories this week</p>
                 <small>Amit & Kashish</small>
               </div>
             </div>
-            <div class="hero-float-card hero-float-card-2">
-              <div class="dot" style="background: #ff8b8d"></div>
+            <div class="how-float how-float-2">
+              <div class="how-float-dot" style="background: #ff8b8d"></div>
               <div>
                 <p>3 places explored</p>
                 <small>This month</small>
