@@ -791,12 +791,17 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
   if (!phoneStack || steps.length < 3) return;
 
   // Resting positions (relative to the phone center). Clamp on wide screens
-  // so cards don't drift to the edges on 2K+ displays.
+  // so cards don't drift to the edges on 2K+ displays. Tighten further on
+  // mid-size screens so the smaller cards stay close to the phone.
   const W = window.innerWidth;
   const H = window.innerHeight;
-  const dx = Math.min(W * 0.30, 480);
-  const dyTop = Math.min(H * 0.26, 240);
-  const dyBot = Math.min(H * 0.22, 210);
+  const isMid = W < 1500;
+  const dx = isMid ? Math.min(W * 0.26, 380) : Math.min(W * 0.30, 480);
+  const dyTop = isMid ? Math.min(H * 0.23, 210) : Math.min(H * 0.26, 240);
+  const dyBot = isMid ? Math.min(H * 0.19, 180) : Math.min(H * 0.22, 210);
+  // Card half-width: matches CSS (300px on large, 240px on mid).
+  const cardHalfW = isMid ? 120 : 150;
+  const arrowInset = 20; // how far the tip sits inside the card edge
   const stepTargets = [
     { x: -dx, y: -dyTop }, // step 1 — top-left
     { x: -dx, y: dyBot },  // step 2 — bottom-left
@@ -817,20 +822,26 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
     const r = stage.getBoundingClientRect();
     arrowsSvg.setAttribute("viewBox", `${-r.width / 2} ${-r.height / 2} ${r.width} ${r.height}`);
 
+    // Phone start offsets — pulled in on mid screens so arrows hug the smaller phone
+    const phoneStartX = isMid ? 25 : 30;
+    const sideStartX = isMid ? 140 : 170;
+    const sideStartY = isMid ? 90 : 110;
+    const cardEdge = cardHalfW + arrowInset; // distance from card center to arrow tip
+
     // Arrow 1 — main phone → step 1 (top-left card)
     arrows[0].setAttribute(
       "d",
-      `M -30 -180 Q ${-dx * 0.5} ${-dyTop - 70}, ${-dx + 150} ${-dyTop -10 }`,
+      `M ${-phoneStartX} -180 Q ${-dx * 0.5} ${-dyTop - 70}, ${-dx + cardEdge} ${-dyTop - 10}`,
     );
     // Arrow 2 — left side card → step 2 (bottom-left card)
     arrows[1].setAttribute(
       "d",
-      `M -170 110 Q ${-dx * 0.55} ${dyBot * 0.55 + 50}, ${-dx + 150} ${dyBot - 50}`,
+      `M ${-sideStartX} ${sideStartY} Q ${-dx * 0.55} ${dyBot * 0.55 + 50}, ${-dx + cardEdge} ${dyBot - 50}`,
     );
     // Arrow 3 — right side card → step 3 (top-right card)
     arrows[2].setAttribute(
       "d",
-      `M 170 -70 Q ${dx * 0.5} ${-dyTop - 50}, ${dx - 150} ${-dyTop }`,
+      `M ${sideStartX} ${-sideStartY + 40} Q ${dx * 0.5} ${-dyTop - 50}, ${dx - cardEdge} ${-dyTop}`,
     );
 
     arrowLens.length = 0;
