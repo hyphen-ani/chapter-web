@@ -779,11 +779,14 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
   const wrap = document.getElementById("howWrap");
   if (!wrap) return;
 
+  const stage = wrap.querySelector(".how-stage");
   const phoneStack = wrap.querySelector(".how-phone-stack");
   const sideLeft = wrap.querySelector(".how-side-left");
   const sideRight = wrap.querySelector(".how-side-right");
   const steps = gsap.utils.toArray(wrap.querySelectorAll(".how-step"));
   const floats = gsap.utils.toArray(wrap.querySelectorAll(".how-float"));
+  const arrowsSvg = wrap.querySelector(".how-arrows");
+  const arrows = gsap.utils.toArray(wrap.querySelectorAll(".how-arrow"));
 
   if (!phoneStack || steps.length < 3) return;
 
@@ -805,6 +808,40 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
   gsap.set([sideLeft, sideRight], { opacity: 0, scale: 0.7, x: 0, y: 0, rotate: 0 });
   gsap.set(steps, { opacity: 0, scale: 0.35, x: 0, y: 0 });
   gsap.set(floats, { opacity: 0, y: -30 });
+
+  // Build arrow paths from the same dx/dy used by the step cards.
+  // Coordinate system: origin (0,0) = stage center.
+  const arrowLens = [];
+  function setupArrows() {
+    if (!arrowsSvg || arrows.length < 3) return;
+    const r = stage.getBoundingClientRect();
+    arrowsSvg.setAttribute("viewBox", `${-r.width / 2} ${-r.height / 2} ${r.width} ${r.height}`);
+
+    // Arrow 1 — main phone → step 1 (top-left card)
+    arrows[0].setAttribute(
+      "d",
+      `M -30 -180 Q ${-dx * 0.5} ${-dyTop - 70}, ${-dx + 150} ${-dyTop -10 }`,
+    );
+    // Arrow 2 — left side card → step 2 (bottom-left card)
+    arrows[1].setAttribute(
+      "d",
+      `M -170 110 Q ${-dx * 0.55} ${dyBot * 0.55 + 50}, ${-dx + 150} ${dyBot - 50}`,
+    );
+    // Arrow 3 — right side card → step 3 (top-right card)
+    arrows[2].setAttribute(
+      "d",
+      `M 170 -70 Q ${dx * 0.5} ${-dyTop - 50}, ${dx - 150} ${-dyTop }`,
+    );
+
+    arrowLens.length = 0;
+    arrows.forEach((path) => {
+      const len = path.getTotalLength();
+      arrowLens.push(len);
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
+    });
+  }
+  setupArrows();
+  window.addEventListener("resize", setupArrows);
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -863,16 +900,30 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
     );
   });
 
+  // Phase 3.5 — arrows draw in after the cards have landed
+  arrows.forEach((arrow, i) => {
+    tl.to(
+      arrow,
+      {
+        strokeDashoffset: 0,
+        opacity: 1,
+        ease: "power2.out",
+        duration: 0.55,
+      },
+      3.35 + i * 0.1,
+    );
+  });
+
   // Phase 4 — float cards fade in (top first, then bottom)
   tl.to(
     floats[0],
     { opacity: 1, y: 0, ease: "power2.out", duration: 0.6 },
-    3.1,
+    3.9,
   );
   tl.to(
     floats[1],
     { opacity: 1, y: 0, ease: "power2.out", duration: 0.6 },
-    3.4,
+    4.2,
   );
 
   // Disable hijack on resize-down to mobile
@@ -881,7 +932,7 @@ document.getElementById("btnLove").addEventListener("click", (e) => {
       ScrollTrigger.getAll()
         .filter((st) => st.vars.trigger === wrap)
         .forEach((st) => st.kill());
-      gsap.set([phoneStack, sideLeft, sideRight, ...steps, ...floats], { clearProps: "all" });
+      gsap.set([phoneStack, sideLeft, sideRight, ...steps, ...floats, ...arrows], { clearProps: "all" });
     }
   });
 })();
