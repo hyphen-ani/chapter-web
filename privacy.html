@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Privacy Policy — chapter</title>
+    <meta
+      name="description"
+      content="What Chapter collects, why we process it, and the rights you hold over it."
+    />
+    <meta name="theme-color" content="#EDE4D3" />
+    <link rel="icon" type="image/x-icon" href="./assets/logo/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Caveat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest-9: #1b2720;
+        --forest: #2b3d31;
+        --cream: #ede4d3;
+        --cream-2: #e4d9c5;
+        --sheet: #f6efe2;
+        --ink: #1b251e;
+        --text: #3c463d;
+        --caption: #4f5a50;
+        --muted: #7e877a;
+        --sage: #7c8a74;
+        --rose: #d9b6a9;
+        --line: #dcd1bc;
+        --serif: "Instrument Serif", Georgia, serif;
+        --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+        --hand: "Caveat", cursive;
+        --pad: clamp(1.35rem, 5vw, 6.5rem);
+        --air: clamp(5rem, 13vh, 10rem);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --crumple: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27700%27%20height%3D%27700%27%3E%3Cfilter%20id%3D%27c%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.0075%27%20numOctaves%3D%275%27%20seed%3D%2714%27%20result%3D%27t%27%2F%3E%3CfeDiffuseLighting%20in%3D%27t%27%20lighting-color%3D%27%23fff%27%20surfaceScale%3D%272.2%27%3E%3CfeDistantLight%20azimuth%3D%2748%27%20elevation%3D%2760%27%2F%3E%3C%2FfeDiffuseLighting%3E%3C%2Ffilter%3E%3Crect%20width%3D%27700%27%20height%3D%27700%27%20filter%3D%27url%28%2523c%29%27%2F%3E%3C%2Fsvg%3E");
+        --grain: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%3E%3Cfilter%20id%3D%27f%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.9%27%20numOctaves%3D%274%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27saturate%27%20values%3D%270%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20filter%3D%27url%28%2523f%29%27%20opacity%3D%270.55%27%2F%3E%3C%2Fsvg%3E");
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        background: var(--cream);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        font-size: 16px;
+        overflow-x: clip;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        color: inherit;
+      }
+      ::selection {
+        background: var(--rose);
+        color: var(--ink);
+      }
+      :focus-visible {
+        outline: 1.5px solid var(--sage);
+        outline-offset: 4px;
+      }
+
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        pointer-events: none;
+        opacity: 0.16;
+        background-image: var(--grain);
+        background-size: 280px;
+        mix-blend-mode: multiply;
+      }
+      .grain-dark {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.22;
+        background-image: var(--grain);
+        background-size: 260px;
+        mix-blend-mode: overlay;
+      }
+      .creased {
+        position: relative;
+      }
+      .creased::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image: var(--crumple);
+        background-size: 680px;
+        mix-blend-mode: multiply;
+        opacity: 0.3;
+      }
+
+      /* ---------- nav ---------- */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: clamp(0.9rem, 2vh, 1.4rem) var(--pad);
+        background: rgba(237, 228, 211, 0.82);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(27, 37, 30, 0.08);
+        transition: transform 0.7s var(--ease);
+      }
+      #nav.hide {
+        transform: translateY(-180%);
+      }
+      .mark {
+        display: grid;
+        place-items: center;
+        padding: 0.35rem 0;
+        transition: opacity 0.4s;
+      }
+      .mark:hover {
+        opacity: 0.65;
+      }
+      .mark img {
+        height: 26px;
+        width: auto;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 2rem);
+      }
+      .nav-back {
+        font-size: 0.84rem;
+        color: var(--caption);
+        transition: color 0.3s;
+      }
+      .nav-back:hover {
+        color: var(--ink);
+      }
+      .nav-pill {
+        border-radius: 999px;
+        border: 1px solid rgba(27, 37, 30, 0.18);
+        padding: 0.7rem 1.15rem;
+        font-size: 0.82rem;
+        color: var(--ink);
+        transition:
+          background 0.4s,
+          color 0.4s,
+          border-color 0.4s;
+      }
+      .nav-pill:hover {
+        background: var(--ink);
+        color: var(--cream);
+        border-color: var(--ink);
+      }
+
+      /* ---------- cursor ---------- */
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 120;
+        pointer-events: none;
+      }
+      html.hide-cursor,
+      html.hide-cursor * {
+        cursor: none !important;
+      }
+      #cursor .c-ring {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 34px;
+        height: 34px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-backdrop-filter: blur(5px) saturate(1.7);
+        backdrop-filter: blur(5px) saturate(1.7);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+          inset 0 2px 5px rgba(255, 255, 255, 0.35),
+          0 0 0 1px rgba(24, 34, 27, 0.13),
+          0 8px 18px -8px rgba(20, 28, 22, 0.4);
+        transition:
+          width 0.45s var(--ease),
+          height 0.45s var(--ease),
+          border-radius 0.45s var(--ease),
+          background 0.45s,
+          opacity 0.35s;
+      }
+      #cursor.on-link .c-ring {
+        width: 58px;
+        height: 58px;
+        background: rgba(255, 255, 255, 0.07);
+        opacity: 0.5;
+      }
+      #cursor.hidden {
+        opacity: 0;
+      }
+      @media (hover: none) {
+        #cursor {
+          display: none;
+        }
+      }
+
+      /* ---------- masthead ---------- */
+      .doc-head {
+        position: relative;
+        padding: calc(var(--air) + 4rem) var(--pad) clamp(2.5rem, 6vh, 4rem);
+      }
+      .doc-head > * {
+        position: relative;
+        z-index: 2;
+      }
+      .doc-kicker {
+        font-family: var(--hand);
+        font-size: 1.4rem;
+        color: #5f6d58;
+        margin-bottom: 0.7rem;
+      }
+      .doc-head h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        color: var(--ink);
+        font-size: clamp(2.6rem, 7vw, 5.4rem);
+        line-height: 0.94;
+        letter-spacing: -0.028em;
+        max-width: 16ch;
+      }
+      .doc-head h1 em {
+        font-style: italic;
+      }
+      .doc-meta {
+        display: flex;
+        gap: clamp(1.6rem, 4vw, 3rem);
+        flex-wrap: wrap;
+        margin-top: clamp(1.6rem, 4vh, 2.4rem);
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--line);
+        font-size: 0.82rem;
+        color: #5d6858;
+      }
+      .doc-meta b {
+        display: block;
+        font-weight: 400;
+        color: #16201a;
+        margin-top: 0.35rem;
+        font-size: 0.92rem;
+      }
+      .doc-intro {
+        max-width: 62ch;
+        margin-top: clamp(1.8rem, 4vh, 2.6rem);
+      }
+      .doc-intro p {
+        font-size: 1.08rem;
+        line-height: 1.8;
+        color: #3d4740;
+        margin-bottom: 1.05rem;
+      }
+      .doc-intro a {
+        color: #16201a;
+        border-bottom: 1px solid rgba(124, 138, 116, 0.7);
+      }
+      .doc-intro strong {
+        font-weight: 400;
+        color: #16201a;
+      }
+
+      /* ---------- layout ---------- */
+      .doc {
+        position: relative;
+        display: grid;
+        grid-template-columns: 236px 1fr;
+        gap: clamp(2.5rem, 6vw, 6rem);
+        padding: 0 var(--pad) var(--air);
+        align-items: start;
+      }
+      .doc > * {
+        position: relative;
+        z-index: 2;
+      }
+      .toc {
+        position: sticky;
+        top: calc(clamp(0.9rem, 2vh, 1.4rem) + 74px);
+        align-self: start;
+      }
+      .toc p {
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: #5d6858;
+        margin-bottom: 1rem;
+      }
+      .toc ol {
+        list-style: none;
+        display: grid;
+        gap: 0.5rem;
+        counter-reset: toc;
+      }
+      .toc li {
+        counter-increment: toc;
+      }
+      .toc a {
+        display: block;
+        font-size: 0.86rem;
+        line-height: 1.5;
+        color: #5d6858;
+        padding: 0.2rem 0 0.2rem 0.6rem;
+        border-left: 1px solid transparent;
+        transition:
+          color 0.3s,
+          border-color 0.3s;
+      }
+      .toc a::before {
+        content: counter(toc) ". ";
+        color: #8a9382;
+      }
+      .toc a:hover {
+        color: var(--ink);
+      }
+      .toc a.on {
+        color: #16201a;
+        border-left-color: #6e7d66;
+      }
+      .toc a.on::before {
+        color: #6e7d66;
+      }
+
+      .doc-body {
+        max-width: 76ch;
+        background: var(--sheet);
+        border: 1px solid var(--line);
+        padding: clamp(1.6rem, 3.4vw, 3rem) clamp(1.5rem, 3.4vw, 3.2rem);
+        box-shadow: 0 26px 44px -38px rgba(27, 37, 30, 0.5);
+      }
+      .doc-body section {
+        scroll-margin-top: 110px;
+        padding: clamp(2.2rem, 4.6vh, 3.2rem) 0;
+        border-top: 1px solid #e4dac8;
+      }
+      .doc-body section:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .doc-body h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        color: #16201a;
+        font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+        line-height: 1.08;
+        letter-spacing: -0.018em;
+        margin-bottom: 1.35rem;
+      }
+      .doc-body h3 {
+        font-size: 1.02rem;
+        font-weight: 400;
+        color: #262f28;
+        letter-spacing: 0.005em;
+        margin: 1.9rem 0 0.65rem;
+      }
+      .doc-body p {
+        font-size: 1.05rem;
+        line-height: 1.82;
+        color: #333c34;
+        margin-bottom: 1.05rem;
+      }
+      .doc-body p:last-child {
+        margin-bottom: 0;
+      }
+      .doc-body ul {
+        list-style: none;
+        display: grid;
+        gap: 0.75rem;
+        margin: 0.4rem 0 1.3rem;
+      }
+      .doc-body li {
+        font-size: 1.02rem;
+        line-height: 1.78;
+        color: #333c34;
+        padding-left: 1.7rem;
+        position: relative;
+      }
+      .doc-body li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.82em;
+        width: 11px;
+        height: 1px;
+        background: #7c8a74;
+      }
+      .doc-body strong {
+        font-weight: 400;
+        color: #16201a;
+      }
+      .doc-body a {
+        color: #16201a;
+        border-bottom: 1px solid rgba(124, 138, 116, 0.7);
+        transition: border-color 0.3s;
+      }
+      .doc-body a:hover {
+        border-color: #16201a;
+      }
+
+      .notice {
+        background: #efe6d5;
+        border: 1px solid #dfd3bd;
+        border-left: 3px solid #7c8a74;
+        padding: clamp(1.3rem, 2.2vw, 1.7rem);
+        margin: 0.5rem 0 1.4rem;
+      }
+      .notice p {
+        font-size: 0.94rem;
+        line-height: 1.85;
+        letter-spacing: 0.008em;
+        color: #38423a;
+        margin-bottom: 0.85rem;
+      }
+      .notice p:last-child {
+        margin-bottom: 0;
+      }
+
+      .deftable {
+        display: grid;
+        gap: 1rem;
+        margin: 0.4rem 0 1.3rem;
+      }
+      .deftable div {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 1.3rem;
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid #e4dac8;
+      }
+      .deftable div:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .deftable dt {
+        font-size: 0.98rem;
+        color: #16201a;
+        line-height: 1.6;
+      }
+      .deftable dd {
+        font-size: 1rem;
+        line-height: 1.78;
+        color: #333c34;
+      }
+
+      .fill {
+        background: #efe6d5;
+        border: 1px solid #dfd3bd;
+        padding: clamp(1.4rem, 2.4vw, 1.9rem);
+        margin-top: 0.6rem;
+      }
+      .fill div {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #dfd3bd;
+      }
+      .fill div:last-child {
+        border-bottom: 0;
+      }
+      .fill dt {
+        font-size: 0.88rem;
+        letter-spacing: 0.02em;
+        color: #5d6858;
+      }
+      .fill dd {
+        font-size: 1rem;
+        color: #16201a;
+      }
+      .fill dd span {
+        color: #7a8474;
+        font-style: italic;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        position: relative;
+        background: var(--forest-9);
+        color: var(--cream);
+        padding: clamp(3rem, 7vh, 4.5rem) var(--pad) clamp(1.6rem, 3vh, 2.2rem);
+        overflow: hidden;
+      }
+      footer > * {
+        position: relative;
+        z-index: 2;
+      }
+      .f-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .fmark img {
+        height: 26px;
+        width: auto;
+      }
+      .f-links {
+        display: flex;
+        gap: clamp(1.2rem, 3vw, 2.4rem);
+      }
+      .f-links a {
+        font-size: 0.88rem;
+        color: rgba(237, 228, 211, 0.88);
+        transition: color 0.3s;
+      }
+      .f-links a:hover {
+        color: var(--rose);
+      }
+      .socials {
+        display: flex;
+        gap: 0.6rem;
+      }
+      .socials a {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(237, 228, 211, 0.18);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: rgba(237, 228, 211, 0.86);
+        transition:
+          background 0.4s,
+          color 0.4s,
+          border-color 0.4s;
+      }
+      .socials a:hover {
+        background: var(--cream);
+        color: var(--forest-9);
+        border-color: var(--cream);
+      }
+      .f-note {
+        margin-top: clamp(2.2rem, 5vh, 3.2rem);
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(237, 228, 211, 0.12);
+        font-size: 0.76rem;
+        color: rgba(237, 228, 211, 0.68);
+      }
+
+      @media (max-width: 900px) {
+        .doc {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .toc {
+          position: relative;
+          top: 0;
+          background: var(--sheet);
+          border: 1px solid #dfd3bd;
+          padding: 1.3rem 1.4rem;
+        }
+        .toc ol {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.45rem 1.2rem;
+        }
+        .doc-head {
+          padding-top: calc(var(--air) + 2rem);
+        }
+        .deftable div,
+        .fill div {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+        .nav-back {
+          display: none;
+        }
+      }
+      @media (max-width: 600px) {
+        .toc ol {
+          grid-template-columns: 1fr;
+        }
+        .doc-meta {
+          gap: 1.2rem;
+        }
+      }
+      @media print {
+        #nav,
+        #cursor,
+        .grain,
+        footer,
+        .toc {
+          display: none;
+        }
+        body {
+          background: #fff;
+          color: #000;
+        }
+        .doc {
+          grid-template-columns: 1fr;
+          padding: 0;
+        }
+        .doc-body section {
+          break-inside: avoid;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.001ms !important;
+        }
+        #cursor {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <nav id="nav">
+      <a href="index.html" class="mark" aria-label="chapter — home">
+        <img src="assets/logo/chapterlogoNewBlack.svg" alt="" />
+      </a>
+      <div class="nav-right">
+        <a class="nav-back" href="index.html">Back to the story</a>
+        <a class="nav-pill" href="index.html#get-app">Join the waitlist</a>
+      </div>
+    </nav>
+
+    <div id="cursor" aria-hidden="true"><span class="c-ring"></span></div>
+
+    <header class="doc-head creased">
+      <p class="doc-kicker">what we keep, and why</p>
+      <h1>Privacy <em>Policy</em></h1>
+      <div class="doc-meta">
+        <div>Last updated<b>July 2026</b></div>
+        <div>Applies to<b>The Chapter app and website</b></div>
+        <div>Governed by<b>The laws of India</b></div>
+      </div>
+      <div class="doc-intro">
+        <p>
+          This Privacy Policy is an electronic record published in accordance
+          with the Digital Personal Data Protection Act, 2023 and the rules
+          framed thereunder. It governs the processing, collection, retention
+          and dissemination of digital personal data by Chapter.
+        </p>
+        <p>
+          By accessing or using the Chapter application (the
+          <strong>"Platform"</strong>), the user (the
+          <strong>"Data Principal"</strong>) provides free, specific, informed,
+          unconditional and unambiguous consent to the processing of their
+          digital personal data as described here.
+        </p>
+      </div>
+    </header>
+
+    <main class="doc creased">
+      <aside class="toc">
+        <p>Contents</p>
+        <ol>
+          <li><a href="#fiduciary">Who is responsible for your data</a></li>
+          <li><a href="#collected">What we collect</a></li>
+          <li><a href="#purposes">Why we process it</a></li>
+          <li>
+            <a href="#ai">Restriction on artificial intelligence training</a>
+          </li>
+          <li><a href="#shared">Governance of shared digital assets</a></li>
+          <li>
+            <a href="#public">Public dissemination and community discovery</a>
+          </li>
+          <li><a href="#minors">Protection of minors</a></li>
+          <li><a href="#retention">Data retention and erasure</a></li>
+          <li><a href="#rights">Your rights</a></li>
+          <li><a href="#grievance">Grievance redressal mechanism</a></li>
+        </ol>
+      </aside>
+      <div class="doc-body">
+        <section id="fiduciary">
+          <h2>Who is responsible for your data</h2>
+          <p>
+            For the purposes of the Digital Personal Data Protection Act, the
+            entity determining the purpose and means of the processing of
+            digital personal data is <strong>Hallucinate Labs</strong> —
+            referred to here as the Data Fiduciary, Chapter, we or us.
+          </p>
+          <dl class="fill">
+            <div>
+              <dt>Registered office address</dt>
+              <dd>
+                <span
+                  >Ecospace Business Park Premises, Block 4A 5th Floor, <br />
+                  New Town Action Area II, Rajarhat West-Bengal - 700156</span
+                >
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="collected">
+          <h2>What we collect</h2>
+          <p>
+            We adhere to the principle of data minimisation and process only the
+            personal data strictly necessary for lawful purposes.
+          </p>
+          <dl class="deftable">
+            <div>
+              <dt>Registration and account data</dt>
+              <dd>
+                Mobile number, email address, date of birth, and cryptographic
+                authentication credentials.
+              </dd>
+            </div>
+            <div>
+              <dt>Profile and linkage data</dt>
+              <dd>
+                Legal or preferred name, gender, dates of significance, and the
+                cryptographic linkage code used to establish the connection
+                between two Data Principals.
+              </dd>
+            </div>
+            <div>
+              <dt>User-generated content</dt>
+              <dd>
+                Photographs, audio-visual materials, textual journal entries and
+                bucket list selections voluntarily uploaded to the shared
+                interface.
+              </dd>
+            </div>
+            <div>
+              <dt>Usage and interaction metrics</dt>
+              <dd>
+                Telemetry detailing platform engagement, including logged
+                activities, saved geographical locations and feature
+                utilisation.
+              </dd>
+            </div>
+            <div>
+              <dt>Technical data</dt>
+              <dd>
+                Device identifiers, IP addresses, operating system
+                specifications and related security diagnostics.
+              </dd>
+            </div>
+            <div>
+              <dt>Geolocation data</dt>
+              <dd>
+                Precise spatial coordinates collected exclusively during active
+                use of the application, subject to your explicit and revocable
+                consent. The Platform strictly prohibits continuous background
+                location tracking.
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="purposes">
+          <h2>Why we process it</h2>
+          <p>
+            Pursuant to Section 4 of the Digital Personal Data Protection Act,
+            digital personal data is processed solely for the following
+            specified, clear and lawful purposes:
+          </p>
+          <ul>
+            <li>
+              <strong>Execution of core services.</strong> Registration data,
+              linkage data and user-generated content are processed to perform
+              the contract — specifically, to maintain the linked digital
+              environment and synchronise real-time updates.
+            </li>
+            <li>
+              <strong>Service curation.</strong> Active geolocation data and
+              interaction metrics are processed to furnish localised
+              recommendations. This relies on explicit consent and does not
+              involve invasive behavioural monitoring or the monetisation of
+              data through third-party advertisers.
+            </li>
+            <li>
+              <strong>Security and compliance.</strong> Technical data is
+              processed to maintain network integrity, prevent fraudulent
+              activity and ensure compliance with statutory obligations.
+            </li>
+          </ul>
+        </section>
+        <section id="ai">
+          <h2>Restriction on artificial intelligence training</h2>
+          <div class="notice">
+            <p>
+              The Data Fiduciary expressly stipulates that identifiable
+              relationship data, including user-generated content and personal
+              reflections, shall not be used as training data for artificial
+              intelligence or machine learning models. Any analytics derived for
+              platform optimisation shall be strictly anonymised and aggregated.
+            </p>
+          </div>
+        </section>
+        <section id="shared">
+          <h2>Governance of shared digital assets</h2>
+          <p>
+            Because the Platform links two Data Principals, the following
+            protocols apply to changes in relationship status or account
+            termination.
+          </p>
+          <h3>Content ownership and attribution</h3>
+          <p>
+            Each Data Principal retains proprietary rights and exclusive
+            deletion authority over the specific user-generated content they
+            originate. A Data Principal cannot unilaterally delete content
+            uploaded by the connected partner.
+          </p>
+          <h3>Dissolution of linked accounts</h3>
+          <p>
+            If the linkage between two Data Principals is severed, the joint
+            digital interface is converted into a static, read-only archive.
+            Both Data Principals retain continuous access to previously
+            generated historical content. No subsequent modifications or
+            additions to the archived interface are permitted, subject to each
+            individual’s statutory right to request erasure of their personally
+            uploaded data.
+          </p>
+          <h3>Individual account termination</h3>
+          <p>
+            Should a Data Principal request complete erasure of their account,
+            all individual authentication credentials and private profile data
+            are permanently deleted. Previously shared user-generated content
+            remains accessible within the surviving Data Principal’s interface,
+            recognising the joint nature of the historical record.
+          </p>
+        </section>
+        <section id="public">
+          <h2>Public dissemination and community discovery</h2>
+          <h3>Visibility modifications</h3>
+          <p>
+            The authority to change the privacy configuration of a shared
+            environment from Private to Public is presently restricted to the
+            Data Principal who initiated the original linkage.
+          </p>
+          <h3>Scope of public disclosure</h3>
+          <p>
+            Once designated as Public, only explicitly designated content —
+            milestones, selected media and bucket list items — is rendered
+            visible to third parties. Private textual entries, direct
+            communications and restricted reflections remain strictly
+            confidential.
+          </p>
+        </section>
+        <section id="minors">
+          <h2>Protection of minors</h2>
+          <p>
+            The Platform is strictly restricted to individuals who have attained
+            the age of majority, eighteen (18) years or older. The Data
+            Fiduciary does not knowingly collect, process or retain the digital
+            personal data of children. Upon registration, users are legally
+            bound to verify their age. Upon discovery of any account operated by
+            a minor, the Data Fiduciary shall execute immediate suspension and
+            permanent data erasure.
+          </p>
+        </section>
+        <section id="retention">
+          <h2>Data retention and erasure</h2>
+          <p>
+            In compliance with Section 8(7) of the Digital Personal Data
+            Protection Act, the Data Fiduciary shall not retain digital personal
+            data beyond the period necessary to satisfy its stated lawful
+            purpose.
+          </p>
+          <h3>Inactivity protocol</h3>
+          <p>
+            Accounts registering zero activity for a continuous period of
+            twenty-four (24) months are designated for permanent deletion. The
+            Data Fiduciary will issue reasonable prior written notice before
+            executing such deletion.
+          </p>
+        </section>
+        <section id="rights">
+          <h2>Your rights</h2>
+          <p>
+            Pursuant to Sections 11 to 14 of the Digital Personal Data
+            Protection Act, Data Principals hold the following rights:
+          </p>
+          <dl class="deftable">
+            <div>
+              <dt>Right to information</dt>
+              <dd>
+                To obtain a summary of the personal data undergoing processing
+                and of the underlying processing activities.
+              </dd>
+            </div>
+            <div>
+              <dt>Right to correction and erasure</dt>
+              <dd>
+                To rectify inaccurate data and to demand erasure of personal
+                data where the purpose for processing has been fulfilled or
+                consent has been withdrawn.
+              </dd>
+            </div>
+            <div>
+              <dt>Right to withdraw consent</dt>
+              <dd>
+                To unilaterally withdraw consent for optional processing
+                activities, including location services, at any time and without
+                terminating your account.
+              </dd>
+            </div>
+            <div>
+              <dt>Right of nomination</dt>
+              <dd>
+                To nominate an individual to exercise your statutory rights in
+                the event of death or incapacity. Nomination must be
+                affirmatively executed by you; a connected partner does not hold
+                default nominee status without explicit designation.
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="grievance">
+          <h2>Grievance redressal mechanism</h2>
+          <p>
+            Pursuant to Section 8(9) of the Digital Personal Data Protection
+            Act, the Data Fiduciary has appointed a Grievance Officer to address
+            inquiries, facilitate the exercise of statutory rights and resolve
+            complaints regarding the processing of digital personal data.
+          </p>
+          <dl class="fill">
+            <div>
+              <dt>Grievance Officer</dt>
+              <dd><span>Abu sohel Biswas</span></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><span>sohel.biswas@hallucinatelabs.com</span></dd>
+            </div>
+            <div>
+              <dt>Registered office address</dt>
+              <dd>
+                <span
+                  >Ecospace Business Park Premises, Block 4A 5th Floor, <br />
+                  New Town Action Area II, Rajarhat West-Bengal - 700156</span
+                >
+              </dd>
+            </div>
+          </dl>
+          <p>
+            Any Data Principal aggrieved by an unsatisfactory response, or by a
+            failure to resolve a grievance, retains the statutory right to
+            register a formal complaint with the Data Protection Board of India.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="grain-dark"></div>
+      <div class="f-inner">
+        <a href="index.html" class="fmark" aria-label="chapter — home">
+          <img src="assets/logo/chapterlogoNew.svg" alt="" />
+        </a>
+        <nav class="f-links" aria-label="Legal">
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Terms and conditions</a>
+        </nav>
+        <div class="socials">
+          <a
+            href="https://www.instagram.com/joinchapter.app/"
+            aria-label="Instagram"
+            ><svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="currentColor"
+            >
+              <path
+                d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 1.8h8.5a3.95 3.95 0 0 1 3.95 3.95v8.5a3.95 3.95 0 0 1-3.95 3.95h-8.5A3.95 3.95 0 0 1 3.8 16.25v-8.5A3.95 3.95 0 0 1 7.75 3.8zm8.9 1.35a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.8A3.2 3.2 0 1 1 8.8 12 3.2 3.2 0 0 1 12 8.8z"
+              /></svg
+          ></a>
+          <a
+            href="https://www.linkedin.com/company/mychapterapp"
+            aria-label="LinkedIn"
+            ><svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="currentColor"
+            >
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              /></svg
+          ></a>
+        </div>
+      </div>
+      <p class="f-note">© 2026 Hallucinate Labs Pvt. Ltd. Made in Bengaluru.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script>
+      (function () {
+        "use strict";
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const isTouch = matchMedia("(hover: none)").matches;
+
+        /* smooth scroll on pointer devices; touch keeps its native momentum */
+        let lenis = null;
+        if (window.Lenis && !reduce && !isTouch) {
+          lenis = new Lenis({
+            duration: 1.08,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
+            wheelMultiplier: 1,
+          });
+          (function raf(t) {
+            lenis.raf(t);
+            requestAnimationFrame(raf);
+          })(0);
+        }
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const href = a.getAttribute("href");
+            let el = null;
+            if (href.length > 1) {
+              try {
+                el = document.querySelector(href);
+              } catch (_) {}
+            }
+            e.preventDefault();
+            if (lenis)
+              lenis.scrollTo(el || 0, {
+                duration: 1.3,
+                offset: -96,
+                lock: true,
+              });
+            else if (el) el.scrollIntoView({ behavior: "smooth" });
+            else scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
+
+        /* the contents list follows where you are */
+        const links = [...document.querySelectorAll(".toc a")];
+        const sections = links
+          .map((a) => document.querySelector(a.getAttribute("href")))
+          .filter(Boolean);
+        if ("IntersectionObserver" in window && sections.length) {
+          const seen = new Set();
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((en) => {
+                en.isIntersecting
+                  ? seen.add(en.target.id)
+                  : seen.delete(en.target.id);
+              });
+              const first = sections.find((s) => seen.has(s.id));
+              links.forEach((a) =>
+                a.classList.toggle(
+                  "on",
+                  !!first && a.getAttribute("href") === "#" + first.id,
+                ),
+              );
+            },
+            { rootMargin: "-96px 0px -70% 0px" },
+          );
+          sections.forEach((s) => io.observe(s));
+        }
+
+        /* the header steps out of the way as you read down */
+        const nav = document.getElementById("nav");
+        let last = 0;
+        addEventListener(
+          "scroll",
+          () => {
+            const y = scrollY;
+            if (y < 240) {
+              nav.classList.remove("hide");
+              last = y;
+            } else if (Math.abs(y - last) > 14) {
+              nav.classList.toggle("hide", y > last);
+              last = y;
+            }
+          },
+          { passive: true },
+        );
+
+        /* cursor */
+        const cur = document.getElementById("cursor");
+        if (cur && !isTouch && !reduce) {
+          const ring = cur.querySelector(".c-ring");
+          document.documentElement.classList.add("hide-cursor");
+          let tx = innerWidth / 2,
+            ty = innerHeight / 2,
+            rx = tx,
+            ry = ty,
+            seen = false,
+            t0 = performance.now();
+          const place = (e) => {
+            tx = e.clientX;
+            ty = e.clientY;
+            if (!seen) {
+              rx = tx;
+              ry = ty;
+              seen = true;
+            }
+            cur.classList.remove("hidden");
+          };
+          addEventListener("pointermove", place, { passive: true });
+          document.addEventListener("mouseenter", place);
+          document.addEventListener("mouseleave", () => {
+            cur.classList.add("hidden");
+            seen = false;
+          });
+          addEventListener("blur", () => {
+            cur.classList.add("hidden");
+            seen = false;
+          });
+          document.addEventListener("pointerover", (e) => {
+            cur.classList.toggle("on-link", !!e.target.closest("a, button"));
+          });
+          (function loop(now) {
+            const dt = Math.min(now - t0, 50) / 1000;
+            t0 = now;
+            const k = 1 - Math.exp(-14 * dt);
+            rx += (tx - rx) * k;
+            ry += (ty - ry) * k;
+            ring.style.translate = rx + "px " + ry + "px";
+            requestAnimationFrame(loop);
+          })(t0);
+        }
+      })();
+    </script>
+  </body>
+</html>
