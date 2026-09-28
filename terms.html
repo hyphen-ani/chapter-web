@@ -1,0 +1,1309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Terms of Service — chapter</title>
+    <meta
+      name="description"
+      content="The agreement between you and Chapter, governing your use of the app and the website."
+    />
+    <meta name="theme-color" content="#EDE4D3" />
+    <link rel="icon" type="image/x-icon" href="./assets/logo/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Caveat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest-9: #1b2720;
+        --forest: #2b3d31;
+        --cream: #ede4d3;
+        --cream-2: #e4d9c5;
+        --sheet: #f6efe2;
+        --ink: #1b251e;
+        --text: #3c463d;
+        --caption: #4f5a50;
+        --muted: #7e877a;
+        --sage: #7c8a74;
+        --rose: #d9b6a9;
+        --line: #dcd1bc;
+        --serif: "Instrument Serif", Georgia, serif;
+        --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+        --hand: "Caveat", cursive;
+        --pad: clamp(1.35rem, 5vw, 6.5rem);
+        --air: clamp(5rem, 13vh, 10rem);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --crumple: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27700%27%20height%3D%27700%27%3E%3Cfilter%20id%3D%27c%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.0075%27%20numOctaves%3D%275%27%20seed%3D%2714%27%20result%3D%27t%27%2F%3E%3CfeDiffuseLighting%20in%3D%27t%27%20lighting-color%3D%27%23fff%27%20surfaceScale%3D%272.2%27%3E%3CfeDistantLight%20azimuth%3D%2748%27%20elevation%3D%2760%27%2F%3E%3C%2FfeDiffuseLighting%3E%3C%2Ffilter%3E%3Crect%20width%3D%27700%27%20height%3D%27700%27%20filter%3D%27url%28%2523c%29%27%2F%3E%3C%2Fsvg%3E");
+        --grain: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%3E%3Cfilter%20id%3D%27f%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.9%27%20numOctaves%3D%274%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27saturate%27%20values%3D%270%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20filter%3D%27url%28%2523f%29%27%20opacity%3D%270.55%27%2F%3E%3C%2Fsvg%3E");
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        background: var(--cream);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        font-size: 16px;
+        overflow-x: clip;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        color: inherit;
+      }
+      ::selection {
+        background: var(--rose);
+        color: var(--ink);
+      }
+      :focus-visible {
+        outline: 1.5px solid var(--sage);
+        outline-offset: 4px;
+      }
+
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        pointer-events: none;
+        opacity: 0.16;
+        background-image: var(--grain);
+        background-size: 280px;
+        mix-blend-mode: multiply;
+      }
+      .grain-dark {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.22;
+        background-image: var(--grain);
+        background-size: 260px;
+        mix-blend-mode: overlay;
+      }
+      .creased {
+        position: relative;
+      }
+      .creased::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image: var(--crumple);
+        background-size: 680px;
+        mix-blend-mode: multiply;
+        opacity: 0.3;
+      }
+
+      /* ---------- nav ---------- */
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: clamp(0.9rem, 2vh, 1.4rem) var(--pad);
+        background: rgba(237, 228, 211, 0.82);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(27, 37, 30, 0.08);
+        transition: transform 0.7s var(--ease);
+      }
+      #nav.hide {
+        transform: translateY(-180%);
+      }
+      .mark {
+        display: grid;
+        place-items: center;
+        padding: 0.35rem 0;
+        transition: opacity 0.4s;
+      }
+      .mark:hover {
+        opacity: 0.65;
+      }
+      .mark img {
+        height: 26px;
+        width: auto;
+      }
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 3vw, 2rem);
+      }
+      .nav-back {
+        font-size: 0.84rem;
+        color: var(--caption);
+        transition: color 0.3s;
+      }
+      .nav-back:hover {
+        color: var(--ink);
+      }
+      .nav-pill {
+        border-radius: 999px;
+        border: 1px solid rgba(27, 37, 30, 0.18);
+        padding: 0.7rem 1.15rem;
+        font-size: 0.82rem;
+        color: var(--ink);
+        transition:
+          background 0.4s,
+          color 0.4s,
+          border-color 0.4s;
+      }
+      .nav-pill:hover {
+        background: var(--ink);
+        color: var(--cream);
+        border-color: var(--ink);
+      }
+
+      /* ---------- cursor ---------- */
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 120;
+        pointer-events: none;
+      }
+      html.hide-cursor,
+      html.hide-cursor * {
+        cursor: none !important;
+      }
+      #cursor .c-ring {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 34px;
+        height: 34px;
+        transform: translate(-50%, -50%);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        -webkit-backdrop-filter: blur(5px) saturate(1.7);
+        backdrop-filter: blur(5px) saturate(1.7);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+          inset 0 2px 5px rgba(255, 255, 255, 0.35),
+          0 0 0 1px rgba(24, 34, 27, 0.13),
+          0 8px 18px -8px rgba(20, 28, 22, 0.4);
+        transition:
+          width 0.45s var(--ease),
+          height 0.45s var(--ease),
+          border-radius 0.45s var(--ease),
+          background 0.45s,
+          opacity 0.35s;
+      }
+      #cursor.on-link .c-ring {
+        width: 58px;
+        height: 58px;
+        background: rgba(255, 255, 255, 0.07);
+        opacity: 0.5;
+      }
+      #cursor.hidden {
+        opacity: 0;
+      }
+      @media (hover: none) {
+        #cursor {
+          display: none;
+        }
+      }
+
+      /* ---------- masthead ---------- */
+      .doc-head {
+        position: relative;
+        padding: calc(var(--air) + 4rem) var(--pad) clamp(2.5rem, 6vh, 4rem);
+      }
+      .doc-head > * {
+        position: relative;
+        z-index: 2;
+      }
+      .doc-kicker {
+        font-family: var(--hand);
+        font-size: 1.4rem;
+        color: #5f6d58;
+        margin-bottom: 0.7rem;
+      }
+      .doc-head h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        color: var(--ink);
+        font-size: clamp(2.6rem, 7vw, 5.4rem);
+        line-height: 0.94;
+        letter-spacing: -0.028em;
+        max-width: 16ch;
+      }
+      .doc-head h1 em {
+        font-style: italic;
+      }
+      .doc-meta {
+        display: flex;
+        gap: clamp(1.6rem, 4vw, 3rem);
+        flex-wrap: wrap;
+        margin-top: clamp(1.6rem, 4vh, 2.4rem);
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--line);
+        font-size: 0.82rem;
+        color: #5d6858;
+      }
+      .doc-meta b {
+        display: block;
+        font-weight: 400;
+        color: #16201a;
+        margin-top: 0.35rem;
+        font-size: 0.92rem;
+      }
+      .doc-intro {
+        max-width: 62ch;
+        margin-top: clamp(1.8rem, 4vh, 2.6rem);
+      }
+      .doc-intro p {
+        font-size: 1.08rem;
+        line-height: 1.8;
+        color: #3d4740;
+        margin-bottom: 1.05rem;
+      }
+      .doc-intro a {
+        color: #16201a;
+        border-bottom: 1px solid rgba(124, 138, 116, 0.7);
+      }
+      .doc-intro strong {
+        font-weight: 400;
+        color: #16201a;
+      }
+
+      /* ---------- layout ---------- */
+      .doc {
+        position: relative;
+        display: grid;
+        grid-template-columns: 236px 1fr;
+        gap: clamp(2.5rem, 6vw, 6rem);
+        padding: 0 var(--pad) var(--air);
+        align-items: start;
+      }
+      .doc > * {
+        position: relative;
+        z-index: 2;
+      }
+      .toc {
+        position: sticky;
+        top: calc(clamp(0.9rem, 2vh, 1.4rem) + 74px);
+        align-self: start;
+      }
+      .toc p {
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: #5d6858;
+        margin-bottom: 1rem;
+      }
+      .toc ol {
+        list-style: none;
+        display: grid;
+        gap: 0.5rem;
+        counter-reset: toc;
+      }
+      .toc li {
+        counter-increment: toc;
+      }
+      .toc a {
+        display: block;
+        font-size: 0.86rem;
+        line-height: 1.5;
+        color: #5d6858;
+        padding: 0.2rem 0 0.2rem 0.6rem;
+        border-left: 1px solid transparent;
+        transition:
+          color 0.3s,
+          border-color 0.3s;
+      }
+      .toc a::before {
+        content: counter(toc) ". ";
+        color: #8a9382;
+      }
+      .toc a:hover {
+        color: var(--ink);
+      }
+      .toc a.on {
+        color: #16201a;
+        border-left-color: #6e7d66;
+      }
+      .toc a.on::before {
+        color: #6e7d66;
+      }
+
+      .doc-body {
+        max-width: 76ch;
+        background: var(--sheet);
+        border: 1px solid var(--line);
+        padding: clamp(1.6rem, 3.4vw, 3rem) clamp(1.5rem, 3.4vw, 3.2rem);
+        box-shadow: 0 26px 44px -38px rgba(27, 37, 30, 0.5);
+      }
+      .doc-body section {
+        scroll-margin-top: 110px;
+        padding: clamp(2.2rem, 4.6vh, 3.2rem) 0;
+        border-top: 1px solid #e4dac8;
+      }
+      .doc-body section:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .doc-body h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        color: #16201a;
+        font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+        line-height: 1.08;
+        letter-spacing: -0.018em;
+        margin-bottom: 1.35rem;
+      }
+      .doc-body h3 {
+        font-size: 1.02rem;
+        font-weight: 400;
+        color: #262f28;
+        letter-spacing: 0.005em;
+        margin: 1.9rem 0 0.65rem;
+      }
+      .doc-body p {
+        font-size: 1.05rem;
+        line-height: 1.82;
+        color: #333c34;
+        margin-bottom: 1.05rem;
+      }
+      .doc-body p:last-child {
+        margin-bottom: 0;
+      }
+      .doc-body ul {
+        list-style: none;
+        display: grid;
+        gap: 0.75rem;
+        margin: 0.4rem 0 1.3rem;
+      }
+      .doc-body li {
+        font-size: 1.02rem;
+        line-height: 1.78;
+        color: #333c34;
+        padding-left: 1.7rem;
+        position: relative;
+      }
+      .doc-body li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.82em;
+        width: 11px;
+        height: 1px;
+        background: #7c8a74;
+      }
+      .doc-body strong {
+        font-weight: 400;
+        color: #16201a;
+      }
+      .doc-body a {
+        color: #16201a;
+        border-bottom: 1px solid rgba(124, 138, 116, 0.7);
+        transition: border-color 0.3s;
+      }
+      .doc-body a:hover {
+        border-color: #16201a;
+      }
+
+      .notice {
+        background: #efe6d5;
+        border: 1px solid #dfd3bd;
+        border-left: 3px solid #7c8a74;
+        padding: clamp(1.3rem, 2.2vw, 1.7rem);
+        margin: 0.5rem 0 1.4rem;
+      }
+      .notice p {
+        font-size: 0.94rem;
+        line-height: 1.85;
+        letter-spacing: 0.008em;
+        color: #38423a;
+        margin-bottom: 0.85rem;
+      }
+      .notice p:last-child {
+        margin-bottom: 0;
+      }
+
+      .deftable {
+        display: grid;
+        gap: 1rem;
+        margin: 0.4rem 0 1.3rem;
+      }
+      .deftable div {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 1.3rem;
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid #e4dac8;
+      }
+      .deftable div:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .deftable dt {
+        font-size: 0.98rem;
+        color: #16201a;
+        line-height: 1.6;
+      }
+      .deftable dd {
+        font-size: 1rem;
+        line-height: 1.78;
+        color: #333c34;
+      }
+
+      .fill {
+        background: #efe6d5;
+        border: 1px solid #dfd3bd;
+        padding: clamp(1.4rem, 2.4vw, 1.9rem);
+        margin-top: 0.6rem;
+      }
+      .fill div {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 1rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #dfd3bd;
+      }
+      .fill div:last-child {
+        border-bottom: 0;
+      }
+      .fill dt {
+        font-size: 0.88rem;
+        letter-spacing: 0.02em;
+        color: #5d6858;
+      }
+      .fill dd {
+        font-size: 1rem;
+        color: #16201a;
+      }
+      .fill dd span {
+        color: #7a8474;
+        font-style: italic;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        position: relative;
+        background: var(--forest-9);
+        color: var(--cream);
+        padding: clamp(3rem, 7vh, 4.5rem) var(--pad) clamp(1.6rem, 3vh, 2.2rem);
+        overflow: hidden;
+      }
+      footer > * {
+        position: relative;
+        z-index: 2;
+      }
+      .f-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .fmark img {
+        height: 26px;
+        width: auto;
+      }
+      .f-links {
+        display: flex;
+        gap: clamp(1.2rem, 3vw, 2.4rem);
+      }
+      .f-links a {
+        font-size: 0.88rem;
+        color: rgba(237, 228, 211, 0.88);
+        transition: color 0.3s;
+      }
+      .f-links a:hover {
+        color: var(--rose);
+      }
+      .socials {
+        display: flex;
+        gap: 0.6rem;
+      }
+      .socials a {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(237, 228, 211, 0.18);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: rgba(237, 228, 211, 0.86);
+        transition:
+          background 0.4s,
+          color 0.4s,
+          border-color 0.4s;
+      }
+      .socials a:hover {
+        background: var(--cream);
+        color: var(--forest-9);
+        border-color: var(--cream);
+      }
+      .f-note {
+        margin-top: clamp(2.2rem, 5vh, 3.2rem);
+        padding-top: 1.4rem;
+        border-top: 1px solid rgba(237, 228, 211, 0.12);
+        font-size: 0.76rem;
+        color: rgba(237, 228, 211, 0.68);
+      }
+
+      @media (max-width: 900px) {
+        .doc {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .toc {
+          position: relative;
+          top: 0;
+          background: var(--sheet);
+          border: 1px solid #dfd3bd;
+          padding: 1.3rem 1.4rem;
+        }
+        .toc ol {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.45rem 1.2rem;
+        }
+        .doc-head {
+          padding-top: calc(var(--air) + 2rem);
+        }
+        .deftable div,
+        .fill div {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+        .nav-back {
+          display: none;
+        }
+      }
+      @media (max-width: 600px) {
+        .toc ol {
+          grid-template-columns: 1fr;
+        }
+        .doc-meta {
+          gap: 1.2rem;
+        }
+      }
+      @media print {
+        #nav,
+        #cursor,
+        .grain,
+        footer,
+        .toc {
+          display: none;
+        }
+        body {
+          background: #fff;
+          color: #000;
+        }
+        .doc {
+          grid-template-columns: 1fr;
+          padding: 0;
+        }
+        .doc-body section {
+          break-inside: avoid;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.001ms !important;
+        }
+        #cursor {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain"></div>
+
+    <nav id="nav">
+      <a href="index.html" class="mark" aria-label="chapter — home">
+        <img src="assets/logo/chapterlogoNewBlack.svg" alt="" />
+      </a>
+      <div class="nav-right">
+        <a class="nav-back" href="index.html">Back to the story</a>
+        <a class="nav-pill" href="index.html#get-app">Join the waitlist</a>
+      </div>
+    </nav>
+
+    <div id="cursor" aria-hidden="true"><span class="c-ring"></span></div>
+
+    <header class="doc-head creased">
+      <p class="doc-kicker">the fine print</p>
+      <h1>Terms of <em>Service</em></h1>
+      <div class="doc-meta">
+        <div>Last updated<b>July 2026</b></div>
+        <div>Applies to<b>The Chapter app and website</b></div>
+        <div>Governed by<b>The laws of India</b></div>
+      </div>
+      <div class="doc-intro">
+        <p>
+          These Terms of Service are an electronic record in the form of an
+          electronic contract formed under the Information Technology Act, 2000
+          and the rules made thereunder, including the Information Technology
+          (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021.
+          This record is generated by a computer system and does not require a
+          physical or digital signature.
+        </p>
+        <p>
+          This is a legally binding agreement between you (<strong
+            >"User", "you"</strong
+          >) and Chapter (<strong>"Company", "we", "us"</strong>), governing
+          your access to and use of the Chapter mobile application, website and
+          related digital services (the <strong>"Platform"</strong>).
+        </p>
+        <p>
+          By downloading, installing, registering or otherwise using the
+          Platform, you acknowledge that you have read, understood and
+          unconditionally agreed to be bound by these Terms and our
+          <a href="privacy.html" style="border-bottom: 1px solid var(--sage)"
+            >Privacy Policy</a
+          >. If you do not agree to these Terms in their entirety, you are
+          prohibited from using the Platform.
+        </p>
+      </div>
+    </header>
+
+    <main class="doc creased">
+      <aside class="toc">
+        <p>Contents</p>
+        <ol>
+          <li><a href="#eligibility">Eligibility and account integrity</a></li>
+          <li>
+            <a href="#intermediary"
+              >Intermediary safe harbour and regulatory compliance</a
+            >
+          </li>
+          <li><a href="#ip">Intellectual property rights</a></li>
+          <li><a href="#use">Acceptable use and prohibited conduct</a></li>
+          <li>
+            <a href="#risk">Assumption of risk and physical encounters</a>
+          </li>
+          <li><a href="#warranties">Disclaimer of warranties</a></li>
+          <li><a href="#indemnity">Indemnification</a></li>
+          <li><a href="#liability">Limitation of liability</a></li>
+          <li><a href="#termination">Term, suspension and termination</a></li>
+          <li><a href="#law">Governing law and exclusive jurisdiction</a></li>
+          <li><a href="#payments">Payments, subscriptions and refunds</a></li>
+          <li><a href="#thirdparty">Third-party services and links</a></li>
+          <li><a href="#communications">Communications consent</a></li>
+          <li><a href="#changes">Modifications to the Terms</a></li>
+          <li><a href="#misc">Miscellaneous provisions</a></li>
+          <li><a href="#grievance">Grievance redressal mechanism</a></li>
+        </ol>
+      </aside>
+      <div class="doc-body">
+        <section id="eligibility">
+          <h2>Eligibility and account integrity</h2>
+          <h3>1.1 Age and capacity</h3>
+          <p>
+            The Platform is strictly restricted to individuals who have attained
+            the age of eighteen (18) years. By creating an account you
+            represent, warrant and covenant that you are of legal age to form a
+            binding contract under the Indian Contract Act, 1872, and are not
+            barred from receiving services under the laws of India or other
+            applicable jurisdictions.
+          </p>
+          <h3>1.2 Account security and liability</h3>
+          <p>
+            You are solely responsible for maintaining the strict
+            confidentiality of your account credentials, and you accept full
+            responsibility for all activities that occur under your account. The
+            Company shall not be held liable for any loss, damage or compromise
+            of data arising from your failure to secure your login credentials
+            or your device.
+          </p>
+          <h3>1.3 Right to deny access</h3>
+          <p>
+            We reserve the absolute right to refuse service, terminate accounts
+            or restrict access to the Platform at our sole discretion, without
+            prior notice, if we suspect any breach of these Terms or any
+            fraudulent, illegal or unauthorised activity.
+          </p>
+        </section>
+        <section id="intermediary">
+          <h2>Intermediary safe harbour and regulatory compliance</h2>
+          <h3>2.1 Statutory intermediary status</h3>
+          <p>
+            The Company is an “Intermediary” as defined under Section 2(1)(w) of
+            the Information Technology Act, 2000. The Platform acts solely as a
+            technological facilitator for the transmission, storage and display
+            of third-party data.
+          </p>
+          <h3>2.2 No pre-screening obligation</h3>
+          <p>
+            We do not proactively monitor, pre-screen, verify or endorse any
+            User Content. We claim the Safe Harbour protection afforded under
+            Section 79 of the Information Technology Act, 2000, and shall not be
+            held liable for any third-party information or data hosted on the
+            Platform.
+          </p>
+          <h3>2.3 Takedown and compliance</h3>
+          <p>
+            In adherence to Rule 3 of the Information Technology (Intermediary
+            Guidelines and Digital Media Ethics Code) Rules, 2021, upon
+            receiving actual knowledge in the form of an order by a court of
+            competent jurisdiction, a notification from an authorised government
+            agency, or a valid user grievance, we will act expeditiously to
+            remove or disable access to unlawful content within the statutorily
+            mandated timeframes — including twenty-four (24) hours for intimate
+            privacy violations and thirty-six (36) hours for other unlawful
+            content.
+          </p>
+        </section>
+        <section id="ip">
+          <h2>Intellectual property rights</h2>
+          <h3>3.1 Company intellectual property</h3>
+          <p>
+            The Platform, including its source code, algorithms, UI/UX design,
+            graphics, trademarks, logos and proprietary features, is the
+            exclusive property of the Company and is protected by Indian and
+            international copyright, trademark and intellectual property laws.
+            You are granted a limited, non-exclusive, non-transferable,
+            revocable licence to use the Platform strictly for your personal,
+            non-commercial use.
+          </p>
+          <h3>3.2 User content licence</h3>
+          <p>
+            You retain absolute ownership of the text, photographs, journal
+            entries and other materials you upload (<strong
+              >“User Content”</strong
+            >). By uploading User Content you grant the Company a worldwide,
+            perpetual, irrevocable, royalty-free, non-exclusive, sub-licensable
+            and transferable licence to host, store, use, display, reproduce,
+            modify, adapt, format, compress and distribute your User Content
+            solely for the purposes of operating, maintaining and improving the
+            Platform.
+          </p>
+          <h3>3.3 Representations of ownership</h3>
+          <p>
+            You represent and warrant that you own or have the necessary
+            licences, rights, consents and permissions to grant the foregoing
+            licences, and that your User Content does not infringe the
+            intellectual property or privacy rights of any third party.
+          </p>
+        </section>
+        <section id="use">
+          <h2>Acceptable use and prohibited conduct</h2>
+          <p>
+            You agree to use the Platform strictly in compliance with all
+            applicable laws. You shall not host, display, upload, modify,
+            publish, transmit, store, update or share any information that:
+          </p>
+          <ul>
+            <li>
+              Belongs to another person and to which you do not have any right.
+            </li>
+            <li>
+              Is defamatory, obscene, pornographic, paedophilic, invasive of
+              another’s privacy including bodily privacy, insulting or harassing
+              on the basis of gender, libellous, racially or ethnically
+              objectionable, or encouraging money laundering or gambling.
+            </li>
+            <li>Is harmful to children.</li>
+            <li>
+              Infringes any patent, trademark, copyright or other proprietary
+              rights.
+            </li>
+            <li>Violates any law for the time being in force.</li>
+            <li>
+              Deceives or misleads the addressee about the origin of the
+              message, or knowingly and intentionally communicates any
+              information which is patently false or misleading in nature.
+            </li>
+            <li>Impersonates another person.</li>
+            <li>
+              Contains software viruses, malware, trojan horses or any other
+              computer code designed to interrupt, destroy or limit the
+              functionality of any computer resource.
+            </li>
+            <li>
+              Threatens the unity, integrity, defence, security or sovereignty
+              of India, friendly relations with foreign states, or public order.
+            </li>
+          </ul>
+          <h3>Technical restrictions</h3>
+          <p>
+            You further agree not to reverse engineer, decompile, disassemble,
+            scrape or systematically extract data from the Platform using
+            automated means such as bots or spiders.
+          </p>
+        </section>
+        <section id="risk">
+          <h2>Assumption of risk and physical encounters</h2>
+          <h3>5.1 Real-world experiences</h3>
+          <p>
+            The Platform may curate and suggest physical locations, restaurants,
+            activities or venues (<strong>“Real-World Experiences”</strong>).
+            These suggestions are generated algorithmically for purely
+            informational and entertainment purposes.
+          </p>
+          <h3>5.2 Absolute release of liability</h3>
+          <p>
+            The Company conducts no background checks, safety audits or quality
+            control on any suggested venue or third-party service. You
+            acknowledge and agree that your participation in any Real-World
+            Experience is at your own sole risk. The Company, its affiliates,
+            directors and employees shall not be liable for any direct or
+            indirect injury, loss of property, distress, dispute, tortious claim
+            or damages arising out of your physical meet-ups, travel to
+            suggested locations, or interactions with third parties off the
+            Platform.
+          </p>
+        </section>
+        <section id="warranties">
+          <h2>Disclaimer of warranties</h2>
+          <div class="notice">
+            <p>
+              THE PLATFORM AND ALL INCLUDED SERVICES ARE PROVIDED ON AN “AS IS”
+              AND “AS AVAILABLE” BASIS, WITHOUT ANY WARRANTIES OF ANY KIND,
+              EITHER EXPRESS OR IMPLIED. THE COMPANY EXPRESSLY DISCLAIMS ALL
+              WARRANTIES REGARDING MERCHANTABILITY, FITNESS FOR A PARTICULAR
+              PURPOSE, NON-INFRINGEMENT, DATA ACCURACY OR SYSTEM INTEGRATION.
+            </p>
+            <p>
+              WE DO NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, SECURE,
+              ERROR-FREE OR FREE FROM VIRUSES. ANY RELIANCE YOU PLACE ON
+              WELLNESS FEATURES OR THE INTIMACY PROJECT IS AT YOUR OWN RISK, AS
+              SUCH FEATURES DO NOT CONSTITUTE PROFESSIONAL MEDICAL,
+              PSYCHOLOGICAL OR THERAPEUTIC ADVICE.
+            </p>
+          </div>
+        </section>
+        <section id="indemnity">
+          <h2>Indemnification</h2>
+          <p>
+            You agree to defend, indemnify and hold harmless the Company, its
+            parent, subsidiaries, affiliates, officers, directors, employees and
+            agents from and against any and all claims, damages, obligations,
+            losses, liabilities, costs, debts and expenses — including but not
+            limited to attorney’s fees and legal costs — arising from:
+          </p>
+          <ul>
+            <li>Your use of and access to the Platform.</li>
+            <li>Your violation of any term of these Terms.</li>
+            <li>
+              Your violation of any third-party right, including without
+              limitation any copyright, property or privacy right.
+            </li>
+            <li>
+              Any claim that your User Content caused damage to a third party.
+            </li>
+          </ul>
+          <p>
+            This defence and indemnification obligation will survive the
+            termination of these Terms and your use of the Platform.
+          </p>
+        </section>
+        <section id="liability">
+          <h2>Limitation of liability</h2>
+          <div class="notice">
+            <p>
+              TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT
+              SHALL THE COMPANY, ITS DIRECTORS, EMPLOYEES OR AGENTS BE LIABLE
+              FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR
+              EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS
+              OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES,
+              ARISING OUT OF OR RELATING TO THE USE OF, OR INABILITY TO USE,
+              THIS PLATFORM.
+            </p>
+            <p>
+              UNDER NO CIRCUMSTANCES WILL THE COMPANY BE RESPONSIBLE FOR ANY
+              DAMAGE, LOSS OR INJURY RESULTING FROM HACKING, TAMPERING OR OTHER
+              UNAUTHORISED ACCESS OR USE OF THE PLATFORM. IN NO EVENT SHALL THE
+              TOTAL AGGREGATE LIABILITY OF THE COMPANY FOR ALL CLAIMS RELATING
+              TO THE PLATFORM EXCEED THE GREATER OF ONE THOUSAND INDIAN RUPEES
+              (INR 1,000) OR THE AMOUNT YOU PAID TO THE COMPANY, IF ANY, IN THE
+              PAST SIX (6) MONTHS.
+            </p>
+          </div>
+        </section>
+        <section id="termination">
+          <h2>Term, suspension and termination</h2>
+          <p>
+            These Terms remain effective until terminated by either you or us.
+            You may terminate your agreement with us at any time by deleting
+            your account and ceasing all use of the Platform.
+          </p>
+          <p>
+            We reserve the right to suspend or terminate your account, or
+            restrict your access to the Platform, at our sole discretion and
+            without liability, for any reason, including if we reasonably
+            believe you have violated these Terms or pose a legal risk to the
+            Company.
+          </p>
+          <p>
+            Upon termination, Sections 3, 5, 6, 7, 8, 10, 11, 12 and 15 shall
+            survive and remain in full force and effect.
+          </p>
+        </section>
+        <section id="law">
+          <h2>Governing law and exclusive jurisdiction</h2>
+          <p>
+            These Terms, and any dispute or claim arising out of or in
+            connection with them or their subject matter, shall be governed by
+            and construed in accordance with the internal laws of India, without
+            giving effect to any choice or conflict of law provision or rule.
+          </p>
+          <p>
+            Subject strictly to the mandatory provisions of the Consumer
+            Protection Act, 2019 which may confer specific jurisdictional rights
+            upon consumers, you and the Company expressly agree that any legal
+            suit, action or proceeding arising out of or related to these Terms
+            or the Platform shall be instituted exclusively in the competent
+            courts located in Kolkata, West Bengal, India. You waive any and all
+            objections to the exercise of jurisdiction over you by such courts
+            and to venue in such courts.
+          </p>
+        </section>
+        <section id="payments">
+          <h2>Payments, subscriptions and refunds</h2>
+          <h3>11.1 Free and premium services</h3>
+          <p>
+            The Platform is currently provided free of charge. The Company
+            reserves the absolute right to introduce premium features,
+            subscription plans or in-app purchases (<strong
+              >“Premium Services”</strong
+            >) at any time in the future.
+          </p>
+          <h3>11.2 Billing and auto-renewal</h3>
+          <p>
+            If you choose to upgrade to any Premium Services, you agree to pay
+            all applicable fees and taxes. Subscriptions will automatically
+            renew at the end of each billing cycle unless cancelled prior to the
+            renewal date. You authorise the Company, or our third-party payment
+            processors, to charge your designated payment method for the renewal
+            term.
+          </p>
+          <h3>11.3 Third-party payment processors</h3>
+          <p>
+            All financial transactions are handled by third-party payment
+            gateways or application stores such as the Apple App Store or Google
+            Play Store. The Company does not store your full credit card
+            information and is not liable for any processing errors,
+            unauthorised charges or breaches originating from these third-party
+            payment providers.
+          </p>
+          <h3>11.4 Refund policy</h3>
+          <p>
+            Except as expressly required by applicable Indian law, all purchases
+            are final and non-refundable. The Company does not provide refunds
+            or credits for partially used billing periods or accidental
+            purchases.
+          </p>
+        </section>
+        <section id="thirdparty">
+          <h2>Third-party services and links</h2>
+          <h3>12.1 External integrations</h3>
+          <p>
+            The Platform uses integrations, APIs and links to third-party
+            services, including but not limited to mapping services for location
+            data, cloud hosting infrastructure and social authentication
+            providers.
+          </p>
+          <h3>12.2 Disclaimer of third-party liability</h3>
+          <p>
+            These third-party services are governed by their own terms of
+            service and privacy policies. The Company does not control, endorse
+            or assume responsibility for the content, privacy practices or
+            technical failures of any third-party service. Your interaction with
+            any third-party service accessed through the Platform is strictly at
+            your own risk.
+          </p>
+        </section>
+        <section id="communications">
+          <h2>Communications consent</h2>
+          <h3>13.1 Transactional and promotional messages</h3>
+          <p>
+            By creating an account you provide explicit consent to receive
+            electronic communications from the Company, including emails, push
+            notifications and SMS messages regarding your account, updates to
+            the Platform and security alerts.
+          </p>
+          <h3>13.2 TRAI compliance</h3>
+          <p>
+            You expressly consent to receive transactional and service-related
+            communications overriding any registration on the National Do Not
+            Call (NDNC) registry or similar Do Not Disturb (DND) lists. You may
+            opt out of promotional communications at any time via the
+            unsubscribe link provided in the communication or through your
+            device settings, but you cannot opt out of essential service-related
+            and security notifications.
+          </p>
+        </section>
+        <section id="changes">
+          <h2>Modifications to the Terms</h2>
+          <h3>14.1 Right to amend</h3>
+          <p>
+            The Company reserves the right, at its sole discretion, to modify,
+            amend or replace these Terms at any time to reflect changes in the
+            law, our data processing practices or the features of the Platform.
+          </p>
+          <h3>14.2 Notice and acceptance</h3>
+          <p>
+            If a revision is material we will provide reasonable notice, such as
+            an in-app notification or email, before the new Terms take effect.
+            By continuing to access or use the Platform after those revisions
+            become effective, you irrevocably agree to be bound by the revised
+            Terms. If you do not agree to the new Terms, your sole remedy is to
+            delete your account and cease using the Platform.
+          </p>
+        </section>
+        <section id="misc">
+          <h2>Miscellaneous provisions</h2>
+          <h3>15.1 Severability</h3>
+          <p>
+            If any provision of these Terms is held by a court of competent
+            jurisdiction to be invalid, illegal or unenforceable, that provision
+            shall be modified to the minimum extent necessary to make it
+            enforceable, and the remaining provisions shall continue in full
+            force and effect.
+          </p>
+          <h3>15.2 Waiver</h3>
+          <p>
+            No waiver of any term of these Terms shall be deemed a further or
+            continuing waiver of such term or any other term, and our failure to
+            assert any right or provision under these Terms shall not constitute
+            a waiver of such right or provision.
+          </p>
+          <h3>15.3 Entire agreement</h3>
+          <p>
+            These Terms, together with the Privacy Policy, constitute the sole
+            and entire agreement between you and the Company regarding the
+            Platform, and supersede all prior and contemporaneous
+            understandings, agreements, representations and warranties, both
+            written and oral.
+          </p>
+          <h3>15.4 Assignment</h3>
+          <p>
+            You may not assign or transfer these Terms, by operation of law or
+            otherwise, without our prior written consent. The Company may freely
+            assign or transfer these Terms without restriction.
+          </p>
+        </section>
+        <section id="grievance">
+          <h2>Grievance redressal mechanism</h2>
+          <p>
+            In compliance with the Information Technology Act, 2000 and the
+            rules made thereunder, the contact details of the Grievance Officer
+            are set out below. The Grievance Officer will acknowledge user
+            complaints within twenty-four (24) hours and resolve them within
+            fifteen (15) days of receipt.
+          </p>
+          <dl class="fill">
+            <div>
+              <dt>Name</dt>
+              <dd><span>Abu Sohel Biswas</span></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><span>sohel.biswas@hallucinatelabs.com</span></dd>
+            </div>
+            <div>
+              <dt>Registered address</dt>
+              <dd>
+                <span
+                  >Ecospace Business Park Premises, Block 4A 5th Floor, <br />
+                  New Town Action Area II, Rajarhat West-Bengal - 700156</span
+                >
+              </dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="grain-dark"></div>
+      <div class="f-inner">
+        <a href="index.html" class="fmark" aria-label="chapter — home">
+          <img src="assets/logo/chapterlogoNew.svg" alt="" />
+        </a>
+        <nav class="f-links" aria-label="Legal">
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Terms and conditions</a>
+        </nav>
+        <div class="socials">
+          <a
+            href="https://www.instagram.com/joinchapter.app/"
+            aria-label="Instagram"
+            ><svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="currentColor"
+            >
+              <path
+                d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 1.8h8.5a3.95 3.95 0 0 1 3.95 3.95v8.5a3.95 3.95 0 0 1-3.95 3.95h-8.5A3.95 3.95 0 0 1 3.8 16.25v-8.5A3.95 3.95 0 0 1 7.75 3.8zm8.9 1.35a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.8A3.2 3.2 0 1 1 8.8 12 3.2 3.2 0 0 1 12 8.8z"
+              /></svg
+          ></a>
+          <a
+            href="https://www.linkedin.com/company/mychapterapp"
+            aria-label="LinkedIn"
+            ><svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="currentColor"
+            >
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              /></svg
+          ></a>
+        </div>
+      </div>
+      <p class="f-note">© 2026 Hallucinate Labs Pvt. Ltd. Made in Bengaluru.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script>
+      (function () {
+        "use strict";
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const isTouch = matchMedia("(hover: none)").matches;
+
+        /* smooth scroll on pointer devices; touch keeps its native momentum */
+        let lenis = null;
+        if (window.Lenis && !reduce && !isTouch) {
+          lenis = new Lenis({
+            duration: 1.08,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
+            wheelMultiplier: 1,
+          });
+          (function raf(t) {
+            lenis.raf(t);
+            requestAnimationFrame(raf);
+          })(0);
+        }
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const href = a.getAttribute("href");
+            let el = null;
+            if (href.length > 1) {
+              try {
+                el = document.querySelector(href);
+              } catch (_) {}
+            }
+            e.preventDefault();
+            if (lenis)
+              lenis.scrollTo(el || 0, {
+                duration: 1.3,
+                offset: -96,
+                lock: true,
+              });
+            else if (el) el.scrollIntoView({ behavior: "smooth" });
+            else scrollTo({ top: 0, behavior: "smooth" });
+          });
+        });
+
+        /* the contents list follows where you are */
+        const links = [...document.querySelectorAll(".toc a")];
+        const sections = links
+          .map((a) => document.querySelector(a.getAttribute("href")))
+          .filter(Boolean);
+        if ("IntersectionObserver" in window && sections.length) {
+          const seen = new Set();
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((en) => {
+                en.isIntersecting
+                  ? seen.add(en.target.id)
+                  : seen.delete(en.target.id);
+              });
+              const first = sections.find((s) => seen.has(s.id));
+              links.forEach((a) =>
+                a.classList.toggle(
+                  "on",
+                  !!first && a.getAttribute("href") === "#" + first.id,
+                ),
+              );
+            },
+            { rootMargin: "-96px 0px -70% 0px" },
+          );
+          sections.forEach((s) => io.observe(s));
+        }
+
+        /* the header steps out of the way as you read down */
+        const nav = document.getElementById("nav");
+        let last = 0;
+        addEventListener(
+          "scroll",
+          () => {
+            const y = scrollY;
+            if (y < 240) {
+              nav.classList.remove("hide");
+              last = y;
+            } else if (Math.abs(y - last) > 14) {
+              nav.classList.toggle("hide", y > last);
+              last = y;
+            }
+          },
+          { passive: true },
+        );
+
+        /* cursor */
+        const cur = document.getElementById("cursor");
+        if (cur && !isTouch && !reduce) {
+          const ring = cur.querySelector(".c-ring");
+          document.documentElement.classList.add("hide-cursor");
+          let tx = innerWidth / 2,
+            ty = innerHeight / 2,
+            rx = tx,
+            ry = ty,
+            seen = false,
+            t0 = performance.now();
+          const place = (e) => {
+            tx = e.clientX;
+            ty = e.clientY;
+            if (!seen) {
+              rx = tx;
+              ry = ty;
+              seen = true;
+            }
+            cur.classList.remove("hidden");
+          };
+          addEventListener("pointermove", place, { passive: true });
+          document.addEventListener("mouseenter", place);
+          document.addEventListener("mouseleave", () => {
+            cur.classList.add("hidden");
+            seen = false;
+          });
+          addEventListener("blur", () => {
+            cur.classList.add("hidden");
+            seen = false;
+          });
+          document.addEventListener("pointerover", (e) => {
+            cur.classList.toggle("on-link", !!e.target.closest("a, button"));
+          });
+          (function loop(now) {
+            const dt = Math.min(now - t0, 50) / 1000;
+            t0 = now;
+            const k = 1 - Math.exp(-14 * dt);
+            rx += (tx - rx) * k;
+            ry += (ty - ry) * k;
+            ring.style.translate = rx + "px " + ry + "px";
+            requestAnimationFrame(loop);
+          })(t0);
+        }
+      })();
+    </script>
+  </body>
+</html>
