@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["AD574T9839.chaptertogether.com"],
+        "components": [
+          { "/": "/chapter/*", "comment": "shared chapters" },
+          { "/": "/post/*", "comment": "shared posts" },
+          { "/": "/reset", "?": { "token": "?*" }, "comment": "password reset links" }
+        ],
+        "paths": ["/chapter/*", "/post/*", "/reset", "/reset*"]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["AD574T9839.chaptertogether.com"]
+  }
+}

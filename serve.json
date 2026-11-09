@@ -1,0 +1,26 @@
+{
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "/chapter/:id", "destination": "/share.html" },
+    { "source": "/post/:id", "destination": "/share.html" },
+    { "source": "/reset", "destination": "/reset.html" }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    },
+    {
+      "source": "/.well-known/assetlinks.json",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    },
+    {
+      "source": "/reset",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" },
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}

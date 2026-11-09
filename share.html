@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>shared with you — chapter</title>
+    <meta name="description" content="Moments, memories and all the small things two people keep. Open this chapter in the app." />
+    <meta name="theme-color" content="#FBFBFB" />
+
+    <!-- Link preview in WhatsApp, Messages, etc. — absolute URLs only -->
+    <meta property="og:site_name" content="chapter" />
+    <meta property="og:title" content="a page from our chapter 💕" />
+    <meta property="og:description" content="moments, memories and all the beautiful little things we share." />
+    <meta property="og:image" content="https://joinchapter.app/assets/og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Smart app banner on iOS Safari: replace with your App Store ID -->
+    <meta name="apple-itunes-app" content="app-id=0000000000" />
+
+    <!-- Absolute paths: this page is served for every /chapter/* and /post/* URL -->
+    <link rel="icon" type="image/x-icon" href="/assets/logo/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Caveat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ============================================================
+         TOKENS — matched to the Chapter app theme (same as index.html)
+         ============================================================ */
+      :root {
+        /* light theme */
+        --paper: #fbfbfb;      /* backgroundColor */
+        --sheet: #ffffff;      /* cardColor — the print */
+        --ink: #1c1c1c;        /* primary — headline */
+        --text: #4d4d4d;       /* text */
+        --caption: #6a6a6a;    /* caption */
+        --icon: #7e7e7e;       /* appIcons */
+        --line: #e4e4e4;       /* stroke */
+
+        /* dark theme, for the solid button */
+        --dark: #2c2c2c;       /* backgroundColor */
+        --dark-deep: #262626;  /* sheetBackground */
+        --on-dark: #ffffff;    /* text */
+
+        /* the one accent */
+        --pink: #ffccdb;       /* mineMsg */
+
+        --serif: "Instrument Serif", Georgia, serif;
+        --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+        --hand: "Caveat", "Segoe Script", cursive;
+
+        --pad: clamp(1.35rem, 5vw, 4rem);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+        --crumple: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27700%27%20height%3D%27700%27%3E%3Cfilter%20id%3D%27c%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.0075%27%20numOctaves%3D%275%27%20seed%3D%2714%27%20result%3D%27t%27%2F%3E%3CfeDiffuseLighting%20in%3D%27t%27%20lighting-color%3D%27%23fff%27%20surfaceScale%3D%272.2%27%3E%3CfeDistantLight%20azimuth%3D%2748%27%20elevation%3D%2760%27%2F%3E%3C%2FfeDiffuseLighting%3E%3C%2Ffilter%3E%3Crect%20width%3D%27700%27%20height%3D%27700%27%20filter%3D%27url%28%2523c%29%27%2F%3E%3C%2Fsvg%3E");
+        --grain: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%3E%3Cfilter%20id%3D%27f%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.9%27%20numOctaves%3D%274%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27saturate%27%20values%3D%270%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20filter%3D%27url%28%2523f%29%27%20opacity%3D%270.55%27%2F%3E%3C%2Fsvg%3E");
+        --torn-1: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0.0%2C0.5%20L3.1%2C0.7%20L6.4%2C1.3%20L8.2%2C0.0%20L12.1%2C0.5%20L14.4%2C2.0%20L17.3%2C1.7%20L20.3%2C1.3%20L22.3%2C1.3%20L26.3%2C1.0%20L30.0%2C1.3%20L31.8%2C1.5%20L35.0%2C0.6%20L36.8%2C1.7%20L39.7%2C1.4%20L43.7%2C1.4%20L47.9%2C0.8%20L51.7%2C0.9%20L55.9%2C1.8%20L57.8%2C0.3%20L60.0%2C1.9%20L62.8%2C1.3%20L65.3%2C1.0%20L68.0%2C0.7%20L71.2%2C1.2%20L75.3%2C1.4%20L79.5%2C1.7%20L83.8%2C1.3%20L85.9%2C1.7%20L90.1%2C1.8%20L93.3%2C1.4%20L95.5%2C1.7%20L98.7%2C0.6%20L98.3%2C0.0%20L99.8%2C4.3%20L99.2%2C8.1%20L99.4%2C10.2%20L98.3%2C13.9%20L98.8%2C15.7%20L98.6%2C17.5%20L98.2%2C20.0%20L99.0%2C24.3%20L99.4%2C28.6%20L98.8%2C30.5%20L99.6%2C32.2%20L98.8%2C35.0%20L99.9%2C37.1%20L99.4%2C41.1%20L98.2%2C45.3%20L99.1%2C48.0%20L98.7%2C51.0%20L98.9%2C54.3%20L98.1%2C57.6%20L99.1%2C60.6%20L99.5%2C64.2%20L98.0%2C66.7%20L98.9%2C69.7%20L99.2%2C71.4%20L100.0%2C74.6%20L98.7%2C77.9%20L98.7%2C79.8%20L98.6%2C82.7%20L98.6%2C85.3%20L100.0%2C88.9%20L98.6%2C90.7%20L99.5%2C95.0%20L98.8%2C97.9%20L100.0%2C99.3%20L97.5%2C99.3%20L94.2%2C99.4%20L91.6%2C98.5%20L89.9%2C98.9%20L86.2%2C99.4%20L84.0%2C98.4%20L81.7%2C99.6%20L78.9%2C98.6%20L76.9%2C99.4%20L74.4%2C98.3%20L71.5%2C98.3%20L69.4%2C99.3%20L66.0%2C98.2%20L63.2%2C99.5%20L61.2%2C98.9%20L59.0%2C98.4%20L55.1%2C99.6%20L52.7%2C98.4%20L49.3%2C98.4%20L46.7%2C99.7%20L44.3%2C98.4%20L41.9%2C99.3%20L39.1%2C99.2%20L36.4%2C98.2%20L34.3%2C100.0%20L30.1%2C98.2%20L25.8%2C99.1%20L21.6%2C98.1%20L19.3%2C98.5%20L15.4%2C98.7%20L12.4%2C99.4%20L9.8%2C99.5%20L8.0%2C98.8%20L5.5%2C98.4%20L3.8%2C98.2%20L0.3%2C98.2%20L1.8%2C100.0%20L0.0%2C96.8%20L0.3%2C93.1%20L1.3%2C90.7%20L0.8%2C87.6%20L1.2%2C83.4%20L0.5%2C80.8%20L1.0%2C76.9%20L0.7%2C73.1%20L1.1%2C70.9%20L0.3%2C67.1%20L1.8%2C63.3%20L1.6%2C59.5%20L1.3%2C57.8%20L0.1%2C53.8%20L0.5%2C51.4%20L0.8%2C48.3%20L1.6%2C45.4%20L0.1%2C43.8%20L0.2%2C41.8%20L1.9%2C39.9%20L0.2%2C36.0%20L0.6%2C33.0%20L0.7%2C30.5%20L1.2%2C27.1%20L0.4%2C24.5%20L0.2%2C21.9%20L1.4%2C18.8%20L0.2%2C16.1%20L0.7%2C14.0%20L1.6%2C10.7%20L1.6%2C8.0%20L0.9%2C4.7%20L1.0%2C2.0%20Z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E");
+        --torn-2: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0.0%2C1.4%20L3.8%2C1.0%20L6.8%2C0.8%20L11.1%2C0.6%20L13.2%2C0.5%20L15.5%2C0.7%20L17.9%2C0.2%20L20.4%2C0.6%20L23.6%2C0.4%20L25.5%2C0.4%20L28.6%2C0.8%20L32.2%2C1.6%20L35.0%2C0.2%20L38.6%2C1.5%20L41.3%2C1.3%20L43.8%2C1.8%20L47.7%2C1.6%20L51.9%2C0.5%20L55.0%2C1.5%20L58.8%2C0.8%20L60.9%2C1.3%20L62.8%2C1.4%20L64.5%2C0.9%20L67.4%2C0.2%20L70.4%2C1.0%20L73.0%2C1.8%20L77.0%2C1.8%20L79.3%2C0.1%20L82.0%2C0.2%20L85.5%2C0.5%20L87.5%2C0.6%20L90.3%2C1.5%20L93.2%2C0.6%20L96.6%2C0.1%20L98.9%2C1.4%20L99.8%2C0.0%20L99.0%2C1.8%20L100.0%2C5.3%20L99.5%2C8.1%20L99.7%2C10.0%20L99.1%2C12.4%20L98.8%2C14.3%20L98.6%2C18.4%20L98.7%2C20.2%20L100.0%2C23.6%20L98.7%2C26.2%20L98.1%2C30.5%20L98.8%2C33.6%20L99.6%2C37.9%20L99.9%2C40.9%20L98.7%2C44.6%20L99.6%2C46.9%20L98.5%2C49.9%20L99.4%2C51.9%20L99.5%2C55.0%20L98.5%2C59.0%20L98.7%2C63.3%20L99.4%2C66.7%20L99.1%2C69.8%20L99.9%2C72.7%20L99.7%2C76.6%20L98.1%2C79.5%20L98.3%2C82.6%20L99.1%2C84.9%20L99.4%2C87.6%20L99.1%2C90.2%20L98.1%2C94.2%20L98.7%2C96.1%20L99.2%2C99.1%20L100.0%2C99.3%20L97.5%2C99.3%20L94.2%2C99.3%20L91.8%2C99.5%20L87.5%2C99.2%20L83.2%2C99.7%20L79.8%2C98.9%20L76.2%2C99.0%20L72.2%2C98.8%20L70.4%2C98.6%20L67.1%2C99.5%20L63.5%2C98.3%20L61.1%2C99.7%20L58.7%2C98.8%20L55.8%2C99.9%20L53.0%2C98.9%20L49.8%2C99.3%20L46.0%2C98.6%20L43.6%2C99.3%20L39.5%2C99.6%20L36.6%2C99.4%20L33.4%2C98.4%20L31.4%2C99.6%20L29.6%2C99.7%20L26.5%2C99.0%20L22.3%2C99.1%20L19.3%2C99.9%20L17.0%2C99.4%20L14.7%2C98.4%20L11.9%2C99.7%20L8.8%2C99.7%20L6.7%2C98.8%20L4.8%2C98.5%20L2.0%2C99.9%20L1.9%2C100.0%20L1.7%2C96.4%20L0.5%2C92.2%20L1.5%2C89.2%20L1.9%2C86.5%20L0.0%2C83.7%20L0.9%2C81.8%20L1.2%2C80.1%20L1.9%2C75.7%20L0.5%2C71.4%20L0.1%2C69.3%20L0.1%2C65.1%20L1.3%2C63.3%20L1.1%2C59.1%20L0.1%2C57.3%20L1.4%2C53.4%20L2.0%2C50.9%20L0.3%2C48.5%20L0.1%2C44.2%20L0.4%2C41.6%20L1.0%2C38.2%20L1.3%2C35.9%20L2.0%2C34.0%20L0.4%2C30.2%20L0.5%2C26.9%20L0.6%2C23.7%20L1.0%2C21.5%20L2.0%2C19.7%20L0.5%2C15.9%20L0.4%2C12.6%20L0.8%2C10.5%20L0.1%2C7.0%20L0.5%2C2.8%20L1.0%2C0.7%20Z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E");
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+      html, body { min-height: 100%; }
+      body {
+        position: relative;
+        min-height: 100svh;
+        background: var(--paper);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        overflow-x: clip;
+        display: flex;
+        flex-direction: column;
+      }
+      img { display: block; max-width: 100%; }
+      [hidden] { display: none !important; }
+      a { color: inherit; text-decoration: none; }
+      ::selection { background: var(--pink); color: var(--ink); }
+      :focus-visible { outline: 1.5px solid var(--icon); outline-offset: 4px; border-radius: 2px; }
+
+      /* paper: creases under everything, grain over everything */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: var(--crumple);
+        background-size: 680px;
+        mix-blend-mode: multiply;
+        opacity: 0.18; /* lighter than on cream, so the page stays the app's white */
+      }
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        pointer-events: none;
+        opacity: 0.1;
+        background-image: var(--grain);
+        background-size: 280px;
+        mix-blend-mode: multiply;
+      }
+
+      /* ============================================================
+         HEADER
+         ============================================================ */
+      header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: calc(env(safe-area-inset-top, 0px) + clamp(1.1rem, 3vh, 1.6rem)) var(--pad) 0;
+      }
+      .logo { height: 26px; width: auto; }
+      .logo-text {
+        font-family: var(--serif);
+        font-size: 1.9rem;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+      }
+
+      /* ============================================================
+         THE PAGE
+         ============================================================ */
+      main {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+        padding: clamp(2rem, 6vh, 3.5rem) var(--pad) clamp(2rem, 5vh, 3rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* a print taped onto the page */
+      .print {
+        position: relative;
+        width: clamp(168px, 46vw, 214px);
+        margin-bottom: clamp(1.8rem, 4.5vh, 2.6rem);
+        filter: drop-shadow(0 22px 26px rgba(28, 28, 28, 0.2));
+        transform: rotate(-3deg);
+      }
+      .print-paper {
+        background: var(--sheet);
+        padding: 9px 9px 4px;
+        -webkit-mask-image: var(--torn-1);
+        mask-image: var(--torn-1);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+      }
+      .print-paper img,
+      .print-paper .ph {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        filter: grayscale(0.2) contrast(1.04) saturate(0.92) brightness(1.02);
+      }
+      /* until the chapter's own photo loads: one of the site's prints */
+      .print-paper .ph {
+        background:
+          url("/assets/images/ver-22.png") center / cover no-repeat,
+          linear-gradient(140deg, #eeeeee, #e4e4e4 60%, #d8d8d8);
+      }
+      .print figcaption {
+        font-family: var(--hand);
+        font-size: 1.1rem;
+        color: var(--caption);
+        text-align: center;
+        padding: 0.35rem 0 0.15rem;
+        min-height: 1.9rem;
+      }
+      .tape {
+        position: absolute;
+        z-index: 3;
+        top: -10px;
+        left: 50%;
+        width: 78px;
+        height: 22px;
+        transform: translateX(-50%) rotate(-2.5deg);
+        background: rgba(255, 204, 219, 0.7);
+        -webkit-mask-image: var(--torn-2);
+        mask-image: var(--torn-2);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        box-shadow: inset 0 0 14px rgba(28, 28, 28, 0.08);
+      }
+
+      .kicker {
+        font-family: var(--hand);
+        font-size: clamp(1.25rem, 4.6vw, 1.45rem);
+        color: var(--caption);
+        margin-bottom: 0.5rem;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        color: var(--ink);
+        font-size: clamp(2.5rem, 11vw, 3.6rem);
+        line-height: 0.95;
+        letter-spacing: -0.025em;
+      }
+      h1 em { font-style: italic; letter-spacing: -0.01em; }
+      .handle {
+        margin-top: 0.8rem;
+        font-size: 0.86rem;
+        letter-spacing: 0.04em;
+        color: var(--caption);
+        min-height: 1.2em;
+      }
+      .lede {
+        margin: clamp(1.2rem, 3vh, 1.6rem) auto 0;
+        max-width: 34ch;
+        font-size: 1rem;
+        line-height: 1.72;
+        color: var(--text);
+      }
+
+      /* ============================================================
+         BUTTONS — pills, like the site
+         ============================================================ */
+      .actions {
+        width: 100%;
+        display: grid;
+        gap: 0.75rem;
+        margin-top: clamp(1.8rem, 4.5vh, 2.6rem);
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        width: 100%;
+        border-radius: 999px;
+        padding: 1.02rem 1.6rem;
+        font-size: 0.94rem;
+        letter-spacing: 0.01em;
+        transition: background 0.4s, color 0.4s, border-color 0.4s, transform 0.4s var(--ease);
+      }
+      .btn:active { transform: translateY(1px); }
+      .btn-solid {
+        background: var(--dark);
+        color: var(--on-dark);
+        box-shadow: 0 22px 44px -24px rgba(28, 28, 28, 0.7);
+      }
+      .btn-solid:hover { background: var(--dark-deep); }
+      .btn-solid .logo { height: 15px; }
+      .btn-ghost {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.75);
+        color: var(--ink);
+      }
+      .btn-ghost:hover { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+
+      .hint {
+        margin-top: 1.1rem;
+        font-family: var(--hand);
+        font-size: 1.12rem;
+        color: var(--caption);
+      }
+
+      /* ============================================================
+         FOOTER
+         ============================================================ */
+      footer {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 var(--pad) calc(env(safe-area-inset-bottom, 0px) + 1.6rem);
+        font-size: 0.74rem;
+        color: var(--caption);
+      }
+      footer a { border-bottom: 1px solid var(--pink); }
+
+      /* ============================================================
+         ARRIVAL — the print drops, the words follow
+         ============================================================ */
+      .rise { opacity: 0; transform: translateY(18px); animation: rise 1s var(--ease) forwards; }
+      .print.rise { transform: translateY(24px) rotate(-8deg) scale(0.94); animation-name: drop; }
+      @keyframes rise { to { opacity: 1; transform: none; } }
+      @keyframes drop { to { opacity: 1; transform: rotate(-3deg); } }
+      .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.22s; }
+      .d3 { animation-delay: 0.32s; } .d4 { animation-delay: 0.42s; }
+      .d5 { animation-delay: 0.54s; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .rise, .print.rise { animation: none; opacity: 1; transform: none; }
+        .print.rise { transform: rotate(-3deg); }
+      }
+      @media (min-width: 700px) {
+        main { justify-content: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header>
+      <a href="/" aria-label="chapter">
+        <img class="logo" src="/assets/logo/chapterlogoNewBlack.svg" alt="chapter"
+             onerror="this.outerHTML='<span class=&quot;logo-text&quot;>chapter</span>'" />
+      </a>
+    </header>
+
+    <main>
+      <figure class="print rise d1" aria-hidden="true">
+        <span class="tape"></span>
+        <div class="print-paper">
+          <div class="ph" id="photoPh"></div>
+          <img id="photo" alt="" hidden />
+          <figcaption id="caption">a page from us</figcaption>
+        </div>
+      </figure>
+
+      <p class="kicker rise d2" id="kicker">someone saved you a page</p>
+      <h1 class="rise d2" id="title">you've been <em>let in.</em></h1>
+      <p class="handle rise d3" id="handle"></p>
+      <p class="lede rise d3" id="lede">
+        The places, the films, the small unrepeatable things — open it in
+        Chapter to read the rest of their story.
+      </p>
+
+      <div class="actions rise d4">
+        <a id="open" class="btn btn-solid" href="#">
+          <img class="logo" src="/assets/logo/chapterlogoNew.svg" alt="" onerror="this.remove()" />
+          Open in Chapter
+        </a>
+        <a id="ios" class="btn btn-ghost" href="https://apps.apple.com/app/id0000000000">Get it on the App Store</a>
+        <a id="android" class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.chaptertogether.chapter">Get it on Google Play</a>
+      </div>
+      <p class="hint rise d5">no app yet? get it, then tap the link again</p>
+    </main>
+
+    <footer>
+      not a dating app — a book for two. <a href="/">joinchapter.app</a>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---------- config ---------- */
+        var APP_SCHEME = "chapterapp://";
+        var ANDROID_PACKAGE = "com.chaptertogether.chapter";
+        // Your real, public API (not localhost). The share endpoints must allow
+        // requests from joinchapter.app (CORS) and work without login.
+        var API_BASE = "https://api.joinchapter.app/api/v1";
+
+        /* ---------- which link is this? ----------
+           Live site:  /chapter/{id}  or  /post/{id}
+           Testing:    share.html?chapter={id}  or  share.html?post={id} */
+        var params = new URLSearchParams(location.search);
+        var match = location.pathname.match(/\/(chapter|post)\/([A-Za-z0-9-]+)/);
+        var type = match
+          ? match[1]
+          : params.get("chapter") ? "chapter"
+          : params.get("post") ? "post"
+          : null;
+        var publicId = match
+          ? decodeURIComponent(match[2])
+          : type ? params.get(type) : null;
+
+        var $ = function (id) { return document.getElementById(id); };
+
+        /* ---------- words for each kind of link ---------- */
+        if (type === "post") {
+          $("kicker").textContent = "someone wanted you to see this";
+          $("title").innerHTML = "a moment, <em>kept.</em>";
+          $("lede").textContent =
+            "One page from a couple’s chapter. Open it in Chapter to see the rest of their story.";
+          $("caption").textContent = "a page from us";
+        }
+
+        /* "Open in Chapter" uses the app's own scheme — for when the universal
+           link didn't open the app (e.g. inside Instagram's or WhatsApp's browser) */
+        var openBtn = $("open");
+        if (type && publicId) {
+          openBtn.href = APP_SCHEME + type + "/" + encodeURIComponent(publicId);
+        } else {
+          openBtn.style.display = "none";
+        }
+
+        /* ---------- only the store for this phone (both on desktop) ---------- */
+        var ua = navigator.userAgent || "";
+        var isAndroid = /Android/i.test(ua);
+        if (/iPhone|iPad|iPod/i.test(ua)) $("android").style.display = "none";
+        else if (isAndroid) $("ios").style.display = "none";
+
+        /* ---------- Android: open the app automatically ----------
+           An intent link opens Chapter if it's installed. If it isn't, Android
+           comes back to this page (with noapp=1, so it doesn't loop) and the
+           Play Store button is right there. */
+        if (isAndroid && type && publicId) {
+          var back = new URL(location.href);
+          back.searchParams.set("noapp", "1");
+          var intentUrl =
+            "intent://" + type + "/" + encodeURIComponent(publicId) +
+            "#Intent;scheme=chapterapp;package=" + ANDROID_PACKAGE +
+            ";S.browser_fallback_url=" + encodeURIComponent(back.toString()) +
+            ";end";
+
+          openBtn.href = intentUrl;
+          if (!params.get("noapp")) {
+            setTimeout(function () { location.replace(intentUrl); }, 250);
+          }
+        }
+
+        /* ---------- preview ---------- */
+        if (!type || !publicId || !API_BASE) return;
+
+        var firstNames = function (partners) {
+          return (partners || [])
+            .map(function (p) { return (p && p.name ? p.name : "").split(" ")[0]; })
+            .filter(Boolean);
+        };
+
+        var setNames = function (names, fallback) {
+          var title = $("title");
+          if (names.length === 2) {
+            title.innerHTML = "";
+            title.appendChild(document.createTextNode(names[0] + " "));
+            var em = document.createElement("em");
+            em.textContent = "& " + names[1];
+            title.appendChild(em);
+          } else if (names.length === 1) {
+            title.textContent = names[0] + "’s " + fallback;
+          }
+        };
+
+        var setHandle = function (name) {
+          if (!name) return;
+          $("handle").textContent = "@" + name;
+          document.title = "@" + name + " — chapter";
+        };
+
+        var setPhoto = function (pic) {
+          if (!pic) return;
+          var img = $("photo");
+          img.onload = function () {
+            var ph = $("photoPh");
+            if (ph) ph.remove();
+            img.hidden = false;
+          };
+          img.src = pic;
+        };
+
+        var shorten = function (text, max) {
+          text = String(text || "").trim();
+          return text.length > max ? text.slice(0, max - 1).trim() + "…" : text;
+        };
+
+        fetch(API_BASE + "/share/" + type + "/" + encodeURIComponent(publicId))
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (body) {
+            var d = body && body.response;
+            if (!d) return;
+
+            if (type === "chapter") {
+              setNames(firstNames(d.partners), "chapter");
+              setHandle(d.chapterName);
+              if (d.location) $("caption").textContent = String(d.location).toLowerCase();
+              setPhoto(d.chapterCardPicture || d.chapterProfilePicture);
+            } else {
+              // post: { caption, media: [{ url, thumbnailUrl, type }], chapter: { name, partners } }
+              var chapter = d.chapter || {};
+              setNames(firstNames(chapter.partners), "moment");
+              setHandle(chapter.name || chapter.chapterName);
+              if (d.caption) $("caption").textContent = shorten(d.caption, 34);
+              var m = (d.media || [])[0];
+              setPhoto(m && (m.thumbnailUrl || m.url));
+            }
+          })
+          .catch(function () {});
+      })();
+    </script>
+  </body>
+</html>
