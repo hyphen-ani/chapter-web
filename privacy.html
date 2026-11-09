@@ -11,7 +11,7 @@
       name="description"
       content="What Chapter collects, why we process it, and the rights you hold over it."
     />
-    <meta name="theme-color" content="#EDE4D3" />
+    <meta name="theme-color" content="#FBFBFB" />
     <link rel="icon" type="image/x-icon" href="./assets/logo/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,19 +20,26 @@
       rel="stylesheet"
     />
     <style>
+      /* colours matched to the Chapter app theme (same tokens as index.html) */
       :root {
-        --forest-9: #1b2720;
-        --forest: #2b3d31;
-        --cream: #ede4d3;
-        --cream-2: #e4d9c5;
-        --sheet: #f6efe2;
-        --ink: #1b251e;
-        --text: #3c463d;
-        --caption: #4f5a50;
-        --muted: #7e877a;
-        --sage: #7c8a74;
-        --rose: #d9b6a9;
-        --line: #dcd1bc;
+        /* light theme */
+        --paper: #fbfbfb;      /* backgroundColor */
+        --paper-2: #f6f6f6;    /* navbarBackground — notice and contact panels */
+        --sheet: #ffffff;      /* cardColor — the document sheet */
+        --ink: #1c1c1c;        /* primary — headings, emphasis */
+        --text: #4d4d4d;       /* text */
+        --body: #3a3a3a;       /* long-form reading copy, a step darker than text */
+        --caption: #6a6a6a;    /* caption */
+        --icon: #7e7e7e;       /* appIcons — rules, bullets, active marker */
+        --line: #e4e4e4;       /* stroke */
+
+        /* dark theme */
+        --dark-deep: #262626;  /* sheetBackground — footer */
+        --on-dark: #ffffff;    /* text on dark */
+
+        /* the one accent */
+        --pink: #ffccdb;       /* mineMsg */
+
         --serif: "Instrument Serif", Georgia, serif;
         --sans: "DM Sans", system-ui, -apple-system, sans-serif;
         --hand: "Caveat", cursive;
@@ -49,7 +56,7 @@
         -webkit-font-smoothing: antialiased;
       }
       body {
-        background: var(--cream);
+        background: var(--paper);
         color: var(--text);
         font-family: var(--sans);
         font-weight: 300;
@@ -72,11 +79,11 @@
         color: inherit;
       }
       ::selection {
-        background: var(--rose);
+        background: var(--pink);
         color: var(--ink);
       }
       :focus-visible {
-        outline: 1.5px solid var(--sage);
+        outline: 1.5px solid var(--icon);
         outline-offset: 4px;
       }
 
@@ -85,7 +92,7 @@
         inset: 0;
         z-index: 60;
         pointer-events: none;
-        opacity: 0.16;
+        opacity: 0.1;
         background-image: var(--grain);
         background-size: 280px;
         mix-blend-mode: multiply;
@@ -112,7 +119,7 @@
         background-image: var(--crumple);
         background-size: 680px;
         mix-blend-mode: multiply;
-        opacity: 0.3;
+        opacity: 0.18;
       }
 
       /* ---------- nav ---------- */
@@ -126,9 +133,9 @@
         align-items: center;
         justify-content: space-between;
         padding: clamp(0.9rem, 2vh, 1.4rem) var(--pad);
-        background: rgba(237, 228, 211, 0.82);
+        background: rgba(251, 251, 251, 0.85);
         backdrop-filter: blur(14px);
-        border-bottom: 1px solid rgba(27, 37, 30, 0.08);
+        border-bottom: 1px solid rgba(28, 28, 28, 0.08);
         transition: transform 0.7s var(--ease);
       }
       #nav.hide {
@@ -162,7 +169,7 @@
       }
       .nav-pill {
         border-radius: 999px;
-        border: 1px solid rgba(27, 37, 30, 0.18);
+        border: 1px solid rgba(28, 28, 28, 0.18);
         padding: 0.7rem 1.15rem;
         font-size: 0.82rem;
         color: var(--ink);
@@ -173,7 +180,7 @@
       }
       .nav-pill:hover {
         background: var(--ink);
-        color: var(--cream);
+        color: var(--on-dark);
         border-color: var(--ink);
       }
 
@@ -203,8 +210,8 @@
         box-shadow:
           inset 0 0 0 1px rgba(255, 255, 255, 0.55),
           inset 0 2px 5px rgba(255, 255, 255, 0.35),
-          0 0 0 1px rgba(24, 34, 27, 0.13),
-          0 8px 18px -8px rgba(20, 28, 22, 0.4);
+          0 0 0 1px rgba(24, 24, 24, 0.13),
+          0 8px 18px -8px rgba(20, 20, 20, 0.4);
         transition:
           width 0.45s var(--ease),
           height 0.45s var(--ease),
@@ -239,7 +246,7 @@
       .doc-kicker {
         font-family: var(--hand);
         font-size: 1.4rem;
-        color: #5f6d58;
+        color: var(--caption);
         margin-bottom: 0.7rem;
       }
       .doc-head h1 {
@@ -262,12 +269,12 @@
         padding-top: 1.4rem;
         border-top: 1px solid var(--line);
         font-size: 0.82rem;
-        color: #5d6858;
+        color: var(--caption);
       }
       .doc-meta b {
         display: block;
         font-weight: 400;
-        color: #16201a;
+        color: var(--ink);
         margin-top: 0.35rem;
         font-size: 0.92rem;
       }
@@ -278,16 +285,16 @@
       .doc-intro p {
         font-size: 1.08rem;
         line-height: 1.8;
-        color: #3d4740;
+        color: var(--text);
         margin-bottom: 1.05rem;
       }
       .doc-intro a {
-        color: #16201a;
-        border-bottom: 1px solid rgba(124, 138, 116, 0.7);
+        color: var(--ink);
+        border-bottom: 1px solid rgba(126, 126, 126, 0.7);
       }
       .doc-intro strong {
         font-weight: 400;
-        color: #16201a;
+        color: var(--ink);
       }
 
       /* ---------- layout ---------- */
@@ -311,7 +318,7 @@
       .toc p {
         font-size: 0.78rem;
         letter-spacing: 0.04em;
-        color: #5d6858;
+        color: var(--caption);
         margin-bottom: 1rem;
       }
       .toc ol {
@@ -327,7 +334,7 @@
         display: block;
         font-size: 0.86rem;
         line-height: 1.5;
-        color: #5d6858;
+        color: var(--caption);
         padding: 0.2rem 0 0.2rem 0.6rem;
         border-left: 1px solid transparent;
         transition:
@@ -336,17 +343,17 @@
       }
       .toc a::before {
         content: counter(toc) ". ";
-        color: #8a9382;
+        color: #a3a3a3;
       }
       .toc a:hover {
         color: var(--ink);
       }
       .toc a.on {
-        color: #16201a;
-        border-left-color: #6e7d66;
+        color: var(--ink);
+        border-left-color: var(--icon);
       }
       .toc a.on::before {
-        color: #6e7d66;
+        color: var(--icon);
       }
 
       .doc-body {
@@ -354,12 +361,12 @@
         background: var(--sheet);
         border: 1px solid var(--line);
         padding: clamp(1.6rem, 3.4vw, 3rem) clamp(1.5rem, 3.4vw, 3.2rem);
-        box-shadow: 0 26px 44px -38px rgba(27, 37, 30, 0.5);
+        box-shadow: 0 26px 44px -38px rgba(28, 28, 28, 0.5);
       }
       .doc-body section {
         scroll-margin-top: 110px;
         padding: clamp(2.2rem, 4.6vh, 3.2rem) 0;
-        border-top: 1px solid #e4dac8;
+        border-top: 1px solid var(--line);
       }
       .doc-body section:first-child {
         border-top: 0;
@@ -368,7 +375,7 @@
       .doc-body h2 {
         font-family: var(--serif);
         font-weight: 400;
-        color: #16201a;
+        color: var(--ink);
         font-size: clamp(1.65rem, 2.7vw, 2.35rem);
         line-height: 1.08;
         letter-spacing: -0.018em;
@@ -377,14 +384,14 @@
       .doc-body h3 {
         font-size: 1.02rem;
         font-weight: 400;
-        color: #262f28;
+        color: #262626;
         letter-spacing: 0.005em;
         margin: 1.9rem 0 0.65rem;
       }
       .doc-body p {
         font-size: 1.05rem;
         line-height: 1.82;
-        color: #333c34;
+        color: var(--body);
         margin-bottom: 1.05rem;
       }
       .doc-body p:last-child {
@@ -399,7 +406,7 @@
       .doc-body li {
         font-size: 1.02rem;
         line-height: 1.78;
-        color: #333c34;
+        color: var(--body);
         padding-left: 1.7rem;
         position: relative;
       }
@@ -410,25 +417,25 @@
         top: 0.82em;
         width: 11px;
         height: 1px;
-        background: #7c8a74;
+        background: var(--icon);
       }
       .doc-body strong {
         font-weight: 400;
-        color: #16201a;
+        color: var(--ink);
       }
       .doc-body a {
-        color: #16201a;
-        border-bottom: 1px solid rgba(124, 138, 116, 0.7);
+        color: var(--ink);
+        border-bottom: 1px solid rgba(126, 126, 126, 0.7);
         transition: border-color 0.3s;
       }
       .doc-body a:hover {
-        border-color: #16201a;
+        border-color: var(--ink);
       }
 
       .notice {
-        background: #efe6d5;
-        border: 1px solid #dfd3bd;
-        border-left: 3px solid #7c8a74;
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--icon);
         padding: clamp(1.3rem, 2.2vw, 1.7rem);
         margin: 0.5rem 0 1.4rem;
       }
@@ -436,7 +443,7 @@
         font-size: 0.94rem;
         line-height: 1.85;
         letter-spacing: 0.008em;
-        color: #38423a;
+        color: var(--body);
         margin-bottom: 0.85rem;
       }
       .notice p:last-child {
@@ -453,7 +460,7 @@
         grid-template-columns: 200px 1fr;
         gap: 1.3rem;
         padding-bottom: 1.1rem;
-        border-bottom: 1px solid #e4dac8;
+        border-bottom: 1px solid var(--line);
       }
       .deftable div:last-child {
         border-bottom: 0;
@@ -461,18 +468,18 @@
       }
       .deftable dt {
         font-size: 0.98rem;
-        color: #16201a;
+        color: var(--ink);
         line-height: 1.6;
       }
       .deftable dd {
         font-size: 1rem;
         line-height: 1.78;
-        color: #333c34;
+        color: var(--body);
       }
 
       .fill {
-        background: #efe6d5;
-        border: 1px solid #dfd3bd;
+        background: var(--paper-2);
+        border: 1px solid var(--line);
         padding: clamp(1.4rem, 2.4vw, 1.9rem);
         margin-top: 0.6rem;
       }
@@ -481,7 +488,7 @@
         grid-template-columns: 190px 1fr;
         gap: 1rem;
         padding: 0.8rem 0;
-        border-bottom: 1px solid #dfd3bd;
+        border-bottom: 1px solid var(--line);
       }
       .fill div:last-child {
         border-bottom: 0;
@@ -489,22 +496,22 @@
       .fill dt {
         font-size: 0.88rem;
         letter-spacing: 0.02em;
-        color: #5d6858;
+        color: var(--caption);
       }
       .fill dd {
         font-size: 1rem;
-        color: #16201a;
+        color: var(--ink);
       }
       .fill dd span {
-        color: #7a8474;
+        color: var(--caption);
         font-style: italic;
       }
 
       /* ---------- footer ---------- */
       footer {
         position: relative;
-        background: var(--forest-9);
-        color: var(--cream);
+        background: var(--dark-deep);
+        color: var(--on-dark);
         padding: clamp(3rem, 7vh, 4.5rem) var(--pad) clamp(1.6rem, 3vh, 2.2rem);
         overflow: hidden;
       }
@@ -529,11 +536,11 @@
       }
       .f-links a {
         font-size: 0.88rem;
-        color: rgba(237, 228, 211, 0.88);
+        color: rgba(255, 255, 255, 0.88);
         transition: color 0.3s;
       }
       .f-links a:hover {
-        color: var(--rose);
+        color: var(--pink);
       }
       .socials {
         display: flex;
@@ -542,27 +549,27 @@
       .socials a {
         width: 40px;
         height: 40px;
-        border: 1px solid rgba(237, 228, 211, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 50%;
         display: grid;
         place-items: center;
-        color: rgba(237, 228, 211, 0.86);
+        color: rgba(255, 255, 255, 0.86);
         transition:
           background 0.4s,
           color 0.4s,
           border-color 0.4s;
       }
       .socials a:hover {
-        background: var(--cream);
-        color: var(--forest-9);
-        border-color: var(--cream);
+        background: var(--on-dark);
+        color: var(--dark-deep);
+        border-color: var(--on-dark);
       }
       .f-note {
         margin-top: clamp(2.2rem, 5vh, 3.2rem);
         padding-top: 1.4rem;
-        border-top: 1px solid rgba(237, 228, 211, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
         font-size: 0.76rem;
-        color: rgba(237, 228, 211, 0.68);
+        color: rgba(255, 255, 255, 0.68);
       }
 
       @media (max-width: 900px) {
@@ -574,7 +581,7 @@
           position: relative;
           top: 0;
           background: var(--sheet);
-          border: 1px solid #dfd3bd;
+          border: 1px solid var(--line);
           padding: 1.3rem 1.4rem;
         }
         .toc ol {

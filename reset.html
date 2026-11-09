@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>reset your password — chapter</title>
+    <meta name="description" content="Open Chapter to choose a new password." />
+    <meta name="theme-color" content="#FBFBFB" />
+    <!-- the reset token is in this page's URL: never pass it on, never index it -->
+    <meta name="referrer" content="no-referrer" />
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Smart app banner on iOS Safari: replace with your App Store ID -->
+    <meta name="apple-itunes-app" content="app-id=0000000000" />
+
+    <link rel="icon" type="image/x-icon" href="/assets/logo/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400&family=Caveat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* colours matched to the Chapter app theme (same tokens as index.html) */
+      :root {
+        /* light theme */
+        --paper: #fbfbfb;      /* backgroundColor */
+        --sheet: #ffffff;      /* cardColor */
+        --ink: #1c1c1c;        /* primary — headline */
+        --text: #4d4d4d;       /* text */
+        --caption: #6a6a6a;    /* caption */
+        --icon: #7e7e7e;       /* appIcons */
+        --line: #e4e4e4;       /* stroke */
+
+        /* dark theme, for the solid button */
+        --dark: #2c2c2c;       /* backgroundColor */
+        --dark-deep: #262626;  /* sheetBackground */
+        --on-dark: #ffffff;    /* text */
+
+        /* the one accent */
+        --pink: #ffccdb;       /* mineMsg */
+        --pink-deep: #ff8b8d;  /* chapterPink */
+
+        --serif: "Instrument Serif", Georgia, serif;
+        --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+        --hand: "Caveat", "Segoe Script", cursive;
+
+        --pad: clamp(1.35rem, 5vw, 4rem);
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+        --crumple: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27700%27%20height%3D%27700%27%3E%3Cfilter%20id%3D%27c%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.0075%27%20numOctaves%3D%275%27%20seed%3D%2714%27%20result%3D%27t%27%2F%3E%3CfeDiffuseLighting%20in%3D%27t%27%20lighting-color%3D%27%23fff%27%20surfaceScale%3D%272.2%27%3E%3CfeDistantLight%20azimuth%3D%2748%27%20elevation%3D%2760%27%2F%3E%3C%2FfeDiffuseLighting%3E%3C%2Ffilter%3E%3Crect%20width%3D%27700%27%20height%3D%27700%27%20filter%3D%27url%28%2523c%29%27%2F%3E%3C%2Fsvg%3E");
+        --grain: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27300%27%20height%3D%27300%27%3E%3Cfilter%20id%3D%27f%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.9%27%20numOctaves%3D%274%27%20stitchTiles%3D%27stitch%27%2F%3E%3CfeColorMatrix%20type%3D%27saturate%27%20values%3D%270%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27300%27%20height%3D%27300%27%20filter%3D%27url%28%2523f%29%27%20opacity%3D%270.55%27%2F%3E%3C%2Fsvg%3E");
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+      html, body { min-height: 100%; }
+      body {
+        position: relative;
+        min-height: 100svh;
+        background: var(--paper);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        overflow-x: clip;
+        display: flex;
+        flex-direction: column;
+      }
+      img { display: block; max-width: 100%; }
+      [hidden] { display: none !important; }
+      a { color: inherit; text-decoration: none; }
+      ::selection { background: var(--pink); color: var(--ink); }
+      :focus-visible { outline: 1.5px solid var(--icon); outline-offset: 4px; border-radius: 2px; }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: var(--crumple);
+        background-size: 680px;
+        mix-blend-mode: multiply;
+        opacity: 0.18; /* lighter than on cream, so the page stays the app's white */
+      }
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        pointer-events: none;
+        opacity: 0.1;
+        background-image: var(--grain);
+        background-size: 280px;
+        mix-blend-mode: multiply;
+      }
+
+      header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: calc(env(safe-area-inset-top, 0px) + clamp(1.1rem, 3vh, 1.6rem)) var(--pad) 0;
+      }
+      .logo { height: 26px; width: auto; }
+      .logo-text { font-family: var(--serif); font-size: 1.9rem; color: var(--ink); letter-spacing: -0.02em; }
+
+      main {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        width: 100%;
+        max-width: 460px;
+        margin: 0 auto;
+        padding: clamp(2rem, 6vh, 3.5rem) var(--pad) clamp(2rem, 5vh, 3rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      /* a key sticker, die-cut, pressed onto the page */
+      .key {
+        width: 104px;
+        margin-bottom: clamp(1.4rem, 4vh, 2rem);
+        rotate: -18deg;
+        filter: drop-shadow(0 6px 6px rgba(20, 20, 20, 0.2)) drop-shadow(0 1px 0 rgba(20, 20, 20, 0.08));
+      }
+      .key svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+      .kicker {
+        font-family: var(--hand);
+        font-size: clamp(1.25rem, 4.6vw, 1.45rem);
+        color: var(--caption);
+        margin-bottom: 0.45rem;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        color: var(--ink);
+        font-size: clamp(2.4rem, 10.5vw, 3.4rem);
+        line-height: 0.95;
+        letter-spacing: -0.025em;
+      }
+      h1 em { font-style: italic; letter-spacing: -0.01em; }
+      .lede {
+        margin: clamp(1rem, 3vh, 1.4rem) auto 0;
+        max-width: 34ch;
+        font-size: 1rem;
+        line-height: 1.7;
+        font-weight: 400;
+        color: var(--text);
+      }
+
+      .actions { width: 100%; display: grid; gap: 0.75rem; margin-top: clamp(1.8rem, 4.5vh, 2.6rem); }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        width: 100%;
+        border-radius: 999px;
+        padding: 1.02rem 1.6rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.01em;
+        transition: background 0.4s, color 0.4s, border-color 0.4s, transform 0.4s var(--ease);
+      }
+      .btn:active { transform: translateY(1px); }
+      .btn-solid { background: var(--dark); color: var(--on-dark); box-shadow: 0 22px 44px -24px rgba(28, 28, 28, 0.7); }
+      .btn-solid:hover { background: var(--dark-deep); }
+      .btn-solid .logo { height: 15px; }
+      .btn-ghost { border: 1px solid var(--line); background: rgba(255, 255, 255, 0.75); color: var(--ink); }
+      .btn-ghost:hover { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+
+      .hint { margin-top: 1.1rem; font-family: var(--hand); font-size: 1.15rem; color: var(--caption); }
+
+      footer {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 0 var(--pad) calc(env(safe-area-inset-bottom, 0px) + 1.6rem);
+        font-size: 0.76rem;
+        color: var(--caption);
+      }
+      footer a { border-bottom: 1px solid var(--pink); }
+
+      .rise { opacity: 0; transform: translateY(18px); animation: rise 0.9s var(--ease) forwards; }
+      @keyframes rise { to { opacity: 1; transform: none; } }
+      .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; }
+      .d3 { animation-delay: 0.25s; } .d4 { animation-delay: 0.35s; }
+      @media (prefers-reduced-motion: reduce) { .rise { animation: none; opacity: 1; transform: none; } }
+      @media (min-width: 700px) { main { justify-content: center; } }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header>
+      <a href="/" aria-label="chapter">
+        <img class="logo" src="/assets/logo/chapterlogoNewBlack.svg" alt="chapter"
+             onerror="this.outerHTML='<span class=&quot;logo-text&quot;>chapter</span>'" />
+      </a>
+    </header>
+
+    <main>
+      <div class="key rise d1" aria-hidden="true">
+        <svg viewBox="0 0 140 70">
+          <g fill="#ffffff" stroke="#ffffff" stroke-width="9" stroke-linejoin="round">
+            <circle cx="30" cy="35" r="21" />
+            <rect x="47" y="27" width="8" height="16" rx="2" />
+            <rect x="52" y="31" width="74" height="8" rx="4" />
+            <rect x="100" y="35" width="8" height="16" rx="1.5" />
+            <rect x="113" y="35" width="7" height="12" rx="1.5" />
+          </g>
+          <g fill="#ffccdb">
+            <circle cx="30" cy="35" r="21" />
+            <rect x="47" y="27" width="8" height="16" rx="2" />
+            <rect x="52" y="31" width="74" height="8" rx="4" />
+            <rect x="100" y="35" width="8" height="16" rx="1.5" />
+            <rect x="113" y="35" width="7" height="12" rx="1.5" />
+          </g>
+          <circle cx="30" cy="35" r="14.5" fill="none" stroke="#ff8b8d" stroke-width="2" />
+          <circle cx="30" cy="35" r="7" fill="#ffffff" />
+          <path d="M16 26 C19 20 25 17 31 17" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".75" />
+          <path d="M60 33.5 H96" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity=".6" />
+        </svg>
+      </div>
+
+      <p class="kicker rise d1" id="kicker">almost there</p>
+      <h1 class="rise d2" id="title">open chapter<br />to <em>reset it.</em></h1>
+      <p class="lede rise d2" id="lede">
+        Your reset link opens in the app, where you'll choose a new password.
+        Your chapter is waiting exactly where you left it.
+      </p>
+
+      <div class="actions rise d3">
+        <a id="open" class="btn btn-solid" href="#">
+          <img class="logo" src="/assets/logo/chapterlogoNew.svg" alt="" onerror="this.remove()" />
+          Open in Chapter
+        </a>
+        <a id="ios" class="btn btn-ghost" href="#">Get it on the App Store</a>
+        <a id="android" class="btn btn-ghost" href="#">Get it on Google Play</a>
+      </div>
+      <p class="hint rise d4" id="hint">no app yet? get it, then tap the link in your email again</p>
+    </main>
+
+    <footer>
+      not a dating app — a book for two. <a href="/">joinchapter.app</a>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ---------- config ---------- */
+        var APP_SCHEME = "chapterapp";
+        var APP_PATH = "reset"; // the app opens chapterapp://reset?token=…
+        var ANDROID_PACKAGE = "com.chaptertogether.chapter";
+        var IOS_STORE = "https://apps.apple.com/app/id0000000000";
+        var ANDROID_STORE = "https://play.google.com/store/apps/details?id=" + ANDROID_PACKAGE;
+
+        var $ = function (id) { return document.getElementById(id); };
+        var params = new URLSearchParams(location.search);
+        // read the token raw: URLSearchParams would turn a "+" in it into a space
+        var rawToken = (location.search.match(/[?&]token=([^&#]*)/) || [])[1];
+        var token = rawToken ? decodeURIComponent(rawToken) : null;
+
+        var ua = navigator.userAgent || "";
+        var isAndroid = /Android/i.test(ua);
+        var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+        var isPhone = isAndroid || isIOS;
+
+        $("ios").href = IOS_STORE;
+        $("android").href = ANDROID_STORE;
+        if (isIOS) $("android").hidden = true;
+        else if (isAndroid) $("ios").hidden = true;
+
+        /* ---------- no token: the link got cut short ---------- */
+        if (!token) {
+          $("kicker").textContent = "something's missing";
+          $("title").innerHTML = "this link isn't <em>complete.</em>";
+          $("lede").textContent =
+            "Open the reset email again and tap the button, or ask for a new link from the login screen in the app.";
+          $("open").href = APP_SCHEME + "://";
+          $("hint").textContent = "tap “forgot password?” to get a new link";
+          if (!isPhone) $("open").hidden = true;
+          return;
+        }
+
+        /* ---------- desktop: resets happen in the app ---------- */
+        if (!isPhone) {
+          $("kicker").textContent = "one small thing";
+          $("title").innerHTML = "open this on <em>your phone.</em>";
+          $("lede").textContent =
+            "Password resets happen in the Chapter app. Open this email on the phone where Chapter is installed and tap the link there.";
+          $("open").hidden = true;
+          $("hint").textContent = "the link works once, and only for a little while";
+          return;
+        }
+
+        var appUrl = APP_SCHEME + "://" + APP_PATH + "?token=" + encodeURIComponent(token);
+
+        /* ---------- iPhone: the universal link normally opens the app before
+           this page loads; if it didn't (Gmail's browser, no app), the button
+           hands the token over with the app's own scheme ---------- */
+        $("open").href = appUrl;
+
+        /* ---------- Android: open the app automatically ----------
+           The intent opens Chapter if it's installed. If it isn't, Android comes
+           back here with noapp=1 (so it doesn't loop) and the Play Store button
+           is right there. */
+        if (isAndroid) {
+          var back = new URL(location.href);
+          back.searchParams.set("noapp", "1");
+          var intentUrl =
+            "intent://" + APP_PATH + "?token=" + encodeURIComponent(token) +
+            "#Intent;scheme=" + APP_SCHEME + ";package=" + ANDROID_PACKAGE +
+            ";S.browser_fallback_url=" + encodeURIComponent(back.toString()) + ";end";
+
+          $("open").href = intentUrl;
+          if (!params.get("noapp")) {
+            setTimeout(function () { location.replace(intentUrl); }, 250);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

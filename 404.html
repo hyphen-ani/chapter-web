@@ -7,6 +7,18 @@
     <script>
       (function () {
         var l = window.location;
+
+        // ── Shared links: /chapter/{id} and /post/{id} → share page ──
+        var share = l.pathname.match(/^\/(chapter|post)\/([A-Za-z0-9-]+)\/?$/);
+        if (share) {
+          l.replace(
+            l.protocol + "//" + l.host + "/share.html?" +
+              share[1] + "=" + encodeURIComponent(share[2])
+          );
+          return;
+        }
+
+        // ── Message in a bottle (unchanged) ──
         var basePath = "/message-in-a-bottle/";
         if (l.pathname.indexOf(basePath) === 0) {
           var path = l.pathname.slice(basePath.length);
